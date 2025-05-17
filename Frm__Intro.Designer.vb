@@ -23,42 +23,42 @@ Partial Class Frm__Intro
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm__Intro))
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.PrgrssBr_BarraDeCarregamento = New System.Windows.Forms.ProgressBar()
+        Me.Lbl_VersaoSistema = New System.Windows.Forms.Label()
+        Me.Lbl_ModuloSistema = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'ProgressBar1
+        'PrgrssBr_BarraDeCarregamento
         '
-        Me.ProgressBar1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ProgressBar1.Location = New System.Drawing.Point(15, 334)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(604, 5)
-        Me.ProgressBar1.TabIndex = 0
+        Me.PrgrssBr_BarraDeCarregamento.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PrgrssBr_BarraDeCarregamento.Location = New System.Drawing.Point(15, 334)
+        Me.PrgrssBr_BarraDeCarregamento.Name = "PrgrssBr_BarraDeCarregamento"
+        Me.PrgrssBr_BarraDeCarregamento.Size = New System.Drawing.Size(604, 5)
+        Me.PrgrssBr_BarraDeCarregamento.TabIndex = 0
         '
-        'Label1
+        'Lbl_VersaoSistema
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(89, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(36, 48)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(31, 14)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "1.0.0"
+        Me.Lbl_VersaoSistema.AutoSize = True
+        Me.Lbl_VersaoSistema.BackColor = System.Drawing.Color.Transparent
+        Me.Lbl_VersaoSistema.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbl_VersaoSistema.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.Lbl_VersaoSistema.Location = New System.Drawing.Point(36, 48)
+        Me.Lbl_VersaoSistema.Name = "Lbl_VersaoSistema"
+        Me.Lbl_VersaoSistema.Size = New System.Drawing.Size(31, 14)
+        Me.Lbl_VersaoSistema.TabIndex = 1
+        Me.Lbl_VersaoSistema.Text = "1.0.0"
         '
-        'Label2
+        'Lbl_ModuloSistema
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(89, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(36, 81)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(144, 14)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Departamento Pessoal (DP)"
+        Me.Lbl_ModuloSistema.AutoSize = True
+        Me.Lbl_ModuloSistema.BackColor = System.Drawing.Color.Transparent
+        Me.Lbl_ModuloSistema.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbl_ModuloSistema.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.Lbl_ModuloSistema.Location = New System.Drawing.Point(36, 81)
+        Me.Lbl_ModuloSistema.Name = "Lbl_ModuloSistema"
+        Me.Lbl_ModuloSistema.Size = New System.Drawing.Size(144, 14)
+        Me.Lbl_ModuloSistema.TabIndex = 2
+        Me.Lbl_ModuloSistema.Text = "Departamento Pessoal (DP)"
         '
         'Frm__Intro
         '
@@ -69,9 +69,9 @@ Partial Class Frm__Intro
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(634, 354)
         Me.ControlBox = False
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.Lbl_ModuloSistema)
+        Me.Controls.Add(Me.Lbl_VersaoSistema)
+        Me.Controls.Add(Me.PrgrssBr_BarraDeCarregamento)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -83,7 +83,7 @@ Partial Class Frm__Intro
 
     End Sub
 
-    Friend WithEvents ProgressBar1 As ProgressBar
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents PrgrssBr_BarraDeCarregamento As ProgressBar
+    Friend WithEvents Lbl_VersaoSistema As Label
+    Friend WithEvents Lbl_ModuloSistema As Label
 End Class

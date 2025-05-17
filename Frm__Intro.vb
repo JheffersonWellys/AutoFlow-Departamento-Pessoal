@@ -8,25 +8,15 @@
 
     Private Async Sub Frm__Intro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        InicializarFormulario()
-
-        Await Aguardar3SegundosAsync()
-
-        Await Task.Delay(200)
-
-        FinalizarFormulario(DialogResult.OK)
+        Await InicializarFormularioAsync()
 
     End Sub
 
     Private Sub Frm__Intro_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
 
-
+        Call ValidarLicenca()
 
     End Sub
-
-#End Region
-
-#Region "FUNÇÕES PARA CONTROLE DOS COMPONENTES DO FORMULÁRIO"
 
 #End Region
 
@@ -45,26 +35,52 @@
 #Region "FUNÇÕES MANIPULAÇÃO DE DADOS"
 
     Private Sub RecuperarInformacoesSobreOSistema()
+
         Lbl_VersaoSistema.Text = My.Settings.AutoFlow__VersaoSistema
         Lbl_ModuloSistema.Text = My.Settings.AutoFlow__ModuloSistema
+
     End Sub
 
 #End Region
 
 #Region "FUNÇÕES AUXILIARES"
 
-    Private Sub InicializarFormulario()
+    Private Async Function InicializarFormularioAsync() As Task
 
         RecuperarInformacoesSobreOSistema()
         ConfigurarBarraDeProgresso()
+
         PrgrssBr_BarraDeCarregamento.Value = 0
 
-    End Sub
+        Await Aguardar3SegundosAsync()
+
+        Await Task.Delay(200)
+
+        FinalizarFormulario(DialogResult.OK)
+
+    End Function
 
     Private Sub FinalizarFormulario(Optional status As DialogResult = DialogResult.Cancel)
 
         Me.DialogResult = status
         Me.Close()
+
+    End Sub
+
+    Private Sub ValidarLicenca()
+
+        Dim Verificacao As (Boolean, String) = ValidarLicencaERecuperarApiKey()
+
+        If Not Verificacao.Item1 Then
+
+            MessageBox.Show("Licença inválida ou não encontrada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Else
+
+            MessageBox.Show("Licença válida.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'chamar o formulário de login...
+
+        End If
 
     End Sub
 

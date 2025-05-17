@@ -1,0 +1,29 @@
+# Build
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code / Visual Studio settings
+.vscode/
+.vs/
+
+# Backup & logs
+*.log
+*.bak
+*.tmp
+
+# Publish
+*.publishsettings
+
+# Configs locais
+App.config
+
+# Ignora arquivos temporários do Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini

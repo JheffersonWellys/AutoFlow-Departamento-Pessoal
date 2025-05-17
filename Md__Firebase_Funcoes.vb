@@ -239,45 +239,4 @@ Module Md__Firebase_Funcoes
 
 #End Region
 
-#Region "FUNÇÕES PARA MANIPULAÇÃO DO TOKEN DO USUÁRIO"
-
-    Public Sub SalvarTokenCriptografado(token As String)
-
-        Dim dados As Byte() = Encoding.UTF8.GetBytes(token)
-        Dim dadosCriptografados As Byte() = ProtectedData.Protect(dados, Nothing, DataProtectionScope.CurrentUser)
-
-        File.WriteAllBytes(CaminhoToken, dadosCriptografados)
-
-    End Sub
-
-    Public Function LerTokenDescriptografado() As String
-
-        If Not File.Exists(CaminhoToken) Then Return Nothing
-
-        Dim dadosCriptografados As Byte() = File.ReadAllBytes(CaminhoToken)
-        Dim dadosDescriptografados As Byte() = ProtectedData.Unprotect(dadosCriptografados, Nothing, DataProtectionScope.CurrentUser)
-
-        Return Encoding.UTF8.GetString(dadosDescriptografados)
-
-    End Function
-
-    Public Function LerTokenCriptografado() As String
-
-        If Not File.Exists(CaminhoToken) Then Return Nothing
-
-        Dim dadosCriptografados As Byte() = File.ReadAllBytes(CaminhoToken)
-
-        Return Convert.ToBase64String(dadosCriptografados)
-
-    End Function
-
-    Public Sub DeletarTokenTemporario()
-
-        If File.Exists(CaminhoToken) Then File.Delete(CaminhoToken)
-
-    End Sub
-
-#End Region
-
-
 End Module

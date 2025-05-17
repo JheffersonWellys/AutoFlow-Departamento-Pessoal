@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="Md__Firebase_Classes.vb" />
     <Compile Include="Md__Firebase_Funcoes.vb" />
+    <Compile Include="Md__FuncoesAuxiliares.vb" />
     <Compile Include="Md__Licenciamento.vb" />
     <Compile Include="Md__Mensagens.vb" />
     <Compile Include="Md__VariaveisGlobais.vb" />

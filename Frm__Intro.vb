@@ -1,14 +1,12 @@
 ﻿Public Class Frm__Intro
 
-#Region "VARIÁVEIS DO FORMULÁRIO"
-
-#End Region
-
 #Region "FUNÇÕES PARA CONTROLE DO FORMULÁRIO"
 
     Private Async Sub Frm__Intro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Await InicializarFormularioAsync()
+
+        InicializarSistemaAutoFlow()
 
     End Sub
 
@@ -79,7 +77,7 @@
 
             If VerificarApiKeyValida(Verificacao.Item2) Then
 
-                'Call ExibirMensagem__Sucesso(Msg__Firebase__ApiKeyInvalida)'
+                InicializarTransicaoParaLogin()
 
             Else
 
@@ -88,6 +86,15 @@
             End If
 
         End If
+
+    End Sub
+
+    Public Sub InicializarTransicaoParaLogin()
+
+        Dim Frm_Login As New Frm__Login
+
+        Frm_Login.Show()
+        Frm_Login.BringToFront()
 
     End Sub
 

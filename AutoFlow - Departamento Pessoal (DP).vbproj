@@ -111,6 +111,12 @@
       <DependentUpon>Frm__Intro.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Frm__Login.Designer.vb">
+      <DependentUpon>Frm__Login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm__Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Md__Firebase_Classes.vb" />
     <Compile Include="Md__Firebase_Funcoes.vb" />
     <Compile Include="Md__Licenciamento.vb" />
@@ -137,6 +143,9 @@
     <EmbeddedResource Include="Frm__Intro.resx">
       <DependentUpon>Frm__Intro.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm__Login.resx">
+      <DependentUpon>Frm__Login.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -158,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\Logormarca AutoFlow.png" />
     <None Include="packages.config" />
     <None Include="Resources\bnnr__BackgroundIntroModuloDP.png" />
   </ItemGroup>

@@ -73,12 +73,19 @@
 
         If Not Verificacao.Item1 Then
 
-            MessageBox.Show("Licença inválida ou não encontrada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ExibirMensagem__Erro("O arquivo de licença não foi encontrato ou a licença está inválida!")
 
         Else
 
-            MessageBox.Show("Licença válida.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            'chamar o formulário de login...
+            If VerificarApiKeyValida(Verificacao.Item2) Then
+
+                'Call ExibirMensagem__Sucesso(Msg__Firebase__ApiKeyInvalida)'
+
+            Else
+
+                ExibirMensagem__Erro("A apikey não é valida")
+
+            End If
 
         End If
 

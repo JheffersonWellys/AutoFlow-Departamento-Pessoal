@@ -102,20 +102,20 @@ Partial Class Frm__Menu
         Me.TlStrpMnItm_Sistema_SobreOSistema.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Informacoes
         Me.TlStrpMnItm_Sistema_SobreOSistema.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Sistema_SobreOSistema.Name = "TlStrpMnItm_Sistema_SobreOSistema"
-        Me.TlStrpMnItm_Sistema_SobreOSistema.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Sistema_SobreOSistema.Size = New System.Drawing.Size(164, 28)
         Me.TlStrpMnItm_Sistema_SobreOSistema.Text = "Sobre o Sistema"
         '
         'TlStrpSprtr_Sistema_1
         '
         Me.TlStrpSprtr_Sistema_1.Name = "TlStrpSprtr_Sistema_1"
-        Me.TlStrpSprtr_Sistema_1.Size = New System.Drawing.Size(183, 6)
+        Me.TlStrpSprtr_Sistema_1.Size = New System.Drawing.Size(161, 6)
         '
         'TlStrpMnItm_Sistema_TrocarUsuario
         '
         Me.TlStrpMnItm_Sistema_TrocarUsuario.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_TrocarUsuario
         Me.TlStrpMnItm_Sistema_TrocarUsuario.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Sistema_TrocarUsuario.Name = "TlStrpMnItm_Sistema_TrocarUsuario"
-        Me.TlStrpMnItm_Sistema_TrocarUsuario.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Sistema_TrocarUsuario.Size = New System.Drawing.Size(164, 28)
         Me.TlStrpMnItm_Sistema_TrocarUsuario.Text = "Trocar Usuário"
         '
         'TlStrpMnItm_Sistema_EncerrarSessao
@@ -123,7 +123,7 @@ Partial Class Frm__Menu
         Me.TlStrpMnItm_Sistema_EncerrarSessao.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_EncerrarSessao
         Me.TlStrpMnItm_Sistema_EncerrarSessao.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Sistema_EncerrarSessao.Name = "TlStrpMnItm_Sistema_EncerrarSessao"
-        Me.TlStrpMnItm_Sistema_EncerrarSessao.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Sistema_EncerrarSessao.Size = New System.Drawing.Size(164, 28)
         Me.TlStrpMnItm_Sistema_EncerrarSessao.Text = "Encerrar Sessão"
         '
         'TlStrpMnItm_Processos
@@ -332,7 +332,7 @@ Partial Class Frm__Menu
         'TlStrpMnItm_Cadastros
         '
         Me.TlStrpMnItm_Cadastros.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TlStrpMnItm_Cadastros_Pessoas, Me.TlStrpSprtr_Cadastros_1, Me.TlStrpMnItm_Cadastros_Entidades, Me.TlStrpSprtr_Cadastros_2, Me.TlStrpMnItm_Cadastros_Documentos})
-        Me.TlStrpMnItm_Cadastros.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Cadastro
+        Me.TlStrpMnItm_Cadastros.Image = CType(resources.GetObject("TlStrpMnItm_Cadastros.Image"), System.Drawing.Image)
         Me.TlStrpMnItm_Cadastros.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Cadastros.Name = "TlStrpMnItm_Cadastros"
         Me.TlStrpMnItm_Cadastros.Size = New System.Drawing.Size(93, 26)
@@ -341,7 +341,7 @@ Partial Class Frm__Menu
         'TlStrpMnItm_Cadastros_Pessoas
         '
         Me.TlStrpMnItm_Cadastros_Pessoas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TlStrpMnItm_Cadastros_Pessoas_Colaboradores})
-        Me.TlStrpMnItm_Cadastros_Pessoas.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Pessoas
+        Me.TlStrpMnItm_Cadastros_Pessoas.Image = CType(resources.GetObject("TlStrpMnItm_Cadastros_Pessoas.Image"), System.Drawing.Image)
         Me.TlStrpMnItm_Cadastros_Pessoas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Cadastros_Pessoas.Name = "TlStrpMnItm_Cadastros_Pessoas"
         Me.TlStrpMnItm_Cadastros_Pessoas.Size = New System.Drawing.Size(186, 28)
@@ -492,6 +492,7 @@ Partial Class Frm__Menu
         Me.ClientSize = New System.Drawing.Size(884, 561)
         Me.Controls.Add(Me.MnStrp_MenuPrincipal)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimumSize = New System.Drawing.Size(900, 600)
         Me.Name = "Frm__Menu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AutoFlow - Departamento Pessoal (DP)"

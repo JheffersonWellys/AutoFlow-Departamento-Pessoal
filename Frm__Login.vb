@@ -122,6 +122,8 @@
 
         If CamposValidos() = False Then Exit Function
 
+        Bttn_Entrar.Enabled = False
+
         Try
 
             Dim resultado = Await LoginUsuarioFirebase(Email, Senha)
@@ -134,11 +136,9 @@
                 UID_UsuarioLogado = Await ObterMatriculaPorUID()
                 HoraLogin = DateTime.Now
 
-                ExibirMensagem__Confirmacao("Login realizado com sucesso!")
-
-                'Dim Frm_Menu As New Frm_Menu
-                'Frm_Menu.Show()
-                'Frm_Menu.BringToFront()
+                Dim Frm_Menu As New Frm__Menu
+                Frm_Menu.Show()
+                Frm_Menu.BringToFront()
 
                 FinalizarFormulario(DialogResult.OK)
 

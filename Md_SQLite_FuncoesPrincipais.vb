@@ -156,15 +156,15 @@ Module Md_SQLite_FuncoesPrincipais
                         email_pessoal TEXT,
                         telefone_pessoal TEXT,
                         sexo INTEGER NOT NULL,
-                        data_de_nascimento DATE NOT NULL,
+                        data_de_nascimento TEXT NOT NULL,
                         cpf TEXT NOT NULL UNIQUE,
                         rg TEXT,
                         email_corporativo TEXT NOT NULL,
                         funcao TEXT NOT NULL,
                         setor TEXT NOT NULL,
                         chapa TEXT NOT NULL,
-                        data_de_admissao DATE NOT NULL,
-                        data_de_demissao DATE,
+                        data_de_admissao TEXT NOT NULL,
+                        data_de_demissao TEXT,
                         tipo_contrato INTEGER NOT NULL,
                         modalidade_contrato INTEGER NOT NULL,
                         status_documentos_admissionais INTEGER NOT NULL,
@@ -194,7 +194,7 @@ Module Md_SQLite_FuncoesPrincipais
                         id_clinica_autorizada INTEGER NOT NULL,
                         tipo_exame INTEGER NOT NULL,
                         status_exame INTEGER NOT NULL,
-                        data_realizacao DATE NOT NULL,
+                        data_realizacao TEXT NOT NULL,
                         horario_realizacao TIME NOT NULL,
 	                    status_aso INTEGER NOT NULL, 
 	                    caminho_arquivo_aso TEXT NOT NULL,
@@ -234,7 +234,8 @@ Module Md_SQLite_FuncoesPrincipais
                         modalidade_contrato INTEGER NOT NULL,
                         nome_documento TEXT NOT NULL,
                         caminho_arquivo TEXT NOT NULL,
-                        uid_usuario_logado TEXT NOT NULL
+                        uid_usuario_logado TEXT NOT NULL,
+                        status INTEGER NOT NULL
                     );")
 
                 Using cmd As New SQLiteCommand(comandos.ToString(), conn)
@@ -334,7 +335,7 @@ Module Md_SQLite_FuncoesPrincipais
                         UPDATE endereco
                         SET status = {0}
                         WHERE id_endereco = OLD.id_endereco;
-                    END;", Status.INATIVO))
+                    END;", StatusCadastro.INATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE TRIGGER IF NOT EXISTS trg_reativar_endereco_clinica
@@ -345,7 +346,7 @@ Module Md_SQLite_FuncoesPrincipais
                         UPDATE endereco
                         SET status = {0}
                         WHERE id_endereco = OLD.id_endereco;
-                    END;", Status.ATIVO))
+                    END;", StatusCadastro.ATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE TRIGGER IF NOT EXISTS trg_inativar_endereco_agencia
@@ -356,7 +357,7 @@ Module Md_SQLite_FuncoesPrincipais
                         UPDATE endereco
                         SET status = {0}
                         WHERE id_endereco = OLD.id_endereco;
-                    END;", Status.INATIVO))
+                    END;", StatusCadastro.INATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE TRIGGER IF NOT EXISTS trg_reativar_endereco_agencia
@@ -367,7 +368,7 @@ Module Md_SQLite_FuncoesPrincipais
                         UPDATE endereco
                         SET status = {0}
                         WHERE id_endereco = OLD.id_endereco;
-                    END;", Status.ATIVO))
+                    END;", StatusCadastro.ATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE TRIGGER IF NOT EXISTS trg_inativar_endereco_unidade
@@ -378,7 +379,7 @@ Module Md_SQLite_FuncoesPrincipais
                         UPDATE endereco
                         SET status = {0}
                         WHERE id_endereco = OLD.id_endereco;
-                    END;", Status.INATIVO))
+                    END;", StatusCadastro.INATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE TRIGGER IF NOT EXISTS trg_reativar_endereco_unidade
@@ -389,7 +390,7 @@ Module Md_SQLite_FuncoesPrincipais
                         UPDATE endereco
                         SET status = {0}
                         WHERE id_endereco = OLD.id_endereco;
-                    END;", Status.ATIVO))
+                    END;", StatusCadastro.ATIVO))
 
                 Using cmd As New SQLiteCommand(comandos.ToString(), conn)
 
@@ -430,7 +431,7 @@ Module Md_SQLite_FuncoesPrincipais
                         WHERE 
                             a.status = {0}
                             AND e.status = {0};
-                    ", Status.ATIVO))
+                    ", StatusCadastro.ATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_unidades_senac_ativas AS
@@ -446,7 +447,7 @@ Module Md_SQLite_FuncoesPrincipais
                         WHERE 
                             u.status = {0}
                             AND e.status = {0};
-                        ", Status.ATIVO))
+                        ", StatusCadastro.ATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_clinicas_autorizadas_ativas AS
@@ -463,7 +464,7 @@ Module Md_SQLite_FuncoesPrincipais
                         WHERE 
                             c.status = {0}
                             AND e.status = {0};
-                    ", Status.ATIVO))
+                    ", StatusCadastro.ATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_ativos AS
@@ -476,7 +477,7 @@ Module Md_SQLite_FuncoesPrincipais
                             colaborador c
                         WHERE 
                             c.status = {0};
-                    ", Status.ATIVO))
+                    ", StatusCadastro.ATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_ativos_em_admissao AS
@@ -490,7 +491,7 @@ Module Md_SQLite_FuncoesPrincipais
                         WHERE 
                             c.status = {0}
                             AND c.status_contrato = {1};
-                    ", Status.ATIVO, StatusContrato.EM_ADMISSAO))
+                    ", StatusCadastro.ATIVO, StatusContrato.EM_ADMISSAO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_ativos_admitido AS
@@ -504,7 +505,7 @@ Module Md_SQLite_FuncoesPrincipais
                         WHERE 
                             c.status = {0}
                             AND c.status_contrato = {1};
-                    ", Status.ATIVO, StatusContrato.ADMITIDO))
+                    ", StatusCadastro.ATIVO, StatusContrato.ADMITIDO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_ativos_em_rescisao AS
@@ -518,7 +519,7 @@ Module Md_SQLite_FuncoesPrincipais
                         WHERE 
                             c.status = {0}
                             AND c.status_contrato = {1};
-                    ", Status.ATIVO, StatusContrato.EM_RESCISAO))
+                    ", StatusCadastro.ATIVO, StatusContrato.EM_RESCISAO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_horista_intermitente AS
@@ -528,7 +529,7 @@ Module Md_SQLite_FuncoesPrincipais
                             c.status = {0}
                             AND c.tipo_contrato = {1}
                             AND c.modalidade_contrato = {2};
-                    ", Status.ATIVO, TipoContrato.HORISTA, ModalidadeContrato.INTERMITENTE))
+                    ", StatusCadastro.ATIVO, TipoContrato.HORISTA, ModalidadeContrato.INTERMITENTE))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_horista_instrutor_de_formacao_profissional AS
@@ -538,7 +539,7 @@ Module Md_SQLite_FuncoesPrincipais
                             c.status = {0}
                             AND c.tipo_contrato = {1}
                             AND c.modalidade_contrato = {2};
-                    ", Status.ATIVO, TipoContrato.HORISTA, ModalidadeContrato.INSTRUTOR_DE_FORMACAO_PROFISSIONAL))
+                    ", StatusCadastro.ATIVO, TipoContrato.HORISTA, ModalidadeContrato.INSTRUTOR_DE_FORMACAO_PROFISSIONAL))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_mensalista_administrativo AS
@@ -548,7 +549,7 @@ Module Md_SQLite_FuncoesPrincipais
                             c.status = {0}
                             AND c.tipo_contrato = {1}
                             AND c.modalidade_contrato = {2};
-                    ", Status.ATIVO, TipoContrato.MENSALISTA, ModalidadeContrato.ADMINISTRATIVO))
+                    ", StatusCadastro.ATIVO, TipoContrato.MENSALISTA, ModalidadeContrato.ADMINISTRATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_mensalista_instrutor_de_formacao_profissional AS
@@ -558,7 +559,7 @@ Module Md_SQLite_FuncoesPrincipais
                             c.status = {0}
                             AND c.tipo_contrato = {1}
                             AND c.modalidade_contrato = {2};
-                    ", Status.ATIVO, TipoContrato.MENSALISTA, ModalidadeContrato.INSTRUTOR_DE_FORMACAO_PROFISSIONAL))
+                    ", StatusCadastro.ATIVO, TipoContrato.MENSALISTA, ModalidadeContrato.INSTRUTOR_DE_FORMACAO_PROFISSIONAL))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_colaboradores_mensalista_prazo_determinado AS
@@ -568,7 +569,7 @@ Module Md_SQLite_FuncoesPrincipais
                             c.status = {0}
                             AND c.tipo_contrato = {1}
                             AND c.modalidade_contrato = {2};
-                    ", Status.ATIVO, TipoContrato.MENSALISTA, ModalidadeContrato.PRAZO_DETERMINADO))
+                    ", StatusCadastro.ATIVO, TipoContrato.MENSALISTA, ModalidadeContrato.PRAZO_DETERMINADO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_exames AS
@@ -588,7 +589,7 @@ Module Md_SQLite_FuncoesPrincipais
                             endereco e ON ca.id_endereco = e.id_endereco
                         WHERE 
                             c.status = {0};
-                    ", Status.ATIVO))
+                    ", StatusCadastro.ATIVO))
 
                 comandos.AppendLine(String.Format("
                     CREATE VIEW IF NOT EXISTS vw_carta_abertura_conta_salario AS
@@ -607,7 +608,7 @@ Module Md_SQLite_FuncoesPrincipais
                             co.status = {0}
                             AND us.status = {0}
                             AND c.status = {0};
-                    ", Status.ATIVO))
+                    ", StatusCadastro.ATIVO))
 
                 Using cmd As New SQLiteCommand(comandos.ToString(), conn)
 

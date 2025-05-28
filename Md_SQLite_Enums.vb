@@ -1,25 +1,25 @@
 ﻿Module Md_SQLite_Enums
 
-    Public Enum Status
+    Public Enum StatusCadastro
         ATIVO = 0
         INATIVO = 1
     End Enum
 
-    Public Enum StatusArquivoConta
-        CRIADA = 0
+    Public Enum StatusArquivoContaSalario
+        ASSINATURA_PENDENTE = 0
         ASSINATURA_SOLICITADA = 1
         ASSINADA_DIGITALMENTE = 2
     End Enum
 
-    Public Enum StatusArquivoHomologacao
-        CRIADO = 0
+    Public Enum StatusArquivoCienciaHomologacao
+        ASSINATURA_PENDENTE = 0
         ASSINADA_MANUALMENTE = 1
     End Enum
 
-    Public Enum StatusArquivoRescisao
+    Public Enum StatusArquivoFinsRescisorios
         ASSINATURA_SOLICITADA_DP = 0
         ASSINATURA_SOLICITADA_GESTAO = 1
-        ASSINADO_DIGITALMENTE = 2
+        ANEXADO = 3
     End Enum
 
     Public Enum Sexo
@@ -39,20 +39,20 @@
         PRAZO_DETERMINADO = 3
     End Enum
 
-    Public Enum StatusDocumentosAdmissao
+    Public Enum StatusDocumentosAdmissionais
         PENDENTES = 0
         SOLICITADOS = 1
         ANEXADOS = 2
     End Enum
 
-    Public Enum StatusCartaAberturaContaColaborador
-        CARTA_CRIADA = 0
+    Public Enum StatusCartaDeAberturaDeContaSalario
+        ENVIO_PENDENTE = 0
         ENVIO_SOLICITADO = 1
         ANEXADA = 2
     End Enum
 
-    Public Enum StatusArquivoCartaAbertura
-        CRIADA = 0
+    Public Enum StatusArquivoCartaDeAberturaDeContaSalario
+        ASSINATURA_PENDENTE = 0
         ASSINATURA_SOLICITADA = 1
         ASSINADA_DIGITALMENTE = 2
     End Enum
@@ -73,7 +73,7 @@
     End Enum
 
     Public Enum StatusExame
-        CRIADO = 0
+        PENDENTE = 0
         AGENDADO = 1
         AVISADO = 2
         AGUARDANDO_REALIZACAO = 3

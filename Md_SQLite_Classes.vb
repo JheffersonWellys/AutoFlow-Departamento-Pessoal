@@ -6,7 +6,7 @@
         Public Property IdEndereco As Integer
         Public Property CodigoAgencia As String
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -19,7 +19,7 @@
         Public Property CaminhoArquivo As String
         Public Property StatusArquivo As String
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -31,11 +31,11 @@
         Public Property IdExame As Integer
         Public Property EmailPessoal As String
         Public Property TelefonePessoal As String
-        Public Property DataHomologacao As DateTime
+        Public Property DataHomologacao As String
         Public Property CaminhoArquivo As String
         Public Property StatusArquivo As String
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -64,11 +64,11 @@
         Public Property RespostaItem91 As String
         Public Property RespostaItem10 As String
         Public Property LocalEmissao As String
-        Public Property DataEmissao As DateTime
+        Public Property DataEmissao As String
         Public Property CaminhoArquivo As String
-        Public Property StatusArquivo As String
+        Public Property StatusArquivo As Integer
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -82,7 +82,7 @@
         Public Property Telefone As String
         Public Property Fixo As String
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -94,22 +94,22 @@
         Public Property EmailPessoal As String
         Public Property TelefonePessoal As String
         Public Property Sexo As String
-        Public Property DataDeNascimento As DateTime
+        Public Property DataDeNascimento As String
         Public Property CPF As String
         Public Property RG As String
         Public Property EmailCorporativo As String
         Public Property Funcao As String
         Public Property Setor As String
         Public Property Chapa As String
-        Public Property DataDeAdmissao As DateTime
-        Public Property DataDeDemissao As DateTime
+        Public Property DataDeAdmissao As String
+        Public Property DataDeDemissao As String
         Public Property TipoContrato As String
         Public Property ModalidadeContrato As String
-        Public Property StatusDocumentosAdmissionais As String
-        Public Property StatusCartaDeAberturaDeContaSalario As String
-        Public Property StatusContrato As String
+        Public Property StatusDocumentosAdmissionais As Integer
+        Public Property StatusCartaDeAberturaDeContaSalario As Integer
+        Public Property StatusContrato As Integer
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -123,7 +123,7 @@
         Public Property Estado As String
         Public Property CEP As String
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -133,13 +133,13 @@
         Public Property IdColaborador As Integer
         Public Property IdClinicaAutorizada As Integer
         Public Property TipoExame As String
-        Public Property StatusExame As String
-        Public Property DataRealizacao As DateTime
+        Public Property StatusExame As Integer
+        Public Property DataRealizacao As String
         Public Property HorarioRealizacao As String
-        Public Property StatusASO As String
+        Public Property StatusASO As Integer
         Public Property CaminhoArquivoASO As String
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -150,7 +150,7 @@
         Public Property CodigoUnidade As String
         Public Property NomeUnidade As String
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -160,9 +160,9 @@
         Public Property IdColaborador As Integer
         Public Property NomeDocumento As String
         Public Property CaminhoArquivo As String
-        Public Property StatusDocumento As String
+        Public Property StatusDocumento As Integer
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 
@@ -174,6 +174,7 @@
         Public Property NomeDocumento As String
         Public Property CaminhoArquivo As String
         Public Property UidUsuarioLogado As String
+        Public Property Status As String
 
     End Class
 

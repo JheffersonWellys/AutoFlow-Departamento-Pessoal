@@ -33,7 +33,7 @@
         Public Property TelefonePessoal As String
         Public Property DataHomologacao As String
         Public Property CaminhoArquivo As String
-        Public Property StatusArquivo As String
+        Public Property StatusArquivo As Integer
         Public Property UidUsuarioLogado As String
         Public Property Status As Integer
 
@@ -45,22 +45,22 @@
         Public Property IdColaborador As Integer
         Public Property IdUnidadeSenac As Integer
         Public Property IdTermoCienciaDeHomologacao As Integer
-        Public Property RespostaItem1 As Boolean
+        Public Property RespostaItem1 As Integer
         Public Property RespostaItem11 As String
-        Public Property RespostaItem2 As Boolean
+        Public Property RespostaItem2 As Integer
         Public Property RespostaItem21 As String
-        Public Property RespostaItem3 As Boolean
-        Public Property RespostaItem4 As Boolean
+        Public Property RespostaItem3 As Integer
+        Public Property RespostaItem4 As Integer
         Public Property RespostaItem41 As String
-        Public Property RespostaItem5 As Boolean
+        Public Property RespostaItem5 As Integer
         Public Property RespostaItem51 As String
-        Public Property RespostaItem6 As Boolean
-        Public Property RespostaItem7 As Boolean
-        Public Property RespostaItem8 As Boolean
+        Public Property RespostaItem6 As Integer
+        Public Property RespostaItem7 As Integer
+        Public Property RespostaItem8 As Integer
         Public Property RespostaItem811 As String
         Public Property RespostaItem812 As String
         Public Property RespostaItem82 As String
-        Public Property RespostaItem9 As Boolean
+        Public Property RespostaItem9 As Integer
         Public Property RespostaItem91 As String
         Public Property RespostaItem10 As String
         Public Property LocalEmissao As String

@@ -73,6 +73,16 @@ Namespace My.Resources
         '''<summary>
         '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property icn_Adicionar() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icn_Adicionar", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property icn_Admissao() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icn_Admissao", resourceCulture)
@@ -153,6 +163,16 @@ Namespace My.Resources
         '''<summary>
         '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property icn_Editar() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icn_Editar", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property icn_Email() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icn_Email", resourceCulture)
@@ -213,6 +233,16 @@ Namespace My.Resources
         '''<summary>
         '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property icn_Menu() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icn_Menu", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property icn_Pessoas() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icn_Pessoas", resourceCulture)
@@ -233,9 +263,29 @@ Namespace My.Resources
         '''<summary>
         '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property icn_Remover() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icn_Remover", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property icn_Rescisao() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icn_Rescisao", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property icn_Sair() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icn_Sair", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -266,6 +316,16 @@ Namespace My.Resources
         Friend ReadOnly Property icn_UnidadesSenac() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icn_UnidadesSenac", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property icn_Visualizar() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icn_Visualizar", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

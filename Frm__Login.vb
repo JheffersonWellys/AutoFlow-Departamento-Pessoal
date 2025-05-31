@@ -136,6 +136,8 @@
                 UID_UsuarioLogado = Await ObterMatriculaPorUID()
                 HoraLogin = DateTime.Now
 
+                Call InicializarBancoDeDadosLocal()
+
                 Dim Frm_Menu As New Frm__Menu
                 Frm_Menu.Show()
                 Frm_Menu.BringToFront()

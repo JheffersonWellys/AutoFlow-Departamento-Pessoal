@@ -122,6 +122,7 @@ Partial Class Frm__Login
         '
         'TxtBx_Email
         '
+        Me.TxtBx_Email.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         Me.TxtBx_Email.Dock = System.Windows.Forms.DockStyle.Top
         Me.TxtBx_Email.Location = New System.Drawing.Point(20, 137)
         Me.TxtBx_Email.Name = "TxtBx_Email"

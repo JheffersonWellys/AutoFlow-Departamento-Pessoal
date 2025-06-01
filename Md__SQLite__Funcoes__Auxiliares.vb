@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SQLite
 
-Module Md_SQLite_FuncoesAuxiliares
+Module Md__SQLite__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DE ADICIONAR"
 
@@ -21,7 +21,7 @@ Module Md_SQLite_FuncoesAuxiliares
                 Using cmd As New SQLiteCommand(query, conn)
                     cmd.Parameters.AddWithValue("@id_endereco", AgenciaCaixa.IdEndereco)
                     cmd.Parameters.AddWithValue("@codigo_agencia", AgenciaCaixa.CodigoAgencia)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", AgenciaCaixa.Status)
 
                     cmd.ExecuteNonQuery()
@@ -58,14 +58,14 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@id_unidade_senac", CartaDeAberturaDeContaSalario.IdUnidadeSenac)
                     cmd.Parameters.AddWithValue("@caminho_arquivo", CartaDeAberturaDeContaSalario.CaminhoArquivo)
                     cmd.Parameters.AddWithValue("@status_arquivo", CartaDeAberturaDeContaSalario.StatusArquivo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", CartaDeAberturaDeContaSalario.Status)
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
 
-            Return (True, "Carta adicionada com sucesso.")
+            Return (True, "Carta de Abertura de Conta-Salário adicionada com sucesso.")
 
         Catch ex As Exception
 
@@ -104,13 +104,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@data_homologacao", TermoCienciaDeHomologacao.DataHomologacao)
                     cmd.Parameters.AddWithValue("@caminho_arquivo", TermoCienciaDeHomologacao.CaminhoArquivo)
                     cmd.Parameters.AddWithValue("@status_arquivo", TermoCienciaDeHomologacao.StatusArquivo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", TermoCienciaDeHomologacao.Status)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
 
-            Return (True, "")
+            Return (True, "Termo de Ciência de Homologação adicionado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -169,13 +169,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@data_emissao", TermoFinsRescisorios.DataEmissao)
                     cmd.Parameters.AddWithValue("@caminho_arquivo", TermoFinsRescisorios.CaminhoArquivo)
                     cmd.Parameters.AddWithValue("@status_arquivo", TermoFinsRescisorios.StatusArquivo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", TermoFinsRescisorios.Status)
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Termo de Fins Rescisórios adicionado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -202,13 +202,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@nome_atendente", ClinicaAutorizada.NomeAtendente)
                     cmd.Parameters.AddWithValue("@telefone", ClinicaAutorizada.Telefone)
                     cmd.Parameters.AddWithValue("@fixo", ClinicaAutorizada.Fixo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", ClinicaAutorizada.Status)
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Clínica Autorizada adicionada com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -257,13 +257,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@status_documentos_admissionais", Colaborador.StatusDocumentosAdmissionais)
                     cmd.Parameters.AddWithValue("@status_carta_de_abertura_de_conta_salario", Colaborador.StatusCartaDeAberturaDeContaSalario)
                     cmd.Parameters.AddWithValue("@status_contrato", Colaborador.StatusContrato)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", Colaborador.Status)
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Colaborador(a) adicionado(a) com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -290,13 +290,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@cidade", Endereco.Cidade)
                     cmd.Parameters.AddWithValue("@estado", Endereco.Estado)
                     cmd.Parameters.AddWithValue("@cep", Endereco.CEP)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", Endereco.Status)
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Endereço adicionado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -329,13 +329,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@horario_realizacao", ExameMedico.HorarioRealizacao)
                     cmd.Parameters.AddWithValue("@status_aso", ExameMedico.StatusASO)
                     cmd.Parameters.AddWithValue("@caminho_arquivo_aso", ExameMedico.CaminhoArquivoASO)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", ExameMedico.Status)
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Exame Médico adicionado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -361,13 +361,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@id_endereco", UnidadeSenac.IdEndereco)
                     cmd.Parameters.AddWithValue("@codigo_unidade", UnidadeSenac.CodigoUnidade)
                     cmd.Parameters.AddWithValue("@nome_unidade", UnidadeSenac.NomeUnidade)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", UnidadeSenac.Status)
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Unidade Senac adicionada com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -394,13 +394,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@nome_documento", DocumentoColaborador.NomeDocumento)
                     cmd.Parameters.AddWithValue("@caminho_arquivo", DocumentoColaborador.CaminhoArquivo)
                     cmd.Parameters.AddWithValue("@status_documento", DocumentoColaborador.StatusDocumento)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", DocumentoColaborador.Status)
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Documento de Colaborador(a) adicionado(a) com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -427,13 +427,13 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@modalidade_contrato", Convert.ToInt32(DocumentoModelo.ModalidadeContrato))
                     cmd.Parameters.AddWithValue("@nome_documento", DocumentoModelo.NomeDocumento)
                     cmd.Parameters.AddWithValue("@caminho_arquivo", DocumentoModelo.CaminhoArquivo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", Convert.ToInt32(DocumentoModelo.Status))
 
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Documento Modelo adicionado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -465,7 +465,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@codigo_agencia", AgenciaCaixa.CodigoAgencia)
                     cmd.Parameters.AddWithValue("@status", AgenciaCaixa.Status)
                     cmd.Parameters.AddWithValue("@id_agencia_caixa", AgenciaCaixa.IdAgenciaCaixa)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -508,7 +508,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@status_arquivo", CartaDeAberturaDeContaSalario.StatusArquivo)
                     cmd.Parameters.AddWithValue("@status", CartaDeAberturaDeContaSalario.Status)
                     cmd.Parameters.AddWithValue("@id_carta", CartaDeAberturaDeContaSalario.IdCarta)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -556,7 +556,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@status_arquivo", TermoCienciaDeHomologacao.StatusArquivo)
                     cmd.Parameters.AddWithValue("@status", TermoCienciaDeHomologacao.Status)
                     cmd.Parameters.AddWithValue("@id_termo", TermoCienciaDeHomologacao.IdTermo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
                         Return (False, "Nenhum registro atualizado. Verifique se o ID e UID estão corretos.")
@@ -564,7 +564,7 @@ Module Md_SQLite_FuncoesAuxiliares
                 End Using
             End Using
 
-            Return (True, "")
+            Return (True, "Termo de Ciência de Homologação atualizado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -636,7 +636,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@status_arquivo", TermoFinsRescisorios.StatusArquivo)
                     cmd.Parameters.AddWithValue("@status", TermoFinsRescisorios.Status)
                     cmd.Parameters.AddWithValue("@id_termo", TermoFinsRescisorios.IdTermo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -644,7 +644,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Termo de Fins Rescisórios atualizado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -680,7 +680,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@fixo", ClinicaAutorizada.Fixo)
                     cmd.Parameters.AddWithValue("@status", ClinicaAutorizada.Status)
                     cmd.Parameters.AddWithValue("@id_clinica_autorizada", ClinicaAutorizada.IdClinicaAutorizada)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -688,7 +688,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Clínica Autorizada atualizada com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -749,7 +749,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@status_contrato", Colaborador.StatusContrato)
                     cmd.Parameters.AddWithValue("@status", Colaborador.Status)
                     cmd.Parameters.AddWithValue("@id_colaborador", Colaborador.IdColaborador)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -757,7 +757,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Colaborador(a) atualizado(a) com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -792,7 +792,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@cep", Endereco.CEP)
                     cmd.Parameters.AddWithValue("@status", Endereco.Status)
                     cmd.Parameters.AddWithValue("@id_endereco", Endereco.IdEndereco)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -800,7 +800,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Endereço atualizado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -839,7 +839,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@caminho_arquivo_aso", ExameMedico.CaminhoArquivoASO)
                     cmd.Parameters.AddWithValue("@status", ExameMedico.Status)
                     cmd.Parameters.AddWithValue("@id_exame", ExameMedico.IdExame)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -847,7 +847,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Exame Médico atualizado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -876,7 +876,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@nome_unidade", UnidadeSenac.NomeUnidade)
                     cmd.Parameters.AddWithValue("@status", UnidadeSenac.Status)
                     cmd.Parameters.AddWithValue("@id_unidade_senac", UnidadeSenac.IdUnidadeSenac)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -884,7 +884,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Unidade Senac atualizada com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -915,7 +915,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@status_documento", DocumentoColaborador.StatusDocumento)
                     cmd.Parameters.AddWithValue("@status", DocumentoColaborador.Status)
                     cmd.Parameters.AddWithValue("@id_documento_colaborador", DocumentoColaborador.IdDocumentosColaborador)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -923,7 +923,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Documento de Colaborador(a) atualizado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -955,7 +955,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     cmd.Parameters.AddWithValue("@caminho_arquivo", DocumentoModelo.CaminhoArquivo)
                     cmd.Parameters.AddWithValue("@status", Convert.ToInt32(DocumentoModelo.Status))
                     cmd.Parameters.AddWithValue("@id_documento_modelo", DocumentoModelo.IdDocumentoModelo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -963,7 +963,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Documento Modelo atualizado com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -989,7 +989,7 @@ Module Md_SQLite_FuncoesAuxiliares
 
                 Using cmd As New SQLiteCommand(query, conn)
                     cmd.Parameters.AddWithValue("@id_agencia_caixa", AgenciaCaixa.IdAgenciaCaixa)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -1020,7 +1020,7 @@ Module Md_SQLite_FuncoesAuxiliares
 
                 Using cmd As New SQLiteCommand(query, conn)
                     cmd.Parameters.AddWithValue("@id_carta", CartaDeAberturaDeContaSalario.IdCarta)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -1050,7 +1050,7 @@ Module Md_SQLite_FuncoesAuxiliares
 
                 Using cmd As New SQLiteCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@id_termo", TermoCienciaDeHomologacao.IdTermo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
@@ -1075,7 +1075,7 @@ Module Md_SQLite_FuncoesAuxiliares
 
                 Using cmd As New SQLiteCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@id_termo", TermoFinsRescisorios.IdTermo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -1101,7 +1101,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     AND uid_usuario_logado = @uid_usuario_logado;", conn)
 
                     cmd.Parameters.AddWithValue("@id_clinica_autorizada", ClinicaAutorizada.IdClinicaAutorizada)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -1130,7 +1130,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     AND uid_usuario_logado = @uid_usuario_logado;", conn)
 
                     cmd.Parameters.AddWithValue("@id_colaborador", Colaborador.IdColaborador)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -1159,7 +1159,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     AND uid_usuario_logado = @uid_usuario_logado;", conn)
 
                     cmd.Parameters.AddWithValue("@id_endereco", Endereco.IdEndereco)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -1188,7 +1188,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     AND uid_usuario_logado = @uid_usuario_logado;", conn)
 
                     cmd.Parameters.AddWithValue("@id_exame", ExameMedico.IdExame)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -1217,7 +1217,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     AND uid_usuario_logado = @uid_usuario_logado;", conn)
 
                     cmd.Parameters.AddWithValue("@id_unidade_senac", UnidadeSenac.IdUnidadeSenac)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -1246,7 +1246,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     AND uid_usuario_logado = @uid_usuario_logado;", conn)
 
                     cmd.Parameters.AddWithValue("@id_documento_colaborador", DocumentoColaborador.IdDocumentosColaborador)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then
@@ -1275,7 +1275,7 @@ Module Md_SQLite_FuncoesAuxiliares
                     AND uid_usuario_logado = @uid_usuario_logado;", conn)
 
                     cmd.Parameters.AddWithValue("@id_documento_modelo", DocumentoModelo.IdDocumentoModelo)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", UID_UsuarioLogado)
+                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
                     If rowsAffected = 0 Then

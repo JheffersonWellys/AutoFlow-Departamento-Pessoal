@@ -149,16 +149,16 @@
     <Compile Include="Frm__Menu.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Md_SQLite_Classes.vb" />
-    <Compile Include="Md_SQLite_Enums.vb" />
-    <Compile Include="Md_SQLite_FuncoesAuxiliares.vb" />
-    <Compile Include="Md_SQLite_FuncoesPrincipais.vb" />
+    <Compile Include="Md__SQLite__Classes.vb" />
+    <Compile Include="Md__SQLite__Enums.vb" />
+    <Compile Include="Md__SQLite__Funcoes__Auxiliares.vb" />
+    <Compile Include="Md__SQLite__Funcoes__Principais.vb" />
     <Compile Include="Md__Firebase_Classes.vb" />
     <Compile Include="Md__Firebase_Funcoes.vb" />
-    <Compile Include="Md__FuncoesAuxiliares.vb" />
-    <Compile Include="Md__Licenciamento.vb" />
-    <Compile Include="Md__Mensagens.vb" />
-    <Compile Include="Md__VariaveisGlobais.vb" />
+    <Compile Include="Md__Sistema__Funcoes__Auxiliares.vb" />
+    <Compile Include="Md__Sistema__Licenciamento.vb" />
+    <Compile Include="Md__Sistema__Mensagens.vb" />
+    <Compile Include="Md__Sistema__Variaveis__Globais.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -175,6 +175,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Nmspc__TipoCadastro.vb" />
+    <Compile Include="Clss__UIHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Frm__Cadastro__Colaboradores.resx">

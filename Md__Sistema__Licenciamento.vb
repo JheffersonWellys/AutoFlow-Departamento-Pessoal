@@ -5,7 +5,7 @@ Imports System.Security.Cryptography
 Imports System.Text
 Imports System.Management
 
-Module Md__Licenciamento
+Module Md__Sistema__Licenciamento
 #Region "VARIÁVEIS DO MÓDULO"
 
     Private ReadOnly CaminhoLicenca As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "licenca.lic")

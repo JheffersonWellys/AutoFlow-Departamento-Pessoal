@@ -1,4 +1,5 @@
-﻿Imports Newtonsoft.Json
+﻿Imports AutoFlow___Departamento_Pessoal__DP_.AutoFlow.Globais
+Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.IO
 Imports System.Net.Http
@@ -6,9 +7,9 @@ Imports System.Security.Cryptography
 Imports System.Text
 Imports System.Text.RegularExpressions
 
-Module Md__FuncoesAuxiliares
+Module Md__Sistema__Funcoes__Auxiliares
 
-#Region "FUNÇÕES | TOKEN"
+#Region "FUNÇÕES DE TOKEN"
 
     Public Sub RecuperarTokenUsuario(token As String)
 
@@ -58,7 +59,88 @@ Module Md__FuncoesAuxiliares
 
 #End Region
 
-#Region "FUNÇÕES FIREBASE"
+#Region "FUNÇÕES DE RECUPERAR DADOS"
+
+    Public Function ObterDataSegura(dataCriptografada As String) As Date
+        Try
+            Dim dataTexto = DescriptografarTexto(dataCriptografada)
+            Dim dataConvertida As Date
+            If Date.TryParse(dataTexto, dataConvertida) Then
+                If dataConvertida = Date.MinValue Then Return Date.Today
+                Return dataConvertida
+            End If
+        Catch
+            ' Log opcional ou tratamento de erro silencioso
+        End Try
+        Return Date.Today
+    End Function
+
+#End Region
+
+#Region "FUNÇÕES DE CRIPTOGRAFIA"
+
+    Public Function CriptografarTexto(texto As String) As String
+        Try
+
+            Dim chaveBytes As Byte() = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(LerTokenDescriptografado))
+
+            Dim iv(15) As Byte
+            Using rng As RandomNumberGenerator = RandomNumberGenerator.Create()
+                rng.GetBytes(iv)
+            End Using
+
+            Using aes As Aes = Aes.Create()
+                aes.Key = chaveBytes
+                aes.IV = iv
+                aes.Mode = CipherMode.CBC
+                aes.Padding = PaddingMode.PKCS7
+
+                Using encryptor = aes.CreateEncryptor()
+                    Dim textoBytes = Encoding.UTF8.GetBytes(texto)
+                    Dim textoCriptografado = encryptor.TransformFinalBlock(textoBytes, 0, textoBytes.Length)
+
+                    Dim resultadoFinal(iv.Length + textoCriptografado.Length - 1) As Byte
+                    Buffer.BlockCopy(iv, 0, resultadoFinal, 0, iv.Length)
+                    Buffer.BlockCopy(textoCriptografado, 0, resultadoFinal, iv.Length, textoCriptografado.Length)
+
+                    Return Convert.ToBase64String(resultadoFinal)
+                End Using
+            End Using
+        Catch ex As Exception
+            Return Nothing
+        End Try
+    End Function
+    Public Function DescriptografarTexto(textoCriptografado As String) As String
+        Try
+            Dim chaveBytes As Byte() = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(LerTokenDescriptografado()))
+
+            Dim dadosCompletos As Byte() = Convert.FromBase64String(textoCriptografado)
+
+            Dim iv(15) As Byte
+            Buffer.BlockCopy(dadosCompletos, 0, iv, 0, iv.Length)
+
+            Dim dadosCriptografados(dadosCompletos.Length - iv.Length - 1) As Byte
+            Buffer.BlockCopy(dadosCompletos, iv.Length, dadosCriptografados, 0, dadosCriptografados.Length)
+
+            Using aes As Aes = Aes.Create()
+                aes.Key = chaveBytes
+                aes.IV = iv
+                aes.Mode = CipherMode.CBC
+                aes.Padding = PaddingMode.PKCS7
+
+                Using decryptor = aes.CreateDecryptor()
+                    Dim textoBytes = decryptor.TransformFinalBlock(dadosCriptografados, 0, dadosCriptografados.Length)
+                    Return Encoding.UTF8.GetString(textoBytes)
+                End Using
+            End Using
+        Catch ex As Exception
+            Return Nothing
+        End Try
+    End Function
+
+#End Region
+
+#Region "FUNÇÕES DO FIREBASE"
 
     Public Async Function ObterMatriculaPorUID() As Task(Of String)
 
@@ -88,7 +170,7 @@ Module Md__FuncoesAuxiliares
 
 #End Region
 
-#Region "FUNÇÕES JSON"
+#Region "FUNÇÕES DE JSON"
 
     Private Function ExtrairPayloadJWT(jwt As String) As String
 
@@ -117,6 +199,13 @@ Module Md__FuncoesAuxiliares
     Public Sub InicializarSistemaAutoFlow()
 
         CriarPastaSeNaoExistir(PastaToken)
+
+    End Sub
+
+    Public Sub IniciarFormulario_Cadastro_Colaboradores()
+
+        Dim Frm_Cadastro_Colaboradores As New Frm__Cadastro__Colaboradores
+        Frm_Cadastro_Colaboradores.ShowDialog()
 
     End Sub
 
@@ -397,6 +486,31 @@ Module Md__FuncoesAuxiliares
         Return True
 
     End Function
+
+#End Region
+
+#Region "FUNÇÕES DE EXIBIÇÃO"
+
+    Public Sub AtualizarTituloFormulario(formulario As Form, modo As ModoAtualCadastro, nomeBase As String)
+
+        Dim sufixoModo As String
+
+        Select Case modo
+            Case ModoAtualCadastro.CRIANDO
+                sufixoModo = " - Modo Adição"
+            Case ModoAtualCadastro.EDITANDO
+                sufixoModo = " - Modo Edição"
+            Case ModoAtualCadastro.REMOVENDO
+                sufixoModo = " - Modo Remoção"
+            Case ModoAtualCadastro.VISUALIZANDO
+                sufixoModo = " - Modo Visualização"
+            Case Else
+                sufixoModo = ""
+        End Select
+
+        formulario.Text = nomeBase & sufixoModo
+
+    End Sub
 
 #End Region
 

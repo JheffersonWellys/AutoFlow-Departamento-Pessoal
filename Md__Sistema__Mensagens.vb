@@ -1,4 +1,4 @@
-﻿Module Md__Mensagens
+﻿Module Md__Sistema__Mensagens
 
 #Region "ENUMERADORES"
 

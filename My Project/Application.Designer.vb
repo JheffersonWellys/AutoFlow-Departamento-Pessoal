@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.AutoFlow___Departamento_Pessoal__DP_.Frm__Cadastro__Colaboradores
+            Me.MainForm = Global.AutoFlow___Departamento_Pessoal__DP_.Frm__Intro
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _

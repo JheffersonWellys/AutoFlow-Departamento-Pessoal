@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Module Md__VariaveisGlobais
+Module Md__Sistema__Variaveis__Globais
 
 #Region "VARIÁVEIS SISTEMA"
 

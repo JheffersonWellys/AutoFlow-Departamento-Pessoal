@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SQLite
 Imports System.IO
 
-Module Md_SQLite_FuncoesPrincipais
+Module Md__SQLite__Funcoes__Principais
 
 #Region "FUNÇÃO PRINCIPAL"
 

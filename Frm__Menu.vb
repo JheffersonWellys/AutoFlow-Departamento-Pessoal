@@ -84,6 +84,8 @@
 
     Private Sub TlStrpMnItm_Cadastros_Pessoas_Colaboradores_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Cadastros_Pessoas_Colaboradores.Click
 
+        IniciarFormulario_Cadastro_Colaboradores()
+
     End Sub
 
     Private Sub TlStrpMnItm_Cadastros_Entidades_UnidadeSenac_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Cadastros_Entidades_UnidadeSenac.Click

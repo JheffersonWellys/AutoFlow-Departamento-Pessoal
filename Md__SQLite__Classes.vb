@@ -1,4 +1,4 @@
-﻿Module Md_SQLite_Classes
+﻿Module Md__SQLite__Classes
 
     Public Class AgenciaCaixa
 

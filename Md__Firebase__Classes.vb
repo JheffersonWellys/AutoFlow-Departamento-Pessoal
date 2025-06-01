@@ -1,6 +1,6 @@
 ﻿Imports Firebase.Database
 
-Module Md__Firebase_Classes
+Module Md__Firebase__Classes
 
     Public Class Usuario
 

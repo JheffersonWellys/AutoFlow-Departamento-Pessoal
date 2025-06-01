@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bnnr__BackgroundIntroModuloDP" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bnnr__BackgroundIntroModuloDP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icn_EncerrarSessao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_EncerrarSessao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icn_AgenciaCaixa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_AgenciaCaixa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,6 +130,9 @@
   <data name="icn_Remover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Remover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icn_CatergoriaFiltro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_CatergoriaFiltro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icn_Informacoes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Informacoes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,8 +142,8 @@
   <data name="icn_Medicos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Medicos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icn_EncerrarSessao" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icn_EncerrarSessao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icn_TrocarUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_TrocarUsuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icn_EnviarEmail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_EnviarEmail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +160,11 @@
   <data name="icn_Rescisao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Rescisao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icn_TrocarUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icn_TrocarUsuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icn_Filtrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_Filtrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bnnr__BackgroundIntroModuloDP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bnnr__BackgroundIntroModuloDP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icn_Visualizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Visualizar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,11 +175,17 @@
   <data name="icn_Menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icn_Recarregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_Recarregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icn_ClinicaAutorizada" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_ClinicaAutorizada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icn_Anexar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Anexar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icn_Limpar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_Limpar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icn_Pessoas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Pessoas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,8 +196,8 @@
   <data name="icn_Cadastro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Cadastro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icn_Documento" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icn_Documento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icn_Sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_Sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icn_Admissao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Admissao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,13 +205,16 @@
   <data name="icn_UnidadesSenac" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_UnidadesSenac.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icn_Documento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_Documento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icn_Sistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Sistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icn_Email" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icn_Email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icn_Sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icn_Sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icn_Selecionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icn_Selecionar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

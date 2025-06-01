@@ -1317,6 +1317,36 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DA TABELA | COLABORADOR"
 
+    Public Function Listar_ColaboradoresAtivos() As DataTable
+
+        Dim tabela As New DataTable()
+
+        Try
+            Using conexao As New SQLiteConnection(CadeiaDeConexao)
+                conexao.Open()
+
+                Dim sql As String = "
+                SELECT * FROM vw_colaboradores_ativos
+                WHERE uid_usuario_logado = @uid;"
+
+                Using comando As New SQLiteCommand(sql, conexao)
+                    comando.Parameters.AddWithValue("@uid", LerTokenDescriptografado)
+
+                    Using adaptador As New SQLiteDataAdapter(comando)
+                        adaptador.Fill(tabela)
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Erro ao listar colaboradores ativos: " & ex.Message)
+        End Try
+
+        Return tabela
+
+    End Function
+
+
 #End Region
 
 #Region "FUNÇÕES DA TABELA | ENDEREÇO"

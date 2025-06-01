@@ -6,7 +6,7 @@ Imports Firebase.Database.Query
 Imports System.Security.Cryptography
 Imports System.IO
 
-Module Md__Firebase_Funcoes
+Module Md__Firebase__Funcoes
 
 #Region "FIREBASE FUNÇÕES DE CADASTRO"
 

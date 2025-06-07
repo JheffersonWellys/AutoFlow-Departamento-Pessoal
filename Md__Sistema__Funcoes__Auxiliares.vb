@@ -202,12 +202,40 @@ Module Md__Sistema__Funcoes__Auxiliares
 
     End Sub
 
+#End Region
+
+#Region "FUNÇÕES DE INICIALIZAÇÃO FORMULARIOS DE CADASTRO"
+
     Public Sub IniciarFormulario_Cadastro_Colaboradores()
 
         Dim Frm_Cadastro_Colaboradores As New Frm__Cadastro__Colaboradores
         Frm_Cadastro_Colaboradores.ShowDialog()
 
     End Sub
+
+#End Region
+
+#Region "FUNÇÕES DE INICIALIZAÇÃO FORMULARIOS DE SELEÇÃO"
+
+    Public Function IniciarFormulario_Selecao_Colaboradores(Optional TipoContrato As TipoContrato = TipoContrato.TODOS, Optional ModalidadeContrato As ModalidadeContrato = ModalidadeContrato.TODOS) As Colaborador
+
+        Dim Frm_Selecao__Colaborador As New Frm__Selecao__Colaborador With {
+            .ModoSelecao = New FiltroContrato(TipoContrato, ModalidadeContrato)
+        }
+
+        Dim resultado As DialogResult = Frm_Selecao__Colaborador.ShowDialog()
+
+        If resultado = DialogResult.OK AndAlso Frm_Selecao__Colaborador.ColaboradorSelecionado IsNot Nothing Then
+
+            Return Frm_Selecao__Colaborador.ColaboradorSelecionado
+
+        Else
+
+            Return Nothing
+
+        End If
+
+    End Function
 
 #End Region
 

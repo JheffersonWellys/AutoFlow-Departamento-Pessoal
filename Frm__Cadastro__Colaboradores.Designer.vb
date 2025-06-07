@@ -605,7 +605,6 @@ Partial Class Frm__Cadastro__Colaboradores
         '
         'Bttn_Cancelar
         '
-        Me.Bttn_Cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Bttn_Cancelar.Dock = System.Windows.Forms.DockStyle.Left
         Me.Bttn_Cancelar.Location = New System.Drawing.Point(0, 10)
         Me.Bttn_Cancelar.Name = "Bttn_Cancelar"
@@ -619,7 +618,6 @@ Partial Class Frm__Cadastro__Colaboradores
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.CancelButton = Me.Bttn_Cancelar
         Me.ClientSize = New System.Drawing.Size(693, 349)
         Me.Controls.Add(Me.Pnl_Dados)
         Me.Controls.Add(Me.Pnl_Informacoes)

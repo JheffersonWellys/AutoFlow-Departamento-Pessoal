@@ -29,26 +29,21 @@ Partial Class Frm__Selecao__Colaborador
         Me.Bttn_Cancelar = New System.Windows.Forms.Button()
         Me.Bttn_Selecionar = New System.Windows.Forms.Button()
         Me.MnStrp_MenuPrincipal = New System.Windows.Forms.MenuStrip()
+        Me.TlStrpMnItm_MenuDeAcoes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TlStrpMnItm_Acoes_LimparFiltro = New System.Windows.Forms.ToolStripMenuItem()
         Me.Pnl_Filtro = New System.Windows.Forms.Panel()
         Me.GrpBx_FiltrosDePesquisa = New System.Windows.Forms.GroupBox()
-        Me.CmbBx_TipoDeContrato = New System.Windows.Forms.ComboBox()
-        Me.CmbBx_ModalidadeDeContrato = New System.Windows.Forms.ComboBox()
-        Me.Lbl_ModalidadeDeContrato = New System.Windows.Forms.Label()
-        Me.Lbl_TipoDeContrato = New System.Windows.Forms.Label()
+        Me.CmbBx_TipoDeContratoEModalidadeDeContrato = New System.Windows.Forms.ComboBox()
+        Me.Lbl_TipoDeContratoEModalidadeDeContrato = New System.Windows.Forms.Label()
         Me.TxtBx_TermoDePesquisa = New System.Windows.Forms.TextBox()
         Me.Lbl_TermoDePesquisa = New System.Windows.Forms.Label()
         Me.Pnl_DadosLista_Colaboradores = New System.Windows.Forms.Panel()
         Me.TbCntrl_Lista_Colaboradores = New System.Windows.Forms.TabControl()
         Me.TbPg_Lista_Colaboradores = New System.Windows.Forms.TabPage()
         Me.DtGrdVw_Lista_Colaboradores = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CntxtMnStrp_SubMenuPrincipal = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.TlStrpSprtr_SubMenuPrincipal = New System.Windows.Forms.ToolStripSeparator()
-        Me.TlStrpMnItm_MenuDeAcoes = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TlStrpMnItm_Acoes_LimparFiltro = New System.Windows.Forms.ToolStripMenuItem()
         Me.TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TlStrpSprtr_SubMenuPrincipal = New System.Windows.Forms.ToolStripSeparator()
         Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro = New System.Windows.Forms.ToolStripMenuItem()
         Me.Pnl_BotoesDeAcao.SuspendLayout()
         Me.MnStrp_MenuPrincipal.SuspendLayout()
@@ -104,6 +99,23 @@ Partial Class Frm__Selecao__Colaborador
         Me.MnStrp_MenuPrincipal.TabIndex = 1
         Me.MnStrp_MenuPrincipal.Text = "MenuStrip1"
         '
+        'TlStrpMnItm_MenuDeAcoes
+        '
+        Me.TlStrpMnItm_MenuDeAcoes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TlStrpMnItm_Acoes_LimparFiltro})
+        Me.TlStrpMnItm_MenuDeAcoes.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Menu
+        Me.TlStrpMnItm_MenuDeAcoes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.TlStrpMnItm_MenuDeAcoes.Name = "TlStrpMnItm_MenuDeAcoes"
+        Me.TlStrpMnItm_MenuDeAcoes.Size = New System.Drawing.Size(73, 26)
+        Me.TlStrpMnItm_MenuDeAcoes.Text = "Ações"
+        '
+        'TlStrpMnItm_Acoes_LimparFiltro
+        '
+        Me.TlStrpMnItm_Acoes_LimparFiltro.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Limpar
+        Me.TlStrpMnItm_Acoes_LimparFiltro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.TlStrpMnItm_Acoes_LimparFiltro.Name = "TlStrpMnItm_Acoes_LimparFiltro"
+        Me.TlStrpMnItm_Acoes_LimparFiltro.Size = New System.Drawing.Size(152, 28)
+        Me.TlStrpMnItm_Acoes_LimparFiltro.Text = "Limpar Filtros"
+        '
         'Pnl_Filtro
         '
         Me.Pnl_Filtro.BackColor = System.Drawing.Color.WhiteSmoke
@@ -117,10 +129,8 @@ Partial Class Frm__Selecao__Colaborador
         '
         'GrpBx_FiltrosDePesquisa
         '
-        Me.GrpBx_FiltrosDePesquisa.Controls.Add(Me.CmbBx_TipoDeContrato)
-        Me.GrpBx_FiltrosDePesquisa.Controls.Add(Me.CmbBx_ModalidadeDeContrato)
-        Me.GrpBx_FiltrosDePesquisa.Controls.Add(Me.Lbl_ModalidadeDeContrato)
-        Me.GrpBx_FiltrosDePesquisa.Controls.Add(Me.Lbl_TipoDeContrato)
+        Me.GrpBx_FiltrosDePesquisa.Controls.Add(Me.CmbBx_TipoDeContratoEModalidadeDeContrato)
+        Me.GrpBx_FiltrosDePesquisa.Controls.Add(Me.Lbl_TipoDeContratoEModalidadeDeContrato)
         Me.GrpBx_FiltrosDePesquisa.Controls.Add(Me.TxtBx_TermoDePesquisa)
         Me.GrpBx_FiltrosDePesquisa.Controls.Add(Me.Lbl_TermoDePesquisa)
         Me.GrpBx_FiltrosDePesquisa.Dock = System.Windows.Forms.DockStyle.Fill
@@ -132,43 +142,23 @@ Partial Class Frm__Selecao__Colaborador
         Me.GrpBx_FiltrosDePesquisa.TabStop = False
         Me.GrpBx_FiltrosDePesquisa.Text = "Filtros de Pesquisa"
         '
-        'CmbBx_TipoDeContrato
+        'CmbBx_TipoDeContratoEModalidadeDeContrato
         '
-        Me.CmbBx_TipoDeContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbBx_TipoDeContrato.FormattingEnabled = True
-        Me.CmbBx_TipoDeContrato.Items.AddRange(New Object() {"Todos", "Horista", "Mensalista"})
-        Me.CmbBx_TipoDeContrato.Location = New System.Drawing.Point(488, 33)
-        Me.CmbBx_TipoDeContrato.Name = "CmbBx_TipoDeContrato"
-        Me.CmbBx_TipoDeContrato.Size = New System.Drawing.Size(143, 21)
-        Me.CmbBx_TipoDeContrato.TabIndex = 8
+        Me.CmbBx_TipoDeContratoEModalidadeDeContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbBx_TipoDeContratoEModalidadeDeContrato.FormattingEnabled = True
+        Me.CmbBx_TipoDeContratoEModalidadeDeContrato.Location = New System.Drawing.Point(488, 33)
+        Me.CmbBx_TipoDeContratoEModalidadeDeContrato.Name = "CmbBx_TipoDeContratoEModalidadeDeContrato"
+        Me.CmbBx_TipoDeContratoEModalidadeDeContrato.Size = New System.Drawing.Size(437, 21)
+        Me.CmbBx_TipoDeContratoEModalidadeDeContrato.TabIndex = 8
         '
-        'CmbBx_ModalidadeDeContrato
+        'Lbl_TipoDeContratoEModalidadeDeContrato
         '
-        Me.CmbBx_ModalidadeDeContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbBx_ModalidadeDeContrato.FormattingEnabled = True
-        Me.CmbBx_ModalidadeDeContrato.Items.AddRange(New Object() {"Todas", "Administrativo", "Intermitente", "Instrutor de Formação Profissional", "Prazo Determinado"})
-        Me.CmbBx_ModalidadeDeContrato.Location = New System.Drawing.Point(637, 33)
-        Me.CmbBx_ModalidadeDeContrato.Name = "CmbBx_ModalidadeDeContrato"
-        Me.CmbBx_ModalidadeDeContrato.Size = New System.Drawing.Size(288, 21)
-        Me.CmbBx_ModalidadeDeContrato.TabIndex = 7
-        '
-        'Lbl_ModalidadeDeContrato
-        '
-        Me.Lbl_ModalidadeDeContrato.AutoSize = True
-        Me.Lbl_ModalidadeDeContrato.Location = New System.Drawing.Point(634, 18)
-        Me.Lbl_ModalidadeDeContrato.Name = "Lbl_ModalidadeDeContrato"
-        Me.Lbl_ModalidadeDeContrato.Size = New System.Drawing.Size(120, 13)
-        Me.Lbl_ModalidadeDeContrato.TabIndex = 6
-        Me.Lbl_ModalidadeDeContrato.Text = "Modalidade de Contrato"
-        '
-        'Lbl_TipoDeContrato
-        '
-        Me.Lbl_TipoDeContrato.AutoSize = True
-        Me.Lbl_TipoDeContrato.Location = New System.Drawing.Point(485, 18)
-        Me.Lbl_TipoDeContrato.Name = "Lbl_TipoDeContrato"
-        Me.Lbl_TipoDeContrato.Size = New System.Drawing.Size(86, 13)
-        Me.Lbl_TipoDeContrato.TabIndex = 3
-        Me.Lbl_TipoDeContrato.Text = "Tipo de Contrato"
+        Me.Lbl_TipoDeContratoEModalidadeDeContrato.AutoSize = True
+        Me.Lbl_TipoDeContratoEModalidadeDeContrato.Location = New System.Drawing.Point(485, 18)
+        Me.Lbl_TipoDeContratoEModalidadeDeContrato.Name = "Lbl_TipoDeContratoEModalidadeDeContrato"
+        Me.Lbl_TipoDeContratoEModalidadeDeContrato.Size = New System.Drawing.Size(210, 13)
+        Me.Lbl_TipoDeContratoEModalidadeDeContrato.TabIndex = 3
+        Me.Lbl_TipoDeContratoEModalidadeDeContrato.Text = "Tipo de Contrato / Modalidade de Contrato"
         '
         'TxtBx_TermoDePesquisa
         '
@@ -227,7 +217,6 @@ Partial Class Frm__Selecao__Colaborador
         Me.DtGrdVw_Lista_Colaboradores.BackgroundColor = System.Drawing.Color.White
         Me.DtGrdVw_Lista_Colaboradores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DtGrdVw_Lista_Colaboradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DtGrdVw_Lista_Colaboradores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3})
         Me.DtGrdVw_Lista_Colaboradores.ContextMenuStrip = Me.CntxtMnStrp_SubMenuPrincipal
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
@@ -248,54 +237,11 @@ Partial Class Frm__Selecao__Colaborador
         Me.DtGrdVw_Lista_Colaboradores.Size = New System.Drawing.Size(911, 245)
         Me.DtGrdVw_Lista_Colaboradores.TabIndex = 0
         '
-        'Column1
-        '
-        Me.Column1.HeaderText = "JHEFFERSON WELLYS HENRIQUE CORREA DOS SANTOSILVA"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 380
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "COR 000000"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 110
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "AUXILIAR ADMINISTRATIVO"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 400
-        '
         'CntxtMnStrp_SubMenuPrincipal
         '
         Me.CntxtMnStrp_SubMenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador, Me.TlStrpSprtr_SubMenuPrincipal, Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro})
         Me.CntxtMnStrp_SubMenuPrincipal.Name = "ContextMenuStrip1"
         Me.CntxtMnStrp_SubMenuPrincipal.Size = New System.Drawing.Size(218, 66)
-        '
-        'TlStrpSprtr_SubMenuPrincipal
-        '
-        Me.TlStrpSprtr_SubMenuPrincipal.Name = "TlStrpSprtr_SubMenuPrincipal"
-        Me.TlStrpSprtr_SubMenuPrincipal.Size = New System.Drawing.Size(214, 6)
-        '
-        'TlStrpMnItm_MenuDeAcoes
-        '
-        Me.TlStrpMnItm_MenuDeAcoes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TlStrpMnItm_Acoes_LimparFiltro})
-        Me.TlStrpMnItm_MenuDeAcoes.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Menu
-        Me.TlStrpMnItm_MenuDeAcoes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.TlStrpMnItm_MenuDeAcoes.Name = "TlStrpMnItm_MenuDeAcoes"
-        Me.TlStrpMnItm_MenuDeAcoes.Size = New System.Drawing.Size(73, 26)
-        Me.TlStrpMnItm_MenuDeAcoes.Text = "Ações"
-        '
-        'TlStrpMnItm_Acoes_LimparFiltro
-        '
-        Me.TlStrpMnItm_Acoes_LimparFiltro.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Limpar
-        Me.TlStrpMnItm_Acoes_LimparFiltro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.TlStrpMnItm_Acoes_LimparFiltro.Name = "TlStrpMnItm_Acoes_LimparFiltro"
-        Me.TlStrpMnItm_Acoes_LimparFiltro.Size = New System.Drawing.Size(186, 28)
-        Me.TlStrpMnItm_Acoes_LimparFiltro.Text = "Limpar Filtros"
         '
         'TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador
         '
@@ -304,6 +250,11 @@ Partial Class Frm__Selecao__Colaborador
         Me.TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador.Name = "TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador"
         Me.TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador.Size = New System.Drawing.Size(217, 28)
         Me.TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador.Text = "Selecionar Colaborador(a)"
+        '
+        'TlStrpSprtr_SubMenuPrincipal
+        '
+        Me.TlStrpSprtr_SubMenuPrincipal.Name = "TlStrpSprtr_SubMenuPrincipal"
+        Me.TlStrpSprtr_SubMenuPrincipal.Size = New System.Drawing.Size(214, 6)
         '
         'TlStrpMnItm_SubMenuPrincipal_LimparFiltro
         '
@@ -362,13 +313,8 @@ Partial Class Frm__Selecao__Colaborador
     Friend WithEvents TbCntrl_Lista_Colaboradores As TabControl
     Friend WithEvents TbPg_Lista_Colaboradores As TabPage
     Friend WithEvents DtGrdVw_Lista_Colaboradores As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Lbl_TipoDeContrato As Label
-    Friend WithEvents CmbBx_ModalidadeDeContrato As ComboBox
-    Friend WithEvents Lbl_ModalidadeDeContrato As Label
-    Friend WithEvents CmbBx_TipoDeContrato As ComboBox
+    Friend WithEvents Lbl_TipoDeContratoEModalidadeDeContrato As Label
+    Friend WithEvents CmbBx_TipoDeContratoEModalidadeDeContrato As ComboBox
     Friend WithEvents TlStrpMnItm_Acoes_LimparFiltro As ToolStripMenuItem
     Friend WithEvents CntxtMnStrp_SubMenuPrincipal As ContextMenuStrip
     Friend WithEvents TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador As ToolStripMenuItem

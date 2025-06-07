@@ -195,7 +195,7 @@ Module Md__SQLite__Funcoes__Principais
                         tipo_exame INTEGER NOT NULL,
                         status_exame INTEGER NOT NULL,
                         data_realizacao TEXT NOT NULL,
-                        horario_realizacao TIME NOT NULL,
+                        horario_realizacao TEXT NOT NULL,
 	                    status_aso INTEGER NOT NULL, 
 	                    caminho_arquivo_aso TEXT NOT NULL,
                         uid_usuario_logado TEXT NOT NULL,

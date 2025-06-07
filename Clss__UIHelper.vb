@@ -21,6 +21,7 @@ Public NotInheritable Class Clss__UIHelper
     End Function
 
     Public Shared Function ConfirmarSaidaDoCadastro(formulario As Form, modo As ModoAtualCadastro, entidade As String) As Boolean
+
         If Not DeveConfirmarSaida(modo) Then Return False
 
         Dim descricaoModo As String = ObterDescricaoModo(modo)
@@ -29,6 +30,7 @@ Public NotInheritable Class Clss__UIHelper
         Dim resultado = MessageBox.Show(formulario, mensagem, "Cancelar Operação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         Return resultado = DialogResult.No
+
     End Function
 
 End Class

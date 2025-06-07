@@ -4,7 +4,7 @@ Public Class Frm__Cadastro__Colaboradores
 
 #Region "VARIÁVEIS DO FORMULÁRIO"
 
-    Dim ColaboradorAtual As Colaborador
+    Public Property ColaboradorAtual As Colaborador
     Dim ModoAtual As ModoAtualCadastro
     Dim NomeFormulario As String = NomeSistema & " | Cadastro de Colaboradores"
 
@@ -24,6 +24,18 @@ Public Class Frm__Cadastro__Colaboradores
             e.Cancel = True
         End If
 
+    End Sub
+
+    Private Sub Frm__Cadastro__Colaboradores_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            If ModoAtual <> 4 Then
+                If Not Clss__UIHelper.ConfirmarSaidaDoCadastro(Me, ModoAtual, "colaborador") Then
+                    DesativarModoCadastro()
+                End If
+            Else
+                Me.Close()
+            End If
+        End If
     End Sub
 
 #End Region
@@ -64,6 +76,7 @@ Public Class Frm__Cadastro__Colaboradores
     Public Sub DesativarModoCadastro()
 
         ModoAtual = 4
+
         VisualizacaoPainelDados(False)
         AtualizarTituloFormulario(Me, ModoAtual, NomeFormulario)
 
@@ -98,11 +111,12 @@ Public Class Frm__Cadastro__Colaboradores
             Case BotaoPadraoEnum.ADICIONAR : Me.AcceptButton = Bttn_Adicionar
             Case BotaoPadraoEnum.ATUALIZAR : Me.AcceptButton = Bttn_Atualizar
             Case BotaoPadraoEnum.EXCLUIR : Me.AcceptButton = Bttn_Excluir
-            Case BotaoPadraoEnum.CANCELAR : Me.AcceptButton = Bttn_Cancelar
 
             Case Else : Me.AcceptButton = Nothing
 
         End Select
+
+        CmbBx_ModalidadeContrato.Enabled = False
 
     End Sub
 
@@ -116,11 +130,18 @@ Public Class Frm__Cadastro__Colaboradores
         CmbBx_Sexo.DisplayMember = "Value"
         CmbBx_Sexo.ValueMember = "Key"
 
-        CmbBx_TipoContrato.DataSource = ObterListaChaveValorDeEnum(Of TipoContrato)()
+        Dim listaFiltradaTipoContrato = ObterListaChaveValorDeEnum(Of TipoContrato)() _
+            .Where(Function(item) item.Key <> TipoContrato.TODOS) _
+            .ToList()
+        CmbBx_TipoContrato.DataSource = listaFiltradaTipoContrato
         CmbBx_TipoContrato.DisplayMember = "Value"
         CmbBx_TipoContrato.ValueMember = "Key"
 
-        CmbBx_ModalidadeContrato.DataSource = ObterListaChaveValorDeEnum(Of ModalidadeContrato)()
+        Dim listaFiltradaModalidadeContrato = ObterListaChaveValorDeEnum(Of ModalidadeContrato)() _
+            .Where(Function(item) item.Key <> ModalidadeContrato.TODOS) _
+            .ToList()
+
+        CmbBx_ModalidadeContrato.DataSource = listaFiltradaModalidadeContrato
         CmbBx_ModalidadeContrato.DisplayMember = "Value"
         CmbBx_ModalidadeContrato.ValueMember = "Key"
 
@@ -161,19 +182,32 @@ Public Class Frm__Cadastro__Colaboradores
 
     Private Sub TlStrpMnItm_Acoes_Editar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Editar.Click
 
-        AtivarModoCadastro(1)
+        ColaboradorAtual = IniciarFormulario_Selecao_Colaboradores()
+
+        If ColaboradorAtual IsNot Nothing Then
+            RecuperarDadosColaborador()
+            AtivarModoCadastro(1)
+        End If
 
     End Sub
 
     Private Sub TlStrpMnItm_Acoes_Remover_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Remover.Click
 
-        AtivarModoCadastro(2)
+        ColaboradorAtual = IniciarFormulario_Selecao_Colaboradores()
+        If ColaboradorAtual IsNot Nothing Then
+            RecuperarDadosColaborador()
+            AtivarModoCadastro(2)
+        End If
 
     End Sub
 
     Private Sub TlStrpMnItm_Acoes_Visualizar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Visualizar.Click
 
-        AtivarModoCadastro(3)
+        ColaboradorAtual = IniciarFormulario_Selecao_Colaboradores()
+        If ColaboradorAtual IsNot Nothing Then
+            RecuperarDadosColaborador()
+            AtivarModoCadastro(3)
+        End If
 
     End Sub
 
@@ -224,7 +258,7 @@ Public Class Frm__Cadastro__Colaboradores
         If Not CPFValido(MskdTxtBx_CPF, TbCntrl_Dados, TbPg_InformacoesPessoais) Then Return False
         If TxtBx_EmailPessoal.Text <> "" AndAlso VerificarObrigatorio(TxtBx_EmailPessoal, TbCntrl_Dados, TbPg_InformacoesPessoais) = False Then Return False
         If VerificarObrigatorio(TxtBx_EmailCorporativo, TbCntrl_Dados, TbPg_InformacoesCorporativas) = False Then Return False
-        If EmailValidoSenac(TxtBx_EmailCorporativo) Then Return False
+        If Not EmailValidoSenac(TxtBx_EmailCorporativo) Then Return False
         If VerificarObrigatorio(MskdTxtBx_Chapa, TbCntrl_Dados, TbPg_InformacoesCorporativas) = False Then Return False
         If VerificarObrigatorio(TxtBx_Funcao, TbCntrl_Dados, TbPg_InformacoesCorporativas) = False Then Return False
         If VerificarObrigatorio(TxtBx_Setor, TbCntrl_Dados, TbPg_InformacoesCorporativas) = False Then Return False
@@ -334,15 +368,26 @@ Public Class Frm__Cadastro__Colaboradores
             If ModalidadesPorTipoContrato.ContainsKey(tipoSelecionado) Then
                 Dim modalidadesPermitidas = ModalidadesPorTipoContrato(tipoSelecionado)
 
-                Dim listaFiltrada = ObterListaChaveValorDeEnum(Of ModalidadeContrato)().
-                Where(Function(x) modalidadesPermitidas.Contains(CType(x.Key, ModalidadeContrato))).
+                Dim listaFiltradaModalidadeContrato = ObterListaChaveValorDeEnum(Of ModalidadeContrato)().
+                Where(Function(x) modalidadesPermitidas.Contains(CType(x.Key, ModalidadeContrato)) AndAlso x.Key <> ModalidadeContrato.TODOS).
                 ToList()
 
-                CmbBx_ModalidadeContrato.DataSource = listaFiltrada
+                CmbBx_ModalidadeContrato.DataSource = listaFiltradaModalidadeContrato
                 CmbBx_ModalidadeContrato.DisplayMember = "Value"
                 CmbBx_ModalidadeContrato.ValueMember = "Key"
-
             End If
+
+        End If
+
+        CmbBx_ModalidadeContrato.SelectedIndex = -1
+
+        If CmbBx_TipoContrato.SelectedIndex = -1 Then
+
+            CmbBx_ModalidadeContrato.Enabled = False
+
+        Else
+
+            CmbBx_ModalidadeContrato.Enabled = True
 
         End If
 
@@ -353,6 +398,8 @@ Public Class Frm__Cadastro__Colaboradores
 #Region "FUNÇÕES AUXILIARES"
 
     Private Sub InicializarFormulario()
+
+        Me.KeyPreview = True
 
         DesativarModoCadastro()
         ConfigurarComboxes()
@@ -372,6 +419,7 @@ Public Class Frm__Cadastro__Colaboradores
 #Region "FUNÇÕES ASSÍNCRONAS"
 
     Private Sub Adicionar_Colaborador()
+
 
         If CamposObrigatoriosPreenchidos() = False Then Exit Sub
 
@@ -430,6 +478,26 @@ Public Class Frm__Cadastro__Colaboradores
         Else
 
             ExibirMensagem__Erro(resultado.Item2)
+
+        End If
+
+    End Sub
+
+    Private Sub Frm__Cadastro__Colaboradores_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+
+        TlStrpSttsLbl_NumeroTotalDeColaboradores.Text = ObterQuantidadeColaboradoresAtivos()
+
+        If TlStrpSttsLbl_NumeroTotalDeColaboradores.Text = 0 Then
+
+            TlStrpMnItm_Acoes_Editar.Enabled = False
+            TlStrpMnItm_Acoes_Remover.Enabled = False
+            TlStrpMnItm_Acoes_Visualizar.Enabled = False
+
+        Else
+
+            TlStrpMnItm_Acoes_Editar.Enabled = True
+            TlStrpMnItm_Acoes_Remover.Enabled = True
+            TlStrpMnItm_Acoes_Visualizar.Enabled = True
 
         End If
 

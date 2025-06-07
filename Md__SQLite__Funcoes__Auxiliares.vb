@@ -22,7 +22,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@id_endereco", AgenciaCaixa.IdEndereco)
                     cmd.Parameters.AddWithValue("@codigo_agencia", AgenciaCaixa.CodigoAgencia)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", AgenciaCaixa.Status)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -59,7 +59,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@caminho_arquivo", CartaDeAberturaDeContaSalario.CaminhoArquivo)
                     cmd.Parameters.AddWithValue("@status_arquivo", CartaDeAberturaDeContaSalario.StatusArquivo)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", CartaDeAberturaDeContaSalario.Status)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -105,7 +105,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@caminho_arquivo", TermoCienciaDeHomologacao.CaminhoArquivo)
                     cmd.Parameters.AddWithValue("@status_arquivo", TermoCienciaDeHomologacao.StatusArquivo)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", TermoCienciaDeHomologacao.Status)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
@@ -170,7 +170,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@caminho_arquivo", TermoFinsRescisorios.CaminhoArquivo)
                     cmd.Parameters.AddWithValue("@status_arquivo", TermoFinsRescisorios.StatusArquivo)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", TermoFinsRescisorios.Status)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -203,7 +203,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@telefone", ClinicaAutorizada.Telefone)
                     cmd.Parameters.AddWithValue("@fixo", ClinicaAutorizada.Fixo)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", ClinicaAutorizada.Status)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -291,7 +291,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@estado", Endereco.Estado)
                     cmd.Parameters.AddWithValue("@cep", Endereco.CEP)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", Endereco.Status)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -362,7 +362,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@codigo_unidade", UnidadeSenac.CodigoUnidade)
                     cmd.Parameters.AddWithValue("@nome_unidade", UnidadeSenac.NomeUnidade)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", UnidadeSenac.Status)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -1420,14 +1420,14 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DA TABELA | COLABORADOR"
 
-    Public Function ObterColaboradorPorId(id As Integer) As Colaborador
+    Public Function Colaborador__ObterPorId(id As Integer) As Colaborador
 
         Dim colaborador As Colaborador = Nothing
 
         Dim sql As String = "SELECT * FROM colaborador WHERE id_colaborador = @id LIMIT 1;"
 
         Using conexao As New SQLiteConnection(CadeiaDeConexao)
-            conexao.Open() ' <- 🔑 Isso é essencial
+            conexao.Open()
 
             Using cmd As New SQLiteCommand(sql, conexao)
 
@@ -1474,7 +1474,7 @@ Module Md__SQLite__Funcoes__Auxiliares
 
     End Function
 
-    Public Function ObterQuantidadeColaboradoresAtivos() As Integer
+    Public Function Colaborador_ObterQuantidadeDeAtivos() As Integer
 
         Try
             Dim dt As DataTable = Listar_ColaboradoresAtivos()
@@ -1498,6 +1498,46 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DA TABELA | ENDEREÇO"
 
+    Public Function Endereco__ObterPorId(id As Integer) As Endereco
+
+        Dim endereco As Endereco = Nothing
+
+        Dim sql As String = "SELECT * FROM endereco WHERE id_endereco = @id LIMIT 1;"
+
+        Using conexao As New SQLiteConnection(CadeiaDeConexao)
+            conexao.Open()
+
+            Using cmd As New SQLiteCommand(sql, conexao)
+
+                cmd.Parameters.AddWithValue("@id", id)
+
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+
+                    If reader.Read() Then
+                        endereco = New Endereco() With {
+                        .IdEndereco = Convert.ToInt32(reader("id_endereco")),
+                        .Logradouro = reader("logradouro").ToString(),
+                        .Numero = reader("numero").ToString(),
+                        .Bairro = reader("bairro").ToString(),
+                        .Cidade = reader("cidade").ToString(),
+                        .Estado = reader("estado").ToString(),
+                        .CEP = reader("cep").ToString(),
+                        .UidUsuarioLogado = reader("uid_usuario_logado").ToString(),
+                        .Status = Convert.ToInt32(reader("status"))
+                    }
+
+                    End If
+
+                End Using
+
+            End Using
+
+        End Using
+
+        Return endereco
+
+    End Function
+
 #End Region
 
 #Region "FUNÇÕES DA TABELA | EXAME MÉDICO"
@@ -1505,6 +1545,38 @@ Module Md__SQLite__Funcoes__Auxiliares
 #End Region
 
 #Region "FUNÇÕES DA TABELA | UNIDADE SENAC"
+
+    Public Function UnidadeSenac__ObterQuantidadeDeAtivas() As Integer
+
+        Try
+            Dim dt As New DataTable()
+
+            Dim sql As String = "SELECT * FROM unidade_senac WHERE status = 1;"
+
+            Using conexao As New SQLiteConnection(CadeiaDeConexao)
+                conexao.Open()
+
+                Using cmd As New SQLiteCommand(sql, conexao)
+                    Using da As New SQLiteDataAdapter(cmd)
+                        da.Fill(dt)
+                    End Using
+                End Using
+            End Using
+
+            If dt IsNot Nothing Then
+                Return dt.Rows.Count
+            Else
+                Return 0
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Erro ao verificar unidades ativas: " & ex.Message,
+                        "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return 0
+        End Try
+
+    End Function
+
 
 #End Region
 

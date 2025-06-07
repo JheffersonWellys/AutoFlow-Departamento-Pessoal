@@ -37,38 +37,38 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.Pnl_Dados = New System.Windows.Forms.Panel()
         Me.TbCntrl_Dados = New System.Windows.Forms.TabControl()
         Me.TbPg_InformacoesCorporativas = New System.Windows.Forms.TabPage()
+        Me.Lbl_NomeUnidade = New System.Windows.Forms.Label()
+        Me.TxtBx_NomeUnidade = New System.Windows.Forms.TextBox()
+        Me.MskdTxtBx_CodigoUnidade = New System.Windows.Forms.MaskedTextBox()
+        Me.Lbl_CodigoUnidade = New System.Windows.Forms.Label()
+        Me.TbPg_InformacoesDeLocalizacao = New System.Windows.Forms.TabPage()
+        Me.TxtBx_Estado = New System.Windows.Forms.TextBox()
+        Me.Lbl_Estado = New System.Windows.Forms.Label()
+        Me.TxtBx_Cidade = New System.Windows.Forms.TextBox()
+        Me.Lbl_Cidade = New System.Windows.Forms.Label()
+        Me.TxtBx_Numero = New System.Windows.Forms.TextBox()
+        Me.Lbl_Numero = New System.Windows.Forms.Label()
+        Me.TxtBx_Bairro = New System.Windows.Forms.TextBox()
+        Me.Lbl_Bairro = New System.Windows.Forms.Label()
+        Me.TxtBx_Logradouro = New System.Windows.Forms.TextBox()
+        Me.Lbl_Logradouro = New System.Windows.Forms.Label()
+        Me.Bttn_PesquisarCEP = New System.Windows.Forms.Button()
+        Me.MskdTxtBx_CEP = New System.Windows.Forms.MaskedTextBox()
+        Me.Lbl_CEP = New System.Windows.Forms.Label()
         Me.Pnl_BotoesDeAcao = New System.Windows.Forms.Panel()
         Me.Bttn_Excluir = New System.Windows.Forms.Button()
         Me.Bttn_Limpar = New System.Windows.Forms.Button()
         Me.Bttn_Atualizar = New System.Windows.Forms.Button()
         Me.Bttn_Adicionar = New System.Windows.Forms.Button()
         Me.Bttn_Cancelar = New System.Windows.Forms.Button()
-        Me.TbPg_InformacoesDeLocalizacao = New System.Windows.Forms.TabPage()
-        Me.Lbl_CodigoUnidade = New System.Windows.Forms.Label()
-        Me.MskdTxtBx_CodigoUnidade = New System.Windows.Forms.MaskedTextBox()
-        Me.TxtBx_NomeUnidade = New System.Windows.Forms.TextBox()
-        Me.Lbl_NomeUnidade = New System.Windows.Forms.Label()
-        Me.Lbl_CEP = New System.Windows.Forms.Label()
-        Me.MskdTxtBx_CEP = New System.Windows.Forms.MaskedTextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Lbl_Logradouro = New System.Windows.Forms.Label()
-        Me.TxtBx_Logradouro = New System.Windows.Forms.TextBox()
-        Me.TxtBx_Bairro = New System.Windows.Forms.TextBox()
-        Me.Lbl_Bairro = New System.Windows.Forms.Label()
-        Me.TxtBx_Numero = New System.Windows.Forms.TextBox()
-        Me.Lbl_Numero = New System.Windows.Forms.Label()
-        Me.TxtBx_Cidade = New System.Windows.Forms.TextBox()
-        Me.Lbl_Cidade = New System.Windows.Forms.Label()
-        Me.TxtBx_Estado = New System.Windows.Forms.TextBox()
-        Me.Lbl_Estado = New System.Windows.Forms.Label()
         Me.MnStrp_MenuPrincipal.SuspendLayout()
         Me.Pnl_Informacoes.SuspendLayout()
         Me.SttsStrp_InformacoesSobreATabela.SuspendLayout()
         Me.Pnl_Dados.SuspendLayout()
         Me.TbCntrl_Dados.SuspendLayout()
         Me.TbPg_InformacoesCorporativas.SuspendLayout()
-        Me.Pnl_BotoesDeAcao.SuspendLayout()
         Me.TbPg_InformacoesDeLocalizacao.SuspendLayout()
+        Me.Pnl_BotoesDeAcao.SuspendLayout()
         Me.SuspendLayout()
         '
         'MnStrp_MenuPrincipal
@@ -95,7 +95,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.TlStrpMnItm_Acoes_Adicionar.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Adicionar
         Me.TlStrpMnItm_Acoes_Adicionar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_Adicionar.Name = "TlStrpMnItm_Acoes_Adicionar"
-        Me.TlStrpMnItm_Acoes_Adicionar.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_Adicionar.Size = New System.Drawing.Size(131, 28)
         Me.TlStrpMnItm_Acoes_Adicionar.Text = "Adicionar"
         '
         'TlStrpMnItm_Acoes_Editar
@@ -103,7 +103,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.TlStrpMnItm_Acoes_Editar.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Editar
         Me.TlStrpMnItm_Acoes_Editar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_Editar.Name = "TlStrpMnItm_Acoes_Editar"
-        Me.TlStrpMnItm_Acoes_Editar.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_Editar.Size = New System.Drawing.Size(131, 28)
         Me.TlStrpMnItm_Acoes_Editar.Text = "Editar"
         '
         'TlStrpMnItm_Acoes_Remover
@@ -111,20 +111,20 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.TlStrpMnItm_Acoes_Remover.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Remover
         Me.TlStrpMnItm_Acoes_Remover.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_Remover.Name = "TlStrpMnItm_Acoes_Remover"
-        Me.TlStrpMnItm_Acoes_Remover.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_Remover.Size = New System.Drawing.Size(131, 28)
         Me.TlStrpMnItm_Acoes_Remover.Text = "Remover"
         '
         'TlStrpSprtr_Acoes_1
         '
         Me.TlStrpSprtr_Acoes_1.Name = "TlStrpSprtr_Acoes_1"
-        Me.TlStrpSprtr_Acoes_1.Size = New System.Drawing.Size(183, 6)
+        Me.TlStrpSprtr_Acoes_1.Size = New System.Drawing.Size(128, 6)
         '
         'TlStrpMnItm_Acoes_Visualizar
         '
         Me.TlStrpMnItm_Acoes_Visualizar.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Visualizar
         Me.TlStrpMnItm_Acoes_Visualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_Visualizar.Name = "TlStrpMnItm_Acoes_Visualizar"
-        Me.TlStrpMnItm_Acoes_Visualizar.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_Visualizar.Size = New System.Drawing.Size(131, 28)
         Me.TlStrpMnItm_Acoes_Visualizar.Text = "Visualizar"
         '
         'Pnl_Informacoes
@@ -199,6 +199,176 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.TbPg_InformacoesCorporativas.TabIndex = 3
         Me.TbPg_InformacoesCorporativas.Text = "Informações Corporativas"
         '
+        'Lbl_NomeUnidade
+        '
+        Me.Lbl_NomeUnidade.AutoSize = True
+        Me.Lbl_NomeUnidade.Location = New System.Drawing.Point(134, 10)
+        Me.Lbl_NomeUnidade.Name = "Lbl_NomeUnidade"
+        Me.Lbl_NomeUnidade.Size = New System.Drawing.Size(78, 13)
+        Me.Lbl_NomeUnidade.TabIndex = 2
+        Me.Lbl_NomeUnidade.Text = "Nome Unidade"
+        '
+        'TxtBx_NomeUnidade
+        '
+        Me.TxtBx_NomeUnidade.Location = New System.Drawing.Point(137, 26)
+        Me.TxtBx_NomeUnidade.Name = "TxtBx_NomeUnidade"
+        Me.TxtBx_NomeUnidade.Size = New System.Drawing.Size(495, 20)
+        Me.TxtBx_NomeUnidade.TabIndex = 3
+        Me.TxtBx_NomeUnidade.Tag = "Nome Unidade"
+        '
+        'MskdTxtBx_CodigoUnidade
+        '
+        Me.MskdTxtBx_CodigoUnidade.Location = New System.Drawing.Point(11, 26)
+        Me.MskdTxtBx_CodigoUnidade.Mask = "0,000"
+        Me.MskdTxtBx_CodigoUnidade.Name = "MskdTxtBx_CodigoUnidade"
+        Me.MskdTxtBx_CodigoUnidade.Size = New System.Drawing.Size(120, 20)
+        Me.MskdTxtBx_CodigoUnidade.TabIndex = 1
+        Me.MskdTxtBx_CodigoUnidade.Tag = "Código Unidade"
+        '
+        'Lbl_CodigoUnidade
+        '
+        Me.Lbl_CodigoUnidade.AutoSize = True
+        Me.Lbl_CodigoUnidade.Location = New System.Drawing.Point(8, 10)
+        Me.Lbl_CodigoUnidade.Name = "Lbl_CodigoUnidade"
+        Me.Lbl_CodigoUnidade.Size = New System.Drawing.Size(83, 13)
+        Me.Lbl_CodigoUnidade.TabIndex = 0
+        Me.Lbl_CodigoUnidade.Text = "Código Unidade"
+        '
+        'TbPg_InformacoesDeLocalizacao
+        '
+        Me.TbPg_InformacoesDeLocalizacao.BackColor = System.Drawing.Color.White
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Estado)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Estado)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Cidade)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Cidade)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Numero)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Numero)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Bairro)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Bairro)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Logradouro)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Logradouro)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Bttn_PesquisarCEP)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.MskdTxtBx_CEP)
+        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_CEP)
+        Me.TbPg_InformacoesDeLocalizacao.Location = New System.Drawing.Point(4, 22)
+        Me.TbPg_InformacoesDeLocalizacao.Name = "TbPg_InformacoesDeLocalizacao"
+        Me.TbPg_InformacoesDeLocalizacao.Padding = New System.Windows.Forms.Padding(5, 10, 10, 10)
+        Me.TbPg_InformacoesDeLocalizacao.Size = New System.Drawing.Size(645, 138)
+        Me.TbPg_InformacoesDeLocalizacao.TabIndex = 4
+        Me.TbPg_InformacoesDeLocalizacao.Text = "Informações de Localização"
+        '
+        'TxtBx_Estado
+        '
+        Me.TxtBx_Estado.Enabled = False
+        Me.TxtBx_Estado.Location = New System.Drawing.Point(389, 104)
+        Me.TxtBx_Estado.Name = "TxtBx_Estado"
+        Me.TxtBx_Estado.Size = New System.Drawing.Size(243, 20)
+        Me.TxtBx_Estado.TabIndex = 12
+        '
+        'Lbl_Estado
+        '
+        Me.Lbl_Estado.AutoSize = True
+        Me.Lbl_Estado.Location = New System.Drawing.Point(386, 88)
+        Me.Lbl_Estado.Name = "Lbl_Estado"
+        Me.Lbl_Estado.Size = New System.Drawing.Size(40, 13)
+        Me.Lbl_Estado.TabIndex = 11
+        Me.Lbl_Estado.Text = "Estado"
+        '
+        'TxtBx_Cidade
+        '
+        Me.TxtBx_Cidade.Enabled = False
+        Me.TxtBx_Cidade.Location = New System.Drawing.Point(11, 104)
+        Me.TxtBx_Cidade.Name = "TxtBx_Cidade"
+        Me.TxtBx_Cidade.Size = New System.Drawing.Size(372, 20)
+        Me.TxtBx_Cidade.TabIndex = 10
+        '
+        'Lbl_Cidade
+        '
+        Me.Lbl_Cidade.AutoSize = True
+        Me.Lbl_Cidade.Location = New System.Drawing.Point(8, 88)
+        Me.Lbl_Cidade.Name = "Lbl_Cidade"
+        Me.Lbl_Cidade.Size = New System.Drawing.Size(40, 13)
+        Me.Lbl_Cidade.TabIndex = 9
+        Me.Lbl_Cidade.Text = "Cidade"
+        '
+        'TxtBx_Numero
+        '
+        Me.TxtBx_Numero.Location = New System.Drawing.Point(263, 65)
+        Me.TxtBx_Numero.Name = "TxtBx_Numero"
+        Me.TxtBx_Numero.Size = New System.Drawing.Size(120, 20)
+        Me.TxtBx_Numero.TabIndex = 6
+        '
+        'Lbl_Numero
+        '
+        Me.Lbl_Numero.AutoSize = True
+        Me.Lbl_Numero.Location = New System.Drawing.Point(260, 49)
+        Me.Lbl_Numero.Name = "Lbl_Numero"
+        Me.Lbl_Numero.Size = New System.Drawing.Size(44, 13)
+        Me.Lbl_Numero.TabIndex = 5
+        Me.Lbl_Numero.Text = "Número"
+        '
+        'TxtBx_Bairro
+        '
+        Me.TxtBx_Bairro.Enabled = False
+        Me.TxtBx_Bairro.Location = New System.Drawing.Point(389, 65)
+        Me.TxtBx_Bairro.Name = "TxtBx_Bairro"
+        Me.TxtBx_Bairro.Size = New System.Drawing.Size(243, 20)
+        Me.TxtBx_Bairro.TabIndex = 8
+        '
+        'Lbl_Bairro
+        '
+        Me.Lbl_Bairro.AutoSize = True
+        Me.Lbl_Bairro.Location = New System.Drawing.Point(386, 49)
+        Me.Lbl_Bairro.Name = "Lbl_Bairro"
+        Me.Lbl_Bairro.Size = New System.Drawing.Size(34, 13)
+        Me.Lbl_Bairro.TabIndex = 7
+        Me.Lbl_Bairro.Text = "Bairro"
+        '
+        'TxtBx_Logradouro
+        '
+        Me.TxtBx_Logradouro.Enabled = False
+        Me.TxtBx_Logradouro.Location = New System.Drawing.Point(11, 65)
+        Me.TxtBx_Logradouro.Name = "TxtBx_Logradouro"
+        Me.TxtBx_Logradouro.Size = New System.Drawing.Size(246, 20)
+        Me.TxtBx_Logradouro.TabIndex = 4
+        Me.TxtBx_Logradouro.Tag = "Logradouro"
+        '
+        'Lbl_Logradouro
+        '
+        Me.Lbl_Logradouro.AutoSize = True
+        Me.Lbl_Logradouro.Location = New System.Drawing.Point(8, 49)
+        Me.Lbl_Logradouro.Name = "Lbl_Logradouro"
+        Me.Lbl_Logradouro.Size = New System.Drawing.Size(61, 13)
+        Me.Lbl_Logradouro.TabIndex = 3
+        Me.Lbl_Logradouro.Text = "Logradouro"
+        '
+        'Bttn_PesquisarCEP
+        '
+        Me.Bttn_PesquisarCEP.Location = New System.Drawing.Point(137, 12)
+        Me.Bttn_PesquisarCEP.Name = "Bttn_PesquisarCEP"
+        Me.Bttn_PesquisarCEP.Size = New System.Drawing.Size(120, 35)
+        Me.Bttn_PesquisarCEP.TabIndex = 2
+        Me.Bttn_PesquisarCEP.Text = "Pesquisar CEP"
+        Me.Bttn_PesquisarCEP.UseVisualStyleBackColor = True
+        '
+        'MskdTxtBx_CEP
+        '
+        Me.MskdTxtBx_CEP.Location = New System.Drawing.Point(11, 26)
+        Me.MskdTxtBx_CEP.Mask = "00000,000"
+        Me.MskdTxtBx_CEP.Name = "MskdTxtBx_CEP"
+        Me.MskdTxtBx_CEP.Size = New System.Drawing.Size(120, 20)
+        Me.MskdTxtBx_CEP.TabIndex = 1
+        Me.MskdTxtBx_CEP.Tag = "CEP"
+        '
+        'Lbl_CEP
+        '
+        Me.Lbl_CEP.AutoSize = True
+        Me.Lbl_CEP.Location = New System.Drawing.Point(8, 10)
+        Me.Lbl_CEP.Name = "Lbl_CEP"
+        Me.Lbl_CEP.Size = New System.Drawing.Size(28, 13)
+        Me.Lbl_CEP.TabIndex = 0
+        Me.Lbl_CEP.Text = "CEP"
+        '
         'Pnl_BotoesDeAcao
         '
         Me.Pnl_BotoesDeAcao.Controls.Add(Me.Bttn_Excluir)
@@ -263,172 +433,6 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.Bttn_Cancelar.Text = "Cancelar"
         Me.Bttn_Cancelar.UseVisualStyleBackColor = True
         '
-        'TbPg_InformacoesDeLocalizacao
-        '
-        Me.TbPg_InformacoesDeLocalizacao.BackColor = System.Drawing.Color.White
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Estado)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Estado)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Cidade)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Cidade)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Numero)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Numero)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Bairro)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Bairro)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.TxtBx_Logradouro)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_Logradouro)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Button1)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.MskdTxtBx_CEP)
-        Me.TbPg_InformacoesDeLocalizacao.Controls.Add(Me.Lbl_CEP)
-        Me.TbPg_InformacoesDeLocalizacao.Location = New System.Drawing.Point(4, 22)
-        Me.TbPg_InformacoesDeLocalizacao.Name = "TbPg_InformacoesDeLocalizacao"
-        Me.TbPg_InformacoesDeLocalizacao.Padding = New System.Windows.Forms.Padding(5, 10, 10, 10)
-        Me.TbPg_InformacoesDeLocalizacao.Size = New System.Drawing.Size(645, 138)
-        Me.TbPg_InformacoesDeLocalizacao.TabIndex = 4
-        Me.TbPg_InformacoesDeLocalizacao.Text = "Informações de Localização"
-        '
-        'Lbl_CodigoUnidade
-        '
-        Me.Lbl_CodigoUnidade.AutoSize = True
-        Me.Lbl_CodigoUnidade.Location = New System.Drawing.Point(8, 10)
-        Me.Lbl_CodigoUnidade.Name = "Lbl_CodigoUnidade"
-        Me.Lbl_CodigoUnidade.Size = New System.Drawing.Size(83, 13)
-        Me.Lbl_CodigoUnidade.TabIndex = 0
-        Me.Lbl_CodigoUnidade.Text = "Código Unidade"
-        '
-        'MskdTxtBx_CodigoUnidade
-        '
-        Me.MskdTxtBx_CodigoUnidade.Location = New System.Drawing.Point(11, 26)
-        Me.MskdTxtBx_CodigoUnidade.Mask = "0,000"
-        Me.MskdTxtBx_CodigoUnidade.Name = "MskdTxtBx_CodigoUnidade"
-        Me.MskdTxtBx_CodigoUnidade.Size = New System.Drawing.Size(120, 20)
-        Me.MskdTxtBx_CodigoUnidade.TabIndex = 1
-        '
-        'TxtBx_NomeUnidade
-        '
-        Me.TxtBx_NomeUnidade.Location = New System.Drawing.Point(137, 26)
-        Me.TxtBx_NomeUnidade.Name = "TxtBx_NomeUnidade"
-        Me.TxtBx_NomeUnidade.Size = New System.Drawing.Size(495, 20)
-        Me.TxtBx_NomeUnidade.TabIndex = 3
-        '
-        'Lbl_NomeUnidade
-        '
-        Me.Lbl_NomeUnidade.AutoSize = True
-        Me.Lbl_NomeUnidade.Location = New System.Drawing.Point(134, 10)
-        Me.Lbl_NomeUnidade.Name = "Lbl_NomeUnidade"
-        Me.Lbl_NomeUnidade.Size = New System.Drawing.Size(78, 13)
-        Me.Lbl_NomeUnidade.TabIndex = 2
-        Me.Lbl_NomeUnidade.Text = "Nome Unidade"
-        '
-        'Lbl_CEP
-        '
-        Me.Lbl_CEP.AutoSize = True
-        Me.Lbl_CEP.Location = New System.Drawing.Point(8, 10)
-        Me.Lbl_CEP.Name = "Lbl_CEP"
-        Me.Lbl_CEP.Size = New System.Drawing.Size(28, 13)
-        Me.Lbl_CEP.TabIndex = 0
-        Me.Lbl_CEP.Text = "CEP"
-        '
-        'MskdTxtBx_CEP
-        '
-        Me.MskdTxtBx_CEP.Location = New System.Drawing.Point(11, 26)
-        Me.MskdTxtBx_CEP.Mask = "00000,000"
-        Me.MskdTxtBx_CEP.Name = "MskdTxtBx_CEP"
-        Me.MskdTxtBx_CEP.Size = New System.Drawing.Size(120, 20)
-        Me.MskdTxtBx_CEP.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(137, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(120, 35)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Pesquisar CEP"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Lbl_Logradouro
-        '
-        Me.Lbl_Logradouro.AutoSize = True
-        Me.Lbl_Logradouro.Location = New System.Drawing.Point(8, 49)
-        Me.Lbl_Logradouro.Name = "Lbl_Logradouro"
-        Me.Lbl_Logradouro.Size = New System.Drawing.Size(61, 13)
-        Me.Lbl_Logradouro.TabIndex = 3
-        Me.Lbl_Logradouro.Text = "Logradouro"
-        '
-        'TxtBx_Logradouro
-        '
-        Me.TxtBx_Logradouro.Enabled = False
-        Me.TxtBx_Logradouro.Location = New System.Drawing.Point(11, 65)
-        Me.TxtBx_Logradouro.Name = "TxtBx_Logradouro"
-        Me.TxtBx_Logradouro.Size = New System.Drawing.Size(246, 20)
-        Me.TxtBx_Logradouro.TabIndex = 4
-        '
-        'TxtBx_Bairro
-        '
-        Me.TxtBx_Bairro.Enabled = False
-        Me.TxtBx_Bairro.Location = New System.Drawing.Point(389, 65)
-        Me.TxtBx_Bairro.Name = "TxtBx_Bairro"
-        Me.TxtBx_Bairro.Size = New System.Drawing.Size(243, 20)
-        Me.TxtBx_Bairro.TabIndex = 8
-        '
-        'Lbl_Bairro
-        '
-        Me.Lbl_Bairro.AutoSize = True
-        Me.Lbl_Bairro.Location = New System.Drawing.Point(386, 49)
-        Me.Lbl_Bairro.Name = "Lbl_Bairro"
-        Me.Lbl_Bairro.Size = New System.Drawing.Size(34, 13)
-        Me.Lbl_Bairro.TabIndex = 7
-        Me.Lbl_Bairro.Text = "Bairro"
-        '
-        'TxtBx_Numero
-        '
-        Me.TxtBx_Numero.Location = New System.Drawing.Point(263, 65)
-        Me.TxtBx_Numero.Name = "TxtBx_Numero"
-        Me.TxtBx_Numero.Size = New System.Drawing.Size(120, 20)
-        Me.TxtBx_Numero.TabIndex = 6
-        '
-        'Lbl_Numero
-        '
-        Me.Lbl_Numero.AutoSize = True
-        Me.Lbl_Numero.Location = New System.Drawing.Point(260, 49)
-        Me.Lbl_Numero.Name = "Lbl_Numero"
-        Me.Lbl_Numero.Size = New System.Drawing.Size(44, 13)
-        Me.Lbl_Numero.TabIndex = 5
-        Me.Lbl_Numero.Text = "Número"
-        '
-        'TxtBx_Cidade
-        '
-        Me.TxtBx_Cidade.Enabled = False
-        Me.TxtBx_Cidade.Location = New System.Drawing.Point(11, 104)
-        Me.TxtBx_Cidade.Name = "TxtBx_Cidade"
-        Me.TxtBx_Cidade.Size = New System.Drawing.Size(372, 20)
-        Me.TxtBx_Cidade.TabIndex = 10
-        '
-        'Lbl_Cidade
-        '
-        Me.Lbl_Cidade.AutoSize = True
-        Me.Lbl_Cidade.Location = New System.Drawing.Point(8, 88)
-        Me.Lbl_Cidade.Name = "Lbl_Cidade"
-        Me.Lbl_Cidade.Size = New System.Drawing.Size(40, 13)
-        Me.Lbl_Cidade.TabIndex = 9
-        Me.Lbl_Cidade.Text = "Cidade"
-        '
-        'TxtBx_Estado
-        '
-        Me.TxtBx_Estado.Enabled = False
-        Me.TxtBx_Estado.Location = New System.Drawing.Point(389, 104)
-        Me.TxtBx_Estado.Name = "TxtBx_Estado"
-        Me.TxtBx_Estado.Size = New System.Drawing.Size(243, 20)
-        Me.TxtBx_Estado.TabIndex = 12
-        '
-        'Lbl_Estado
-        '
-        Me.Lbl_Estado.AutoSize = True
-        Me.Lbl_Estado.Location = New System.Drawing.Point(386, 88)
-        Me.Lbl_Estado.Name = "Lbl_Estado"
-        Me.Lbl_Estado.Size = New System.Drawing.Size(40, 13)
-        Me.Lbl_Estado.TabIndex = 11
-        Me.Lbl_Estado.Text = "Estado"
-        '
         'Frm__Cadastro__UnidadesSenac
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -443,6 +447,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Frm__Cadastro__UnidadesSenac"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AutoFlow | Cadastro de Unidades Senac"
         Me.MnStrp_MenuPrincipal.ResumeLayout(False)
         Me.MnStrp_MenuPrincipal.PerformLayout()
@@ -454,9 +459,9 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.TbCntrl_Dados.ResumeLayout(False)
         Me.TbPg_InformacoesCorporativas.ResumeLayout(False)
         Me.TbPg_InformacoesCorporativas.PerformLayout()
-        Me.Pnl_BotoesDeAcao.ResumeLayout(False)
         Me.TbPg_InformacoesDeLocalizacao.ResumeLayout(False)
         Me.TbPg_InformacoesDeLocalizacao.PerformLayout()
+        Me.Pnl_BotoesDeAcao.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -489,7 +494,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
     Friend WithEvents TxtBx_NomeUnidade As TextBox
     Friend WithEvents MskdTxtBx_CEP As MaskedTextBox
     Friend WithEvents Lbl_CEP As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Bttn_PesquisarCEP As Button
     Friend WithEvents Lbl_Logradouro As Label
     Friend WithEvents TxtBx_Numero As TextBox
     Friend WithEvents Lbl_Numero As Label

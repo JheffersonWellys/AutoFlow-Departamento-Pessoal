@@ -79,6 +79,7 @@ Public Class Frm__Cadastro__Colaboradores
 
         VisualizacaoPainelDados(False)
         AtualizarTituloFormulario(Me, ModoAtual, NomeFormulario)
+        LimparCampos()
 
     End Sub
 
@@ -167,6 +168,8 @@ Public Class Frm__Cadastro__Colaboradores
         DtTmPckr_DataDeDemissao.Visible = False
         CmbBx_TipoContrato.SelectedIndex = -1
         CmbBx_ModalidadeContrato.SelectedIndex = -1
+
+        TbCntrl_Dados.SelectedTab = TbPg_InformacoesPessoais
 
     End Sub
 
@@ -485,7 +488,7 @@ Public Class Frm__Cadastro__Colaboradores
 
     Private Sub Frm__Cadastro__Colaboradores_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
 
-        TlStrpSttsLbl_NumeroTotalDeColaboradores.Text = ObterQuantidadeColaboradoresAtivos()
+        TlStrpSttsLbl_NumeroTotalDeColaboradores.Text = Colaborador_ObterQuantidadeDeAtivos()
 
         If TlStrpSttsLbl_NumeroTotalDeColaboradores.Text = 0 Then
 

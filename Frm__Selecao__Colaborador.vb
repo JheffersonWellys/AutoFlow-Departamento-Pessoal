@@ -258,7 +258,7 @@ Public Class Frm__Selecao__Colaborador
 
         If DtGrdVw_Lista_Colaboradores.SelectedRows.Count > 0 Then
             Dim id As Integer = Convert.ToInt32(DtGrdVw_Lista_Colaboradores.SelectedRows(0).Cells("id").Value)
-            ColaboradorSelecionado = ObterColaboradorPorId(id)
+            ColaboradorSelecionado = Colaborador__ObterPorId(id)
 
             If ColaboradorSelecionado IsNot Nothing Then
                 FinalizarFormulario(DialogResult.OK)

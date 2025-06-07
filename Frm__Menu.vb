@@ -90,6 +90,8 @@
 
     Private Sub TlStrpMnItm_Cadastros_Entidades_UnidadeSenac_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Cadastros_Entidades_UnidadeSenac.Click
 
+        IniciarFormulario_Cadastro_UnidadesSenac
+
     End Sub
 
     Private Sub TlStrpMnItm_Cadastros_Entidades_ClinicasAutorizadas_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Cadastros_Entidades_ClinicasAutorizadas.Click
@@ -122,15 +124,21 @@
 
 #End Region
 
-#Region "FUNÇÕES MANIPULAÇÃO DE DADOS"
-
-#End Region
-
 #Region "FUNÇÕES AUXILIARES"
 
-#End Region
+    Public Sub IniciarFormulario_Cadastro_Colaboradores()
 
-#Region "FUNÇÕES ASSÍNCRONAS"
+        Dim Frm_Cadastro_Colaboradores As New Frm__Cadastro__Colaboradores
+        Frm_Cadastro_Colaboradores.ShowDialog()
+
+    End Sub
+
+    Private Sub IniciarFormulario_Cadastro_UnidadesSenac()
+
+        Dim Frm_Cadastro_UnidadesSenac As New Frm__Cadastro__UnidadesSenac
+        Frm_Cadastro_UnidadesSenac.ShowDialog()
+
+    End Sub
 
 #End Region
 

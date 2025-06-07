@@ -2,6 +2,7 @@
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.IO
+Imports System.Net
 Imports System.Net.Http
 Imports System.Security.Cryptography
 Imports System.Text
@@ -199,17 +200,6 @@ Module Md__Sistema__Funcoes__Auxiliares
     Public Sub InicializarSistemaAutoFlow()
 
         CriarPastaSeNaoExistir(PastaToken)
-
-    End Sub
-
-#End Region
-
-#Region "FUNÇÕES DE INICIALIZAÇÃO FORMULARIOS DE CADASTRO"
-
-    Public Sub IniciarFormulario_Cadastro_Colaboradores()
-
-        Dim Frm_Cadastro_Colaboradores As New Frm__Cadastro__Colaboradores
-        Frm_Cadastro_Colaboradores.ShowDialog()
 
     End Sub
 
@@ -539,6 +529,31 @@ Module Md__Sistema__Funcoes__Auxiliares
         formulario.Text = nomeBase & sufixoModo
 
     End Sub
+
+#End Region
+
+#Region "FUNÇÕES DE PESQUISA"
+
+    Public Function ObterEnderecoPorCEP(cep As String) As JObject
+        Try
+            Dim url As String = $"https://viacep.com.br/ws/{cep}/json/"
+            Dim request As HttpWebRequest = DirectCast(WebRequest.Create(url), HttpWebRequest)
+            request.Method = "GET"
+
+            Using response As HttpWebResponse = DirectCast(request.GetResponse(), HttpWebResponse)
+                Using reader As New StreamReader(response.GetResponseStream())
+                    Dim json As String = reader.ReadToEnd()
+                    Return JObject.Parse(json)
+                End Using
+            End Using
+        Catch ex As Exception
+
+            ExibirMensagem__Erro("Erro ao buscar o endereço: " & ex.Message)
+            Return Nothing
+
+        End Try
+
+    End Function
 
 #End Region
 

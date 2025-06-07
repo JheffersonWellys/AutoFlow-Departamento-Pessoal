@@ -1,4 +1,4 @@
-﻿Module Md__SQLite__Classes
+﻿Public Module Md__SQLite__Classes
 
     Public Class AgenciaCaixa
 
@@ -17,7 +17,7 @@
         Public Property IdAgenciaCaixa As Integer
         Public Property IdUnidadeSenac As Integer
         Public Property CaminhoArquivo As String
-        Public Property StatusArquivo As String
+        Public Property StatusArquivo As Integer
         Public Property UidUsuarioLogado As String
         Public Property Status As Integer
 
@@ -93,7 +93,7 @@
         Public Property NomeSocial As String
         Public Property EmailPessoal As String
         Public Property TelefonePessoal As String
-        Public Property Sexo As String
+        Public Property Sexo As Integer
         Public Property DataDeNascimento As String
         Public Property CPF As String
         Public Property RG As String
@@ -103,8 +103,8 @@
         Public Property Chapa As String
         Public Property DataDeAdmissao As String
         Public Property DataDeDemissao As String
-        Public Property TipoContrato As String
-        Public Property ModalidadeContrato As String
+        Public Property TipoContrato As Integer
+        Public Property ModalidadeContrato As Integer
         Public Property StatusDocumentosAdmissionais As Integer
         Public Property StatusCartaDeAberturaDeContaSalario As Integer
         Public Property StatusContrato As Integer
@@ -132,7 +132,7 @@
         Public Property IdExame As Integer
         Public Property IdColaborador As Integer
         Public Property IdClinicaAutorizada As Integer
-        Public Property TipoExame As String
+        Public Property TipoExame As Integer
         Public Property StatusExame As Integer
         Public Property DataRealizacao As String
         Public Property HorarioRealizacao As String
@@ -174,7 +174,7 @@
         Public Property NomeDocumento As String
         Public Property CaminhoArquivo As String
         Public Property UidUsuarioLogado As String
-        Public Property Status As String
+        Public Property Status As Integer
 
     End Class
 

@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Reflection
 
-Module Md__SQLite__Enums
+Public Module Md__SQLite__Enums
 
     Public Function ObterListaChaveValorDeEnum(Of T)() As List(Of KeyValuePair(Of Integer, String))
 
@@ -34,6 +34,16 @@ Module Md__SQLite__Enums
         }}
     }
 
+    Public Function GetEnumDescription(value As [Enum]) As String
+        Dim fi As FieldInfo = value.GetType().GetField(value.ToString())
+        Dim attributes() As DescriptionAttribute = CType(fi.GetCustomAttributes(GetType(DescriptionAttribute), False), DescriptionAttribute())
+        If attributes.Length > 0 Then
+            Return attributes(0).Description
+        Else
+            Return value.ToString()
+        End If
+    End Function
+
     Public Enum StatusCadastro
         <Description("Inativo")>
         INATIVO = 0
@@ -42,26 +52,32 @@ Module Md__SQLite__Enums
     End Enum
 
     Public Enum StatusArquivoContaSalario
+        <Description("Criação pendente")>
+        CRIACAO_PENDENTE = 0
         <Description("Assinatura pendente")>
-        ASSINATURA_PENDENTE = 0
+        ASSINATURA_PENDENTE = 1
         <Description("Assinatura solicitada")>
-        ASSINATURA_SOLICITADA = 1
+        ASSINATURA_SOLICITADA = 2
         <Description("Anexada")>
-        ANEXADA = 2
+        ANEXADA = 3
     End Enum
 
     Public Enum StatusArquivoCienciaHomologacao
+        <Description("Criação pendente")>
+        CRIACAO_PENDENTE = 0
         <Description("Assinatura pendente")>
-        ASSINATURA_PENDENTE = 0
+        ASSINATURA_PENDENTE = 1
         <Description("Assinada manualmente")>
-        ASSINADA_MANUALMENTE = 1
+        ASSINADA_MANUALMENTE = 2
     End Enum
 
     Public Enum StatusArquivoFinsRescisorios
+        <Description("Criação pendente")>
+        CRIACAO_PENDENTE = 0
         <Description("Assinatura solicitada pelo DP")>
-        ASSINATURA_SOLICITADA_DP = 0
+        ASSINATURA_SOLICITADA_DP = 1
         <Description("Assinatura solicitada pela Gestão")>
-        ASSINATURA_SOLICITADA_GESTAO = 1
+        ASSINATURA_SOLICITADA_GESTAO = 2
         <Description("Documento anexado")>
         ANEXADO = 3
     End Enum
@@ -78,6 +94,8 @@ Module Md__SQLite__Enums
         HORISTA = 0
         <Description("Mensalista")>
         MENSALISTA = 1
+        <Description("Todos")>
+        TODOS = 3
     End Enum
 
     Public Enum ModalidadeContrato
@@ -89,6 +107,8 @@ Module Md__SQLite__Enums
         INSTRUTOR_DE_FORMACAO_PROFISSIONAL = 2
         <Description("Prazo Determinado")>
         PRAZO_DETERMINADO = 3
+        <Description("Todos")>
+        TODOS = 4
     End Enum
 
     Public Enum StatusDocumentosAdmissionais
@@ -110,6 +130,8 @@ Module Md__SQLite__Enums
     End Enum
 
     Public Enum StatusArquivoCartaDeAberturaDeContaSalario
+        <Description("Criação pendente")>
+        CRIACAO_PENDENTE = 0
         <Description("Assinatura pendente")>
         ASSINATURA_PENDENTE = 0
         <Description("Assinatura solicitada")>

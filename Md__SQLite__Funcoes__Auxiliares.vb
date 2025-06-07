@@ -258,7 +258,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@status_carta_de_abertura_de_conta_salario", Colaborador.StatusCartaDeAberturaDeContaSalario)
                     cmd.Parameters.AddWithValue("@status_contrato", Colaborador.StatusContrato)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", Colaborador.Status)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -1029,7 +1029,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                 End Using
             End Using
 
-            Return (True, "Carta removida com sucesso.")
+            Return (True, "Carta para abertura de conta salario removida com sucesso.")
         Catch ex As Exception
             Return (False, $"Erro ao remover CartaDeAberturaDeContaSalario: {ex.Message}")
         End Try
@@ -1055,7 +1055,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                 End Using
             End Using
 
-            Return (True, "")
+            Return (True, "Termo de ciência de homologação removido com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -1080,7 +1080,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Termo de fins rescisórios removido com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -1109,7 +1109,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Clínica autorizada removida com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -1138,7 +1138,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Colaborador(a) removido(a) com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -1167,7 +1167,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Endereço removido com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -1196,7 +1196,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Exame médico removido com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -1225,7 +1225,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Unidade Senac removida com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -1254,7 +1254,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
-            Return (True, "")
+            Return (True, "Documento de colarador(a) removido(a) com sucesso!")
         Catch ex As Exception
             Return (False, ex.Message)
         End Try
@@ -1278,15 +1278,25 @@ Module Md__SQLite__Funcoes__Auxiliares
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
+
                     If rowsAffected = 0 Then
+
                         Return (False, "Nenhum registro removido. Verifique se o ID e UID estão corretos.")
+
                     End If
+
                 End Using
+
             End Using
-            Return (True, "")
+
+            Return (True, "Documento modelo removido com sucesso!")
+
         Catch ex As Exception
+
             Return (False, ex.Message)
+
         End Try
+
     End Function
 
 #End Region
@@ -1316,6 +1326,173 @@ Module Md__SQLite__Funcoes__Auxiliares
 #End Region
 
 #Region "FUNÇÕES DA TABELA | COLABORADOR"
+
+    Public Function Listar_ColaboradoresAtivos(Optional tipo As TipoContrato? = Nothing, Optional modalidade As ModalidadeContrato? = Nothing) As DataTable
+
+        Dim tabela As New DataTable()
+
+        Try
+            Using conexao As New SQLiteConnection(CadeiaDeConexao)
+                conexao.Open()
+
+                Dim sql As New Text.StringBuilder("SELECT * FROM vw_colaboradores_ativos WHERE uid_usuario_logado = @uid")
+
+                If tipo.HasValue Then
+                    sql.Append(" AND tipo_contrato = @TipoDeContrato")
+                End If
+
+                If modalidade.HasValue Then
+                    sql.Append(" AND modalidade_contrato = @ModalidadeDeContrato")
+                End If
+
+                Using comando As New SQLiteCommand(sql.ToString(), conexao)
+                    comando.Parameters.AddWithValue("@uid", LerTokenDescriptografado())
+
+                    If tipo.HasValue Then
+                        comando.Parameters.AddWithValue("@TipoDeContrato", tipo.Value)
+                    End If
+
+                    If modalidade.HasValue Then
+                        comando.Parameters.AddWithValue("@ModalidadeDeContrato", modalidade.Value)
+                    End If
+
+                    Using adaptador As New SQLiteDataAdapter(comando)
+                        adaptador.Fill(tabela)
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+
+            MessageBox.Show("Erro ao listar colaboradores ativos: " & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        End Try
+
+        Return tabela
+
+    End Function
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | ENDEREÇO"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | EXAME MÉDICO"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | UNIDADE SENAC"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | DOCUMENTO COLABORADOR"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | DOCUMENTO MODELO"
+
+#End Region
+
+#End Region
+
+#Region "FUNÇÕES DE RETORNO"
+
+#Region "FUNÇÕES DA TABELA | AGÊNCIA CAIXA"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | CARTA DE ABERTURA DE CONTA-SALÁRIO"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | TERMO DE CIÊNCIA DE HOMOLOGAÇÃO"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | TERMO DE FINS RESCISÓRIOS"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | CLÍNICA AUTORIZADA"
+
+#End Region
+
+#Region "FUNÇÕES DA TABELA | COLABORADOR"
+
+    Public Function ObterColaboradorPorId(id As Integer) As Colaborador
+
+        Dim colaborador As Colaborador = Nothing
+
+        Dim sql As String = "SELECT * FROM colaborador WHERE id_colaborador = @id LIMIT 1;"
+
+        Using conexao As New SQLiteConnection(CadeiaDeConexao)
+            conexao.Open() ' <- 🔑 Isso é essencial
+
+            Using cmd As New SQLiteCommand(sql, conexao)
+
+                cmd.Parameters.AddWithValue("@id", id)
+
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+
+                    If reader.Read() Then
+
+                        colaborador = New Colaborador() With {
+                        .IdColaborador = Convert.ToInt32(reader("id_colaborador")),
+                        .NomeCompleto = reader("nome_completo").ToString(),
+                        .NomeSocial = If(IsDBNull(reader("nome_social")), "", reader("nome_social").ToString()),
+                        .EmailPessoal = If(IsDBNull(reader("email_pessoal")), "", reader("email_pessoal").ToString()),
+                        .TelefonePessoal = If(IsDBNull(reader("telefone_pessoal")), "", reader("telefone_pessoal").ToString()),
+                        .Sexo = reader("sexo").ToString(),
+                        .DataDeNascimento = reader("data_de_nascimento").ToString(),
+                        .CPF = reader("cpf").ToString(),
+                        .RG = If(IsDBNull(reader("rg")), "", reader("rg").ToString()),
+                        .EmailCorporativo = reader("email_corporativo").ToString(),
+                        .Funcao = reader("funcao").ToString(),
+                        .Setor = reader("setor").ToString(),
+                        .Chapa = reader("chapa").ToString(),
+                        .DataDeAdmissao = reader("data_de_admissao").ToString(),
+                        .DataDeDemissao = If(IsDBNull(reader("data_de_demissao")), "", reader("data_de_demissao").ToString()),
+                        .TipoContrato = reader("tipo_contrato").ToString(),
+                        .ModalidadeContrato = reader("modalidade_contrato").ToString(),
+                        .StatusDocumentosAdmissionais = Convert.ToInt32(reader("status_documentos_admissionais")),
+                        .StatusCartaDeAberturaDeContaSalario = Convert.ToInt32(reader("status_carta_de_abertura_de_conta_salario")),
+                        .StatusContrato = Convert.ToInt32(reader("status_contrato")),
+                        .UidUsuarioLogado = reader("uid_usuario_logado").ToString(),
+                        .Status = Convert.ToInt32(reader("status"))
+                    }
+
+                    End If
+
+                End Using
+
+            End Using
+
+        End Using
+
+        Return colaborador
+
+    End Function
+
+    Public Function ObterQuantidadeColaboradoresAtivos() As Integer
+
+        Try
+            Dim dt As DataTable = Listar_ColaboradoresAtivos()
+
+            If dt IsNot Nothing Then
+                Return dt.Rows.Count
+            Else
+                Return 0
+            End If
+
+        Catch ex As Exception
+
+            MessageBox.Show("Erro ao verificar colaboradores ativos: " & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            Return 0
+        End Try
+
+    End Function
 
 #End Region
 

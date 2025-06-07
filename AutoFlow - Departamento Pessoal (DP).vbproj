@@ -161,6 +161,12 @@
     <Compile Include="Frm__Selecao__Colaborador.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Frm__Selecao__UnidadeSenac.Designer.vb">
+      <DependentUpon>Frm__Selecao__UnidadeSenac.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm__Selecao__UnidadeSenac.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Md__Sistema__EstruturasDeFiltros.vb" />
     <Compile Include="Md__SQLite__Classes.vb" />
     <Compile Include="Md__SQLite__Enums.vb" />

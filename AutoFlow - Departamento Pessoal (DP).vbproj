@@ -130,6 +130,12 @@
     <Compile Include="Frm__Cadastro__Colaboradores.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Frm__Cadastro__UnidadesSenac.Designer.vb">
+      <DependentUpon>Frm__Cadastro__UnidadesSenac.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm__Cadastro__UnidadesSenac.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Frm__Intro.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Frm__Cadastro__Colaboradores.resx">
       <DependentUpon>Frm__Cadastro__Colaboradores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm__Cadastro__UnidadesSenac.resx">
+      <DependentUpon>Frm__Cadastro__UnidadesSenac.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm__Intro.resx">
       <DependentUpon>Frm__Intro.vb</DependentUpon>

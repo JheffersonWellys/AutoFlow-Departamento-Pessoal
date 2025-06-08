@@ -12,15 +12,22 @@ Module Md__SQLite__Funcoes__Auxiliares
                 conn.Open()
 
                 Dim query As String = "
-                    INSERT INTO agencia_caixa (
-                        id_endereco, codigo_agencia, uid_usuario_logado, status
-                    ) VALUES (
-                        @id_endereco, @codigo_agencia, @uid_usuario_logado, @status
-                    );"
+                INSERT INTO agencia_caixa (
+                    codigo_agencia, logradouro, numero, bairro,
+                    cidade, estado, cep, uid_usuario_logado, status
+                ) VALUES (
+                    @codigo_agencia, @logradouro, @numero, @bairro,
+                    @cidade, @estado, @cep, @uid_usuario_logado, @status
+                );"
 
                 Using cmd As New SQLiteCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@id_endereco", AgenciaCaixa.IdEndereco)
                     cmd.Parameters.AddWithValue("@codigo_agencia", AgenciaCaixa.CodigoAgencia)
+                    cmd.Parameters.AddWithValue("@logradouro", AgenciaCaixa.Logradouro)
+                    cmd.Parameters.AddWithValue("@numero", AgenciaCaixa.Numero)
+                    cmd.Parameters.AddWithValue("@bairro", AgenciaCaixa.Bairro)
+                    cmd.Parameters.AddWithValue("@cidade", AgenciaCaixa.Cidade)
+                    cmd.Parameters.AddWithValue("@estado", AgenciaCaixa.Estado)
+                    cmd.Parameters.AddWithValue("@cep", AgenciaCaixa.CEP)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
@@ -189,19 +196,30 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
-                Using cmd As New SQLiteCommand("
-                INSERT INTO clinica_autorizada (
-                    id_endereco, nome_clinica, email_atendimento, nome_atendente, telefone, fixo, uid_usuario_logado, status
-                ) VALUES (
-                    @id_endereco, @nome_clinica, @email_atendimento, @nome_atendente, @telefone, @fixo, @uid_usuario_logado, @status
-                );", conn)
 
-                    cmd.Parameters.AddWithValue("@id_endereco", ClinicaAutorizada.IdEndereco)
+                Dim query As String = "
+                INSERT INTO clinica_autorizada (
+                    nome_clinica, email_atendimento, nome_atendente,
+                    telefone, fixo, logradouro, numero, bairro, cidade, estado, cep,
+                    uid_usuario_logado, status
+                ) VALUES (
+                    @nome_clinica, @email_atendimento, @nome_atendente,
+                    @telefone, @fixo, @logradouro, @numero, @bairro, @cidade, @estado, @cep,
+                    @uid_usuario_logado, @status
+                );"
+
+                Using cmd As New SQLiteCommand(query, conn)
                     cmd.Parameters.AddWithValue("@nome_clinica", ClinicaAutorizada.NomeClinica)
                     cmd.Parameters.AddWithValue("@email_atendimento", ClinicaAutorizada.EmailAtendimento)
                     cmd.Parameters.AddWithValue("@nome_atendente", ClinicaAutorizada.NomeAtendente)
                     cmd.Parameters.AddWithValue("@telefone", ClinicaAutorizada.Telefone)
                     cmd.Parameters.AddWithValue("@fixo", ClinicaAutorizada.Fixo)
+                    cmd.Parameters.AddWithValue("@logradouro", ClinicaAutorizada.Logradouro)
+                    cmd.Parameters.AddWithValue("@numero", ClinicaAutorizada.Numero)
+                    cmd.Parameters.AddWithValue("@bairro", ClinicaAutorizada.Bairro)
+                    cmd.Parameters.AddWithValue("@cidade", ClinicaAutorizada.Cidade)
+                    cmd.Parameters.AddWithValue("@estado", ClinicaAutorizada.Estado)
+                    cmd.Parameters.AddWithValue("@cep", ClinicaAutorizada.CEP)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
@@ -210,9 +228,10 @@ Module Md__SQLite__Funcoes__Auxiliares
             End Using
             Return (True, "Clínica Autorizada adicionada com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao adicionar clínica autorizada: {ex.Message}")
         End Try
     End Function
+
 
 
 #End Region
@@ -271,39 +290,6 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #End Region
 
-#Region "FUNÇÕES DA TABELA | ADICIONAR | ENDEREÇO"
-
-    Public Function Endereco__Adicionar(Endereco As Endereco) As (Boolean, String)
-        Try
-            Using conn As New SQLiteConnection(CadeiaDeConexao)
-                conn.Open()
-                Using cmd As New SQLiteCommand("
-                INSERT INTO endereco (
-                    logradouro, numero, bairro, cidade, estado, cep, uid_usuario_logado, status
-                ) VALUES (
-                    @logradouro, @numero, @bairro, @cidade, @estado, @cep, @uid_usuario_logado, @status
-                );", conn)
-
-                    cmd.Parameters.AddWithValue("@logradouro", Endereco.Logradouro)
-                    cmd.Parameters.AddWithValue("@numero", Endereco.Numero)
-                    cmd.Parameters.AddWithValue("@bairro", Endereco.Bairro)
-                    cmd.Parameters.AddWithValue("@cidade", Endereco.Cidade)
-                    cmd.Parameters.AddWithValue("@estado", Endereco.Estado)
-                    cmd.Parameters.AddWithValue("@cep", Endereco.CEP)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
-
-                    cmd.ExecuteNonQuery()
-                End Using
-            End Using
-            Return (True, "Endereço adicionado com sucesso!")
-        Catch ex As Exception
-            Return (False, ex.Message)
-        End Try
-    End Function
-
-#End Region
-
 #Region "FUNÇÕES DA TABELA | ADICIONAR | EXAME MÉDICO"
 
     Public Function ExameMedico__Adicionar(ExameMedico As ExameMedico) As (Boolean, String)
@@ -351,16 +337,23 @@ Module Md__SQLite__Funcoes__Auxiliares
                 conn.Open()
                 Using cmd As New SQLiteCommand("
                 INSERT INTO unidade_senac (
-                    id_endereco, codigo_unidade, nome_unidade,
+                    codigo_unidade, nome_unidade,
+                    logradouro, numero, bairro, cidade, estado, cep,
                     uid_usuario_logado, status
                 ) VALUES (
-                    @id_endereco, @codigo_unidade, @nome_unidade,
+                    @codigo_unidade, @nome_unidade,
+                    @logradouro, @numero, @bairro, @cidade, @estado, @cep,
                     @uid_usuario_logado, @status
                 );", conn)
 
-                    cmd.Parameters.AddWithValue("@id_endereco", UnidadeSenac.IdEndereco)
                     cmd.Parameters.AddWithValue("@codigo_unidade", UnidadeSenac.CodigoUnidade)
                     cmd.Parameters.AddWithValue("@nome_unidade", UnidadeSenac.NomeUnidade)
+                    cmd.Parameters.AddWithValue("@logradouro", UnidadeSenac.Logradouro)
+                    cmd.Parameters.AddWithValue("@numero", UnidadeSenac.Numero)
+                    cmd.Parameters.AddWithValue("@bairro", UnidadeSenac.Bairro)
+                    cmd.Parameters.AddWithValue("@cidade", UnidadeSenac.Cidade)
+                    cmd.Parameters.AddWithValue("@estado", UnidadeSenac.Estado)
+                    cmd.Parameters.AddWithValue("@cep", UnidadeSenac.CEP)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
                     cmd.Parameters.AddWithValue("@status", StatusCadastro.ATIVO)
 
@@ -372,6 +365,7 @@ Module Md__SQLite__Funcoes__Auxiliares
             Return (False, ex.Message)
         End Try
     End Function
+
 
 #End Region
 
@@ -453,16 +447,26 @@ Module Md__SQLite__Funcoes__Auxiliares
                 conn.Open()
 
                 Dim query As String = "
-                    UPDATE agencia_caixa
-                    SET id_endereco = @id_endereco,
-                        codigo_agencia = @codigo_agencia,
-                        status = @status
-                    WHERE id_agencia_caixa = @id_agencia_caixa
-                      AND uid_usuario_logado = @uid_usuario_logado;"
+                UPDATE agencia_caixa SET
+                    codigo_agencia = @codigo_agencia,
+                    logradouro = @logradouro,
+                    numero = @numero,
+                    bairro = @bairro,
+                    cidade = @cidade,
+                    estado = @estado,
+                    cep = @cep,
+                    status = @status
+                WHERE id_agencia_caixa = @id_agencia_caixa
+                  AND uid_usuario_logado = @uid_usuario_logado;"
 
                 Using cmd As New SQLiteCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@id_endereco", AgenciaCaixa.IdEndereco)
                     cmd.Parameters.AddWithValue("@codigo_agencia", AgenciaCaixa.CodigoAgencia)
+                    cmd.Parameters.AddWithValue("@logradouro", AgenciaCaixa.Logradouro)
+                    cmd.Parameters.AddWithValue("@numero", AgenciaCaixa.Numero)
+                    cmd.Parameters.AddWithValue("@bairro", AgenciaCaixa.Bairro)
+                    cmd.Parameters.AddWithValue("@cidade", AgenciaCaixa.Cidade)
+                    cmd.Parameters.AddWithValue("@estado", AgenciaCaixa.Estado)
+                    cmd.Parameters.AddWithValue("@cep", AgenciaCaixa.CEP)
                     cmd.Parameters.AddWithValue("@status", AgenciaCaixa.Status)
                     cmd.Parameters.AddWithValue("@id_agencia_caixa", AgenciaCaixa.IdAgenciaCaixa)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
@@ -479,6 +483,7 @@ Module Md__SQLite__Funcoes__Auxiliares
             Return (False, $"Erro ao atualizar agência: {ex.Message}")
         End Try
     End Function
+
 
 #End Region
 
@@ -659,25 +664,37 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
-                Using cmd As New SQLiteCommand("
+
+                Dim query As String = "
                 UPDATE clinica_autorizada SET
-                    id_endereco = @id_endereco,
                     nome_clinica = @nome_clinica,
                     email_atendimento = @email_atendimento,
                     nome_atendente = @nome_atendente,
                     telefone = @telefone,
                     fixo = @fixo,
+                    logradouro = @logradouro,
+                    numero = @numero,
+                    bairro = @bairro,
+                    cidade = @cidade,
+                    estado = @estado,
+                    cep = @cep,
                     status = @status
                 WHERE
                     id_clinica_autorizada = @id_clinica_autorizada
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
+                    AND uid_usuario_logado = @uid_usuario_logado;"
 
-                    cmd.Parameters.AddWithValue("@id_endereco", ClinicaAutorizada.IdEndereco)
+                Using cmd As New SQLiteCommand(query, conn)
                     cmd.Parameters.AddWithValue("@nome_clinica", ClinicaAutorizada.NomeClinica)
                     cmd.Parameters.AddWithValue("@email_atendimento", ClinicaAutorizada.EmailAtendimento)
                     cmd.Parameters.AddWithValue("@nome_atendente", ClinicaAutorizada.NomeAtendente)
                     cmd.Parameters.AddWithValue("@telefone", ClinicaAutorizada.Telefone)
                     cmd.Parameters.AddWithValue("@fixo", ClinicaAutorizada.Fixo)
+                    cmd.Parameters.AddWithValue("@logradouro", ClinicaAutorizada.Logradouro)
+                    cmd.Parameters.AddWithValue("@numero", ClinicaAutorizada.Numero)
+                    cmd.Parameters.AddWithValue("@bairro", ClinicaAutorizada.Bairro)
+                    cmd.Parameters.AddWithValue("@cidade", ClinicaAutorizada.Cidade)
+                    cmd.Parameters.AddWithValue("@estado", ClinicaAutorizada.Estado)
+                    cmd.Parameters.AddWithValue("@cep", ClinicaAutorizada.CEP)
                     cmd.Parameters.AddWithValue("@status", ClinicaAutorizada.Status)
                     cmd.Parameters.AddWithValue("@id_clinica_autorizada", ClinicaAutorizada.IdClinicaAutorizada)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
@@ -690,9 +707,10 @@ Module Md__SQLite__Funcoes__Auxiliares
             End Using
             Return (True, "Clínica Autorizada atualizada com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao atualizar clínica autorizada: {ex.Message}")
         End Try
     End Function
+
 
 #End Region
 
@@ -765,49 +783,6 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #End Region
 
-#Region "FUNÇÕES DA TABELA | ATUALIZAR | ENDEREÇO"
-
-    Public Function Endereco__Atualizar(Endereco As Endereco) As (Boolean, String)
-        Try
-            Using conn As New SQLiteConnection(CadeiaDeConexao)
-                conn.Open()
-                Using cmd As New SQLiteCommand("
-                UPDATE endereco SET
-                    logradouro = @logradouro,
-                    numero = @numero,
-                    bairro = @bairro,
-                    cidade = @cidade,
-                    estado = @estado,
-                    cep = @cep,
-                    status = @status
-                WHERE
-                    id_endereco = @id_endereco
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
-
-                    cmd.Parameters.AddWithValue("@logradouro", Endereco.Logradouro)
-                    cmd.Parameters.AddWithValue("@numero", Endereco.Numero)
-                    cmd.Parameters.AddWithValue("@bairro", Endereco.Bairro)
-                    cmd.Parameters.AddWithValue("@cidade", Endereco.Cidade)
-                    cmd.Parameters.AddWithValue("@estado", Endereco.Estado)
-                    cmd.Parameters.AddWithValue("@cep", Endereco.CEP)
-                    cmd.Parameters.AddWithValue("@status", Endereco.Status)
-                    cmd.Parameters.AddWithValue("@id_endereco", Endereco.IdEndereco)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-
-                    Dim rowsAffected = cmd.ExecuteNonQuery()
-                    If rowsAffected = 0 Then
-                        Return (False, "Nenhum registro atualizado. Verifique se o ID e UID estão corretos.")
-                    End If
-                End Using
-            End Using
-            Return (True, "Endereço atualizado com sucesso!")
-        Catch ex As Exception
-            Return (False, ex.Message)
-        End Try
-    End Function
-
-#End Region
-
 #Region "FUNÇÕES DA TABELA | ATUALIZAR | EXAME MÉDICO"
 
     Public Function ExameMedico__Atualizar(ExameMedico As ExameMedico) As (Boolean, String)
@@ -863,17 +838,27 @@ Module Md__SQLite__Funcoes__Auxiliares
                 conn.Open()
                 Using cmd As New SQLiteCommand("
                 UPDATE unidade_senac SET
-                    id_endereco = @id_endereco,
                     codigo_unidade = @codigo_unidade,
                     nome_unidade = @nome_unidade,
+                    logradouro = @logradouro,
+                    numero = @numero,
+                    bairro = @bairro,
+                    cidade = @cidade,
+                    estado = @estado,
+                    cep = @cep,
                     status = @status
                 WHERE
                     id_unidade_senac = @id_unidade_senac
                     AND uid_usuario_logado = @uid_usuario_logado;", conn)
 
-                    cmd.Parameters.AddWithValue("@id_endereco", UnidadeSenac.IdEndereco)
                     cmd.Parameters.AddWithValue("@codigo_unidade", UnidadeSenac.CodigoUnidade)
                     cmd.Parameters.AddWithValue("@nome_unidade", UnidadeSenac.NomeUnidade)
+                    cmd.Parameters.AddWithValue("@logradouro", UnidadeSenac.Logradouro)
+                    cmd.Parameters.AddWithValue("@numero", UnidadeSenac.Numero)
+                    cmd.Parameters.AddWithValue("@bairro", UnidadeSenac.Bairro)
+                    cmd.Parameters.AddWithValue("@cidade", UnidadeSenac.Cidade)
+                    cmd.Parameters.AddWithValue("@estado", UnidadeSenac.Estado)
+                    cmd.Parameters.AddWithValue("@cep", UnidadeSenac.CEP)
                     cmd.Parameters.AddWithValue("@status", UnidadeSenac.Status)
                     cmd.Parameters.AddWithValue("@id_unidade_senac", UnidadeSenac.IdUnidadeSenac)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
@@ -889,6 +874,7 @@ Module Md__SQLite__Funcoes__Auxiliares
             Return (False, ex.Message)
         End Try
     End Function
+
 
 #End Region
 
@@ -983,11 +969,13 @@ Module Md__SQLite__Funcoes__Auxiliares
                 conn.Open()
 
                 Dim query As String = "
-                    DELETE FROM agencia_caixa
-                    WHERE id_agencia_caixa = @id_agencia_caixa
-                      AND uid_usuario_logado = @uid_usuario_logado;"
+            UPDATE agencia_caixa SET
+                status = @status
+            WHERE id_agencia_caixa = @id_agencia_caixa
+              AND uid_usuario_logado = @uid_usuario_logado;"
 
                 Using cmd As New SQLiteCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_agencia_caixa", AgenciaCaixa.IdAgenciaCaixa)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
@@ -1014,11 +1002,13 @@ Module Md__SQLite__Funcoes__Auxiliares
                 conn.Open()
 
                 Dim query As String = "
-                    DELETE FROM carta_de_abertura_de_conta_salario
-                    WHERE id_carta = @id_carta
-                      AND uid_usuario_logado = @uid_usuario_logado;"
+                UPDATE carta_de_abertura_de_conta_salario SET
+                    status = @status
+                WHERE id_carta = @id_carta
+                  AND uid_usuario_logado = @uid_usuario_logado;"
 
                 Using cmd As New SQLiteCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_carta", CartaDeAberturaDeContaSalario.IdCarta)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
@@ -1029,7 +1019,7 @@ Module Md__SQLite__Funcoes__Auxiliares
                 End Using
             End Using
 
-            Return (True, "Carta para abertura de conta salario removida com sucesso.")
+            Return (True, "Carta para abertura de conta salário removida com sucesso.")
         Catch ex As Exception
             Return (False, $"Erro ao remover CartaDeAberturaDeContaSalario: {ex.Message}")
         End Try
@@ -1045,19 +1035,26 @@ Module Md__SQLite__Funcoes__Auxiliares
                 conn.Open()
 
                 Dim sql As String = "
-                    DELETE FROM termo_ciencia_de_homologacao
-                    WHERE id_termo = @id_termo AND uid_usuario_logado = @uid_usuario_logado;"
+                UPDATE termo_ciencia_de_homologacao SET
+                    status = @status
+                WHERE id_termo = @id_termo
+                  AND uid_usuario_logado = @uid_usuario_logado;"
 
                 Using cmd As New SQLiteCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_termo", TermoCienciaDeHomologacao.IdTermo)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-                    cmd.ExecuteNonQuery()
+
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                    If rowsAffected = 0 Then
+                        Return (False, "Nenhum termo foi removido. Verifique o ID e o usuário.")
+                    End If
                 End Using
             End Using
 
             Return (True, "Termo de ciência de homologação removido com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao remover TermoCienciaDeHomologacao: {ex.Message}")
         End Try
     End Function
 
@@ -1069,20 +1066,28 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
+
                 Dim sql As String = "
-                DELETE FROM termo_fins_rescisorios
-                WHERE id_termo = @id_termo AND uid_usuario_logado = @uid_usuario_logado;"
+                UPDATE termo_fins_rescisorios SET
+                    status = @status
+                WHERE id_termo = @id_termo
+                  AND uid_usuario_logado = @uid_usuario_logado;"
 
                 Using cmd As New SQLiteCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_termo", TermoFinsRescisorios.IdTermo)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
-                    cmd.ExecuteNonQuery()
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                    If rowsAffected = 0 Then
+                        Return (False, "Nenhum termo foi removido. Verifique o ID e o usuário.")
+                    End If
                 End Using
             End Using
+
             Return (True, "Termo de fins rescisórios removido com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao remover TermoFinsRescisorios: {ex.Message}")
         End Try
     End Function
 
@@ -1094,12 +1099,16 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
-                Using cmd As New SQLiteCommand("
-                DELETE FROM clinica_autorizada
+
+                Dim query As String = "
+                UPDATE clinica_autorizada SET
+                    status = @status
                 WHERE
                     id_clinica_autorizada = @id_clinica_autorizada
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
+                    AND uid_usuario_logado = @uid_usuario_logado;"
 
+                Using cmd As New SQLiteCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_clinica_autorizada", ClinicaAutorizada.IdClinicaAutorizada)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
@@ -1109,9 +1118,10 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
+
             Return (True, "Clínica autorizada removida com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao remover clínica autorizada: {ex.Message}")
         End Try
     End Function
 
@@ -1123,12 +1133,16 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
-                Using cmd As New SQLiteCommand("
-                DELETE FROM colaborador
+
+                Dim query As String = "
+                UPDATE colaborador SET
+                    status = @status
                 WHERE
                     id_colaborador = @id_colaborador
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
+                    AND uid_usuario_logado = @uid_usuario_logado;"
 
+                Using cmd As New SQLiteCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_colaborador", Colaborador.IdColaborador)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
@@ -1138,38 +1152,10 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
+
             Return (True, "Colaborador(a) removido(a) com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
-        End Try
-    End Function
-
-#End Region
-
-#Region "FUNÇÕES DA TABELA | REMOVER | ENDEREÇO"
-
-    Public Function Endereco__Remover(Endereco As Endereco) As (Boolean, String)
-        Try
-            Using conn As New SQLiteConnection(CadeiaDeConexao)
-                conn.Open()
-                Using cmd As New SQLiteCommand("
-                DELETE FROM endereco
-                WHERE
-                    id_endereco = @id_endereco
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
-
-                    cmd.Parameters.AddWithValue("@id_endereco", Endereco.IdEndereco)
-                    cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
-
-                    Dim rowsAffected = cmd.ExecuteNonQuery()
-                    If rowsAffected = 0 Then
-                        Return (False, "Nenhum registro removido. Verifique se o ID e UID estão corretos.")
-                    End If
-                End Using
-            End Using
-            Return (True, "Endereço removido com sucesso!")
-        Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao remover colaborador(a): {ex.Message}")
         End Try
     End Function
 
@@ -1181,12 +1167,16 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
-                Using cmd As New SQLiteCommand("
-                DELETE FROM exame_medico
+
+                Dim query As String = "
+                UPDATE exame_medico SET
+                    status = @status
                 WHERE
                     id_exame = @id_exame
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
+                    AND uid_usuario_logado = @uid_usuario_logado;"
 
+                Using cmd As New SQLiteCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_exame", ExameMedico.IdExame)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
@@ -1196,9 +1186,10 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
+
             Return (True, "Exame médico removido com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao remover exame médico: {ex.Message}")
         End Try
     End Function
 
@@ -1210,12 +1201,16 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
-                Using cmd As New SQLiteCommand("
-                DELETE FROM unidade_senac
+
+                Dim query As String = "
+                UPDATE unidade_senac SET
+                    status = @status
                 WHERE
                     id_unidade_senac = @id_unidade_senac
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
+                    AND uid_usuario_logado = @uid_usuario_logado;"
 
+                Using cmd As New SQLiteCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_unidade_senac", UnidadeSenac.IdUnidadeSenac)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
@@ -1225,9 +1220,10 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
+
             Return (True, "Unidade Senac removida com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao remover Unidade Senac: {ex.Message}")
         End Try
     End Function
 
@@ -1239,12 +1235,16 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
-                Using cmd As New SQLiteCommand("
-                DELETE FROM documento_colaborador
+
+                Dim query As String = "
+                UPDATE documento_colaborador SET
+                    status = @status
                 WHERE
                     id_documento_colaborador = @id_documento_colaborador
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
+                    AND uid_usuario_logado = @uid_usuario_logado;"
 
+                Using cmd As New SQLiteCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_documento_colaborador", DocumentoColaborador.IdDocumentosColaborador)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
@@ -1254,9 +1254,10 @@ Module Md__SQLite__Funcoes__Auxiliares
                     End If
                 End Using
             End Using
-            Return (True, "Documento de colarador(a) removido(a) com sucesso!")
+
+            Return (True, "Documento de colaborador(a) removido(a) com sucesso!")
         Catch ex As Exception
-            Return (False, ex.Message)
+            Return (False, $"Erro ao remover documento de colaborador(a): {ex.Message}")
         End Try
     End Function
 
@@ -1268,35 +1269,31 @@ Module Md__SQLite__Funcoes__Auxiliares
         Try
             Using conn As New SQLiteConnection(CadeiaDeConexao)
                 conn.Open()
-                Using cmd As New SQLiteCommand("
-                DELETE FROM documento_modelo
+
+                Dim query As String = "
+                UPDATE documento_modelo SET
+                    status = @status
                 WHERE
                     id_documento_modelo = @id_documento_modelo
-                    AND uid_usuario_logado = @uid_usuario_logado;", conn)
+                    AND uid_usuario_logado = @uid_usuario_logado;"
 
+                Using cmd As New SQLiteCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", StatusCadastro.INATIVO)
                     cmd.Parameters.AddWithValue("@id_documento_modelo", DocumentoModelo.IdDocumentoModelo)
                     cmd.Parameters.AddWithValue("@uid_usuario_logado", LerTokenDescriptografado)
 
                     Dim rowsAffected = cmd.ExecuteNonQuery()
 
                     If rowsAffected = 0 Then
-
                         Return (False, "Nenhum registro removido. Verifique se o ID e UID estão corretos.")
-
                     End If
-
                 End Using
-
             End Using
 
             Return (True, "Documento modelo removido com sucesso!")
-
         Catch ex As Exception
-
-            Return (False, ex.Message)
-
+            Return (False, $"Erro ao remover documento modelo: {ex.Message}")
         End Try
-
     End Function
 
 #End Region
@@ -1335,7 +1332,10 @@ Module Md__SQLite__Funcoes__Auxiliares
             Using conexao As New SQLiteConnection(CadeiaDeConexao)
                 conexao.Open()
 
-                Dim sql As New Text.StringBuilder("SELECT * FROM vw_colaboradores_ativos WHERE uid_usuario_logado = @uid")
+                Dim sql As New Text.StringBuilder("
+                    SELECT * FROM vw_colaboradores_ativos
+                    WHERE uid_usuario_logado = @uid
+                ")
 
                 If tipo.HasValue Then
                     sql.Append(" AND tipo_contrato = @TipoDeContrato")
@@ -1383,6 +1383,36 @@ Module Md__SQLite__Funcoes__Auxiliares
 #End Region
 
 #Region "FUNÇÕES DA TABELA | UNIDADE SENAC"
+
+    Public Function Listar_UnidadesSenacAtivas() As DataTable
+
+        Dim tabela As New DataTable()
+
+        Try
+            Using conexao As New SQLiteConnection(CadeiaDeConexao)
+                conexao.Open()
+
+                Dim sql As New Text.StringBuilder("
+                    SELECT * FROM vw_unidades_senac_ativas 
+                    WHERE uid_usuario_logado = @uid
+                ")
+
+                Using comando As New SQLiteCommand(sql.ToString(), conexao)
+                    comando.Parameters.AddWithValue("@uid", LerTokenDescriptografado())
+
+                    Using adaptador As New SQLiteDataAdapter(comando)
+                        adaptador.Fill(tabela)
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Erro ao listar unidades SENAC ativas:" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        Return tabela
+
+    End Function
 
 #End Region
 
@@ -1496,13 +1526,17 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #End Region
 
-#Region "FUNÇÕES DA TABELA | ENDEREÇO"
+#Region "FUNÇÕES DA TABELA | EXAME MÉDICO"
 
-    Public Function Endereco__ObterPorId(id As Integer) As Endereco
+#End Region
 
-        Dim endereco As Endereco = Nothing
+#Region "FUNÇÕES DA TABELA | UNIDADE SENAC"
 
-        Dim sql As String = "SELECT * FROM endereco WHERE id_endereco = @id LIMIT 1;"
+    Public Function UnidadeSenac__ObterPorId(id As Integer) As UnidadeSenac
+
+        Dim unidade As UnidadeSenac = Nothing
+
+        Dim sql As String = "SELECT * FROM unidade_senac WHERE id_unidade_senac = @id LIMIT 1;"
 
         Using conexao As New SQLiteConnection(CadeiaDeConexao)
             conexao.Open()
@@ -1514,18 +1548,19 @@ Module Md__SQLite__Funcoes__Auxiliares
                 Using reader As SQLiteDataReader = cmd.ExecuteReader()
 
                     If reader.Read() Then
-                        endereco = New Endereco() With {
-                        .IdEndereco = Convert.ToInt32(reader("id_endereco")),
+                        unidade = New UnidadeSenac() With {
+                        .IdUnidadeSenac = Convert.ToInt32(reader("id_unidade_senac")),
+                        .CodigoUnidade = reader("codigo_unidade").ToString(),
+                        .NomeUnidade = reader("nome_unidade").ToString(),
                         .Logradouro = reader("logradouro").ToString(),
-                        .Numero = reader("numero").ToString(),
+                        .Numero = If(IsDBNull(reader("numero")), "", reader("numero").ToString()),
                         .Bairro = reader("bairro").ToString(),
                         .Cidade = reader("cidade").ToString(),
                         .Estado = reader("estado").ToString(),
-                        .CEP = reader("cep").ToString(),
+                        .CEP = If(IsDBNull(reader("cep")), "", reader("cep").ToString()),
                         .UidUsuarioLogado = reader("uid_usuario_logado").ToString(),
                         .Status = Convert.ToInt32(reader("status"))
                     }
-
                     End If
 
                 End Using
@@ -1534,17 +1569,10 @@ Module Md__SQLite__Funcoes__Auxiliares
 
         End Using
 
-        Return endereco
+        Return unidade
 
     End Function
 
-#End Region
-
-#Region "FUNÇÕES DA TABELA | EXAME MÉDICO"
-
-#End Region
-
-#Region "FUNÇÕES DA TABELA | UNIDADE SENAC"
 
     Public Function UnidadeSenac__ObterQuantidadeDeAtivas() As Integer
 

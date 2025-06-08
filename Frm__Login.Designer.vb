@@ -108,6 +108,7 @@ Partial Class Frm__Login
         Me.TxtBx_Senha.Size = New System.Drawing.Size(198, 20)
         Me.TxtBx_Senha.TabIndex = 1
         Me.TxtBx_Senha.Tag = "Senha"
+        Me.TxtBx_Senha.Text = "102030"
         '
         'Lbl_Senha
         '
@@ -129,6 +130,7 @@ Partial Class Frm__Login
         Me.TxtBx_Email.Size = New System.Drawing.Size(222, 20)
         Me.TxtBx_Email.TabIndex = 0
         Me.TxtBx_Email.Tag = "E-mail"
+        Me.TxtBx_Email.Text = "jhefferson.silva@mg.senac.br"
         '
         'Lbl_Email
         '

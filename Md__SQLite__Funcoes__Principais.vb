@@ -59,11 +59,15 @@ Module Md__SQLite__Funcoes__Principais
                 comandos.AppendLine("
                     CREATE TABLE IF NOT EXISTS agencia_caixa (
                         id_agencia_caixa INTEGER PRIMARY KEY AUTOINCREMENT,
-                        id_endereco INTEGER NOT NULL,
                         codigo_agencia TEXT NOT NULL,
+                        logradouro TEXT NOT NULL,
+                        numero TEXT NOT NULL,
+                        bairro TEXT NOT NULL,
+                        cidade TEXT NOT NULL,
+                        estado TEXT NOT NULL,
+                        cep TEXT NOT NULL,
                         uid_usuario_logado TEXT NOT NULL,
-                        status INTEGER NOT NULL,
-                        FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+                        status INTEGER NOT NULL
                     );")
 
                 comandos.AppendLine("
@@ -137,15 +141,19 @@ Module Md__SQLite__Funcoes__Principais
                 comandos.AppendLine("
                     CREATE TABLE IF NOT EXISTS clinica_autorizada (
                         id_clinica_autorizada INTEGER PRIMARY KEY AUTOINCREMENT,
-                        id_endereco INTEGER NOT NULL,
                         nome_clinica TEXT NOT NULL,
                         email_atendimento TEXT NOT NULL,
                         nome_atendente TEXT NOT NULL,
                         telefone TEXT NOT NULL,
                         fixo TEXT,
+                        logradouro TEXT NOT NULL,
+                        numero TEXT NOT NULL,
+                        bairro TEXT NOT NULL,
+                        cidade TEXT NOT NULL,
+                        estado TEXT NOT NULL,
+                        cep TEXT NOT NULL,
                         uid_usuario_logado TEXT NOT NULL,
-                        status INTEGER NOT NULL,
-                        FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+                        status INTEGER NOT NULL
                     );")
 
                 comandos.AppendLine("
@@ -175,19 +183,6 @@ Module Md__SQLite__Funcoes__Principais
                     );")
 
                 comandos.AppendLine("
-                    CREATE TABLE IF NOT EXISTS endereco (
-                        id_endereco INTEGER PRIMARY KEY AUTOINCREMENT,
-                        logradouro TEXT NOT NULL,
-                        numero TEXT NOT NULL,
-                        bairro TEXT NOT NULL,
-                        cidade TEXT NOT NULL,
-                        estado TEXT NOT NULL,
-                        cep TEXT NOT NULL,
-                        uid_usuario_logado TEXT NOT NULL,
-                        status INTEGER NOT NULL
-                    );")
-
-                comandos.AppendLine("
                     CREATE TABLE IF NOT EXISTS exame_medico (
                         id_exame INTEGER PRIMARY KEY AUTOINCREMENT,
                         id_colaborador INTEGER NOT NULL,
@@ -207,12 +202,16 @@ Module Md__SQLite__Funcoes__Principais
                 comandos.AppendLine("
                     CREATE TABLE IF NOT EXISTS unidade_senac (
                         id_unidade_senac INTEGER PRIMARY KEY AUTOINCREMENT,
-                        id_endereco INTEGER NOT NULL,
                         codigo_unidade TEXT NOT NULL,
                         nome_unidade TEXT NOT NULL,
+                        logradouro TEXT NOT NULL,
+                        numero TEXT NOT NULL,
+                        bairro TEXT NOT NULL,
+                        cidade TEXT NOT NULL,
+                        estado TEXT NOT NULL,
+                        cep TEXT NOT NULL,
                         uid_usuario_logado TEXT NOT NULL,
-                        status INTEGER NOT NULL,
-                        FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+                        status INTEGER NOT NULL
                     );")
 
                 comandos.AppendLine("
@@ -275,8 +274,6 @@ Module Md__SQLite__Funcoes__Principais
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_exame_clinica ON exame_medico(id_clinica_autorizada);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_exame_colaborador ON exame_medico(id_colaborador);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_exame_data_realizacao ON exame_medico(data_realizacao);")
-                comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_clinica_id_endereco ON clinica_autorizada(id_endereco);")
-                comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_agencia_endereco ON agencia_caixa(id_endereco);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_agencia_status ON agencia_caixa(status);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_carta_unidade ON carta_de_abertura_de_conta_salario(id_unidade_senac);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_carta_status_arquivo ON carta_de_abertura_de_conta_salario(status_arquivo);")
@@ -291,15 +288,12 @@ Module Md__SQLite__Funcoes__Principais
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_clinica_status ON clinica_autorizada(status);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_exame_status ON exame_medico(status_exame);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_exame_status_aso ON exame_medico(status_aso);")
-                comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_unidade_endereco ON unidade_senac(id_endereco);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_unidade_codigo ON unidade_senac(codigo_unidade);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_unidade_status ON unidade_senac(status);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_doc_colaborador_colaborador ON documento_colaborador(id_colaborador);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_colaborador_id ON documento_colaborador(id_colaborador);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_doc_colaborador_status ON documento_colaborador(status_documento);")
                 comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_doc_modelo_tipo_modalidade ON documento_modelo(tipo_contrato, modalidade_contrato);")
-                comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_endereco_cep ON endereco(cep);")
-                comandos.AppendLine("CREATE INDEX IF NOT EXISTS idx_endereco_cidade ON endereco(cidade);")
 
                 Using cmd As New SQLiteCommand(comandos.ToString(), conn)
 
@@ -326,71 +320,16 @@ Module Md__SQLite__Funcoes__Principais
 
                 Dim comandos As New Text.StringBuilder()
 
-                comandos.AppendLine(String.Format("
-                    CREATE TRIGGER IF NOT EXISTS trg_inativar_endereco_clinica
-                    AFTER UPDATE OF status ON clinica_autorizada
-                    FOR EACH ROW
-                    WHEN NEW.status = {0}
-                    BEGIN
-                        UPDATE endereco
-                        SET status = {0}
-                        WHERE id_endereco = OLD.id_endereco;
-                    END;", StatusCadastro.INATIVO))
-
-                comandos.AppendLine(String.Format("
-                    CREATE TRIGGER IF NOT EXISTS trg_reativar_endereco_clinica
-                    AFTER UPDATE OF status ON clinica_autorizada
-                    FOR EACH ROW
-                    WHEN NEW.status = {0}
-                    BEGIN
-                        UPDATE endereco
-                        SET status = {0}
-                        WHERE id_endereco = OLD.id_endereco;
-                    END;", StatusCadastro.ATIVO))
-
-                comandos.AppendLine(String.Format("
-                    CREATE TRIGGER IF NOT EXISTS trg_inativar_endereco_agencia
-                    AFTER UPDATE OF status ON agencia_caixa
-                    FOR EACH ROW
-                    WHEN NEW.status = {0}
-                    BEGIN
-                        UPDATE endereco
-                        SET status = {0}
-                        WHERE id_endereco = OLD.id_endereco;
-                    END;", StatusCadastro.INATIVO))
-
-                comandos.AppendLine(String.Format("
-                    CREATE TRIGGER IF NOT EXISTS trg_reativar_endereco_agencia
-                    AFTER UPDATE OF status ON agencia_caixa
-                    FOR EACH ROW
-                    WHEN NEW.status = {0}
-                    BEGIN
-                        UPDATE endereco
-                        SET status = {0}
-                        WHERE id_endereco = OLD.id_endereco;
-                    END;", StatusCadastro.ATIVO))
-
-                comandos.AppendLine(String.Format("
-                    CREATE TRIGGER IF NOT EXISTS trg_inativar_endereco_unidade
-                    AFTER UPDATE OF status ON unidade_senac
-                    FOR EACH ROW
-                    WHEN NEW.status = {0}
-                    BEGIN
-                        UPDATE endereco
-                        SET status = {0}
-                        WHERE id_endereco = OLD.id_endereco;
-                    END;", StatusCadastro.INATIVO))
-
-                comandos.AppendLine(String.Format("
-                    CREATE TRIGGER IF NOT EXISTS trg_reativar_endereco_unidade
-                    AFTER UPDATE OF status ON unidade_senac
-                    FOR EACH ROW
-                    WHEN NEW.status = {0}
-                    BEGIN
-                        UPDATE endereco
-                        SET status = {0}
-                        WHERE id_endereco = OLD.id_endereco;
-                    END;", StatusCadastro.ATIVO))
+                'comandos.AppendLine(String.Format("
+                '    CREATE TRIGGER IF NOT EXISTS trg_inativar_endereco_clinica
+                '    AFTER UPDATE OF status ON clinica_autorizada
+                '    FOR EACH ROW
+                '    WHEN NEW.status = {0}
+                '    BEGIN
+                '        UPDATE endereco
+                '        SET status = {0}
+                '        WHERE id_endereco = OLD.id_endereco;
+                '    END;", StatusCadastro.INATIVO))
 
                 Using cmd As New SQLiteCommand(comandos.ToString(), conn)
 
@@ -419,7 +358,7 @@ Module Md__SQLite__Funcoes__Principais
                 Dim comandos As New Text.StringBuilder()
 
                 comandos.AppendLine("
-                    CREATE VIEW vw_colaboradores_ativos AS
+                    CREATE VIEW IF NOT EXISTS vw_colaboradores_ativos AS
                     SELECT
                         id_colaborador AS id,
                         nome_completo,
@@ -429,6 +368,19 @@ Module Md__SQLite__Funcoes__Principais
                         modalidade_contrato,
                         uid_usuario_logado
                     FROM colaborador
+                    WHERE status = 1;
+                ")
+
+                comandos.AppendLine("
+                    CREATE VIEW IF NOT EXISTS vw_unidades_senac_ativas AS
+                    SELECT 
+                        id_unidade_senac,
+                        codigo_unidade,
+                        nome_unidade,
+                        uid_usuario_logado,
+                        estado,
+                        cep
+                    FROM unidade_senac
                     WHERE status = 1;
                 ")
 

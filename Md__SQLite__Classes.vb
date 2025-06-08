@@ -3,8 +3,13 @@
     Public Class AgenciaCaixa
 
         Public Property IdAgenciaCaixa As Integer
-        Public Property IdEndereco As Integer
         Public Property CodigoAgencia As String
+        Public Property Logradouro As String
+        Public Property Numero As String
+        Public Property Bairro As String
+        Public Property Cidade As String
+        Public Property Estado As String
+        Public Property CEP As String
         Public Property UidUsuarioLogado As String
         Public Property Status As Integer
 
@@ -75,12 +80,17 @@
     Public Class ClinicaAutorizada
 
         Public Property IdClinicaAutorizada As Integer
-        Public Property IdEndereco As Integer
         Public Property NomeClinica As String
         Public Property EmailAtendimento As String
         Public Property NomeAtendente As String
         Public Property Telefone As String
         Public Property Fixo As String
+        Public Property Logradouro As String
+        Public Property Numero As String
+        Public Property Bairro As String
+        Public Property Cidade As String
+        Public Property Estado As String
+        Public Property CEP As String
         Public Property UidUsuarioLogado As String
         Public Property Status As Integer
 
@@ -113,20 +123,6 @@
 
     End Class
 
-    Public Class Endereco
-
-        Public Property IdEndereco As Integer
-        Public Property Logradouro As String
-        Public Property Numero As String
-        Public Property Bairro As String
-        Public Property Cidade As String
-        Public Property Estado As String
-        Public Property CEP As String
-        Public Property UidUsuarioLogado As String
-        Public Property Status As Integer
-
-    End Class
-
     Public Class ExameMedico
 
         Public Property IdExame As Integer
@@ -146,9 +142,14 @@
     Public Class UnidadeSenac
 
         Public Property IdUnidadeSenac As Integer
-        Public Property IdEndereco As Integer
         Public Property CodigoUnidade As String
         Public Property NomeUnidade As String
+        Public Property Logradouro As String
+        Public Property Numero As String
+        Public Property Bairro As String
+        Public Property Cidade As String
+        Public Property Estado As String
+        Public Property CEP As String
         Public Property UidUsuarioLogado As String
         Public Property Status As Integer
 

@@ -227,6 +227,22 @@ Module Md__Sistema__Funcoes__Auxiliares
 
     End Function
 
+    Public Function IniciarFormulario_Selecao_UnidadesSenac() As UnidadeSenac
+
+        Dim resultado As DialogResult = Frm__Selecao__UnidadeSenac.ShowDialog()
+
+        If resultado = DialogResult.OK AndAlso Frm__Selecao__UnidadeSenac.UnidadeSenacSelecionada IsNot Nothing Then
+
+            Return Frm__Selecao__UnidadeSenac.UnidadeSenacSelecionada
+
+        Else
+
+            Return Nothing
+
+        End If
+
+    End Function
+
 #End Region
 
 #Region "FUNÇÕES DE CRIAÇÃO"

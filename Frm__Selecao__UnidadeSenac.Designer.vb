@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Frm__Selecao__UnidadeSenac
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Frm__Selecao__UnidadeSenac
     'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
     'Pode ser modificado usando o Windows Form Designer.  
     'Não o modifique usando o editor de códigos.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -78,7 +78,7 @@ Partial Class Frm__Selecao__UnidadeSenac
         Me.TlStrpMnItm_Acoes_LimparFiltro.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Limpar
         Me.TlStrpMnItm_Acoes_LimparFiltro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_LimparFiltro.Name = "TlStrpMnItm_Acoes_LimparFiltro"
-        Me.TlStrpMnItm_Acoes_LimparFiltro.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_LimparFiltro.Size = New System.Drawing.Size(152, 28)
         Me.TlStrpMnItm_Acoes_LimparFiltro.Text = "Limpar Filtros"
         '
         'Pnl_BotoesDeAcao
@@ -195,6 +195,7 @@ Partial Class Frm__Selecao__UnidadeSenac
         Me.DtGrdVw_Lista_UnidadesSenac.BackgroundColor = System.Drawing.Color.White
         Me.DtGrdVw_Lista_UnidadesSenac.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DtGrdVw_Lista_UnidadesSenac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DtGrdVw_Lista_UnidadesSenac.ContextMenuStrip = Me.CntxtMnStrp_SubMenuPrincipal
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

@@ -210,6 +210,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         '
         'TxtBx_NomeUnidade
         '
+        Me.TxtBx_NomeUnidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_NomeUnidade.Location = New System.Drawing.Point(137, 26)
         Me.TxtBx_NomeUnidade.Name = "TxtBx_NomeUnidade"
         Me.TxtBx_NomeUnidade.Size = New System.Drawing.Size(495, 20)

@@ -124,6 +124,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm__Cadastro__ClinicasAutorizadas.Designer.vb">
+      <DependentUpon>Frm__Cadastro__ClinicasAutorizadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm__Cadastro__ClinicasAutorizadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Frm__Cadastro__Colaboradores.Designer.vb">
       <DependentUpon>Frm__Cadastro__Colaboradores.vb</DependentUpon>
     </Compile>
@@ -198,6 +204,9 @@
     <Compile Include="Clss__UIHelper.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm__Cadastro__ClinicasAutorizadas.resx">
+      <DependentUpon>Frm__Cadastro__ClinicasAutorizadas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm__Cadastro__Colaboradores.resx">
       <DependentUpon>Frm__Cadastro__Colaboradores.vb</DependentUpon>
     </EmbeddedResource>

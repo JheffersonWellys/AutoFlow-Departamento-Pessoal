@@ -320,16 +320,61 @@ Module Md__SQLite__Funcoes__Principais
 
                 Dim comandos As New Text.StringBuilder()
 
-                'comandos.AppendLine(String.Format("
-                '    CREATE TRIGGER IF NOT EXISTS trg_inativar_endereco_clinica
-                '    AFTER UPDATE OF status ON clinica_autorizada
-                '    FOR EACH ROW
-                '    WHEN NEW.status = {0}
-                '    BEGIN
-                '        UPDATE endereco
-                '        SET status = {0}
-                '        WHERE id_endereco = OLD.id_endereco;
-                '    END;", StatusCadastro.INATIVO))
+                comandos.AppendLine(String.Format("
+                    CREATE TRIGGER IF NOT EXISTS trg_atualizar_dependentes_colaborador
+                    AFTER UPDATE ON colaborador
+                    FOR EACH ROW
+                    WHEN NEW.status IN (0, 1)
+                    BEGIN
+                        UPDATE documento_colaborador SET status = NEW.status WHERE id_colaborador = NEW.id_colaborador;
+                        UPDATE exame_medico SET status = NEW.status WHERE id_colaborador = NEW.id_colaborador;
+                        UPDATE carta_de_abertura_de_conta_salario SET status = NEW.status WHERE id_colaborador = NEW.id_colaborador;
+                        UPDATE termo_ciencia_de_homologacao SET status = NEW.status WHERE id_colaborador = NEW.id_colaborador;
+                        UPDATE termo_fins_rescisorios SET status = NEW.status WHERE id_colaborador = NEW.id_colaborador;
+                    END;
+                "))
+
+                comandos.AppendLine(String.Format("
+                    CREATE TRIGGER IF NOT EXISTS trg_atualizar_dependentes_clinica
+                    AFTER UPDATE ON clinica_autorizada
+                    FOR EACH ROW
+                    WHEN NEW.status IN (0, 1)
+                    BEGIN
+                        UPDATE exame_medico SET status = NEW.status WHERE id_clinica_autorizada = NEW.id_clinica_autorizada;
+                    END;
+                "))
+
+                comandos.AppendLine(String.Format("
+                    CREATE TRIGGER IF NOT EXISTS trg_atualizar_dependentes_agencia_caixa
+                    AFTER UPDATE ON agencia_caixa
+                    FOR EACH ROW
+                    WHEN NEW.status IN (0, 1)
+                    BEGIN
+                        UPDATE carta_de_abertura_de_conta_salario SET status = NEW.status WHERE id_agencia_caixa = NEW.id_agencia_caixa;
+                    END;
+                "))
+
+                comandos.AppendLine(String.Format("
+                    CREATE TRIGGER IF NOT EXISTS trg_atualizar_dependentes_unidade_senac
+                    AFTER UPDATE ON unidade_senac
+                    FOR EACH ROW
+                    WHEN NEW.status IN (0, 1)
+                    BEGIN
+                        UPDATE carta_de_abertura_de_conta_salario SET status = NEW.status WHERE id_unidade_senac = NEW.id_unidade_senac;
+                        UPDATE termo_ciencia_de_homologacao SET status = NEW.status WHERE id_unidade_senac = NEW.id_unidade_senac;
+                        UPDATE termo_fins_rescisorios SET status = NEW.status WHERE id_unidade_senac = NEW.id_unidade_senac;
+                    END;
+                "))
+
+                comandos.AppendLine(String.Format("
+                    CREATE TRIGGER IF NOT EXISTS trg_atualizar_dependentes_termo_ciencia
+                    AFTER UPDATE ON termo_ciencia_de_homologacao
+                    FOR EACH ROW
+                    WHEN NEW.status IN (0, 1)
+                    BEGIN
+                        UPDATE termo_fins_rescisorios SET status = NEW.status WHERE id_termo_ciencia_de_homologacao = NEW.id_termo_ciencia_de_homologacao;
+                    END;
+                "))
 
                 Using cmd As New SQLiteCommand(comandos.ToString(), conn)
 

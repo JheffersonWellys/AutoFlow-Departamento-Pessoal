@@ -1,0 +1,3 @@
+﻿Public Class Frm__Cadastro__ClinicasAutorizadas
+
+End Class

@@ -161,6 +161,12 @@
     <Compile Include="Frm__Selecao__Colaborador.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Frm__Selecao__UnidadeSenac.Designer.vb">
+      <DependentUpon>Frm__Selecao__UnidadeSenac.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm__Selecao__UnidadeSenac.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Md__Sistema__EstruturasDeFiltros.vb" />
     <Compile Include="Md__SQLite__Classes.vb" />
     <Compile Include="Md__SQLite__Enums.vb" />
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm__Selecao__Colaborador.resx">
       <DependentUpon>Frm__Selecao__Colaborador.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm__Selecao__UnidadeSenac.resx">
+      <DependentUpon>Frm__Selecao__UnidadeSenac.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

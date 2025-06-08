@@ -6,8 +6,6 @@ Public Class Frm__Cadastro__UnidadesSenac
 #Region "VARIÁVEIS DO FORMULÁRIO"
 
     Public Property UnidadeSenacAtual As UnidadeSenac
-    Public Property EnderecoAtual As Endereco
-
     Dim ModoAtual As ModoAtualCadastro
     Dim NomeFormulario As String = NomeSistema & " | Cadastro de Unidades Senac"
 
@@ -162,32 +160,25 @@ Public Class Frm__Cadastro__UnidadesSenac
 
     Private Sub TlStrpMnItm_Acoes_Editar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Editar.Click
 
-        'UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
-
-        'If UnidadeSenacAtual IsNot Nothing Then
-        '    RecuperarDadosUnidadeSenac()
-        '    AtivarModoCadastro(1)
-        'End If
+        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
+        RecuperarDadosUnidadeSenac()
+        AtivarModoCadastro(1)
 
     End Sub
 
     Private Sub TlStrpMnItm_Acoes_Remover_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Remover.Click
 
-        'UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
-        'If UnidadeSenacAtual IsNot Nothing Then
-        '    RecuperarDadosUnidadeSenac()
-        '    AtivarModoCadastro(2)
-        'End If
+        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
+        RecuperarDadosUnidadeSenac()
+        AtivarModoCadastro(2)
 
     End Sub
 
     Private Sub TlStrpMnItm_Acoes_Visualizar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Visualizar.Click
 
-        'UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
-        'If UnidadeSenacAtual IsNot Nothing Then
-        '    RecuperarDadosUnidadeSenac()
-        '    AtivarModoCadastro(3)
-        'End If
+        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
+        RecuperarDadosUnidadeSenac()
+        AtivarModoCadastro(3)
 
     End Sub
 
@@ -227,7 +218,7 @@ Public Class Frm__Cadastro__UnidadesSenac
 
     Private Sub Bttn_PesquisarCEP_Click(sender As Object, e As EventArgs) Handles Bttn_PesquisarCEP.Click
 
-        Pesquisar__CEP
+        Pesquisar__CEP()
 
     End Sub
 
@@ -256,7 +247,6 @@ Public Class Frm__Cadastro__UnidadesSenac
         If UnidadeSenacAtual Is Nothing Then
 
             LimparCampos()
-
             Return
 
         End If
@@ -265,13 +255,6 @@ Public Class Frm__Cadastro__UnidadesSenac
 
             MskdTxtBx_CodigoUnidade.Text = .CodigoUnidade
             TxtBx_NomeUnidade.Text = .NomeUnidade
-
-            EnderecoAtual = Endereco__ObterPorId(.IdEndereco)
-
-        End With
-
-        With EnderecoAtual
-
             MskdTxtBx_CEP.Text = .CEP
             TxtBx_Logradouro.Text = .Logradouro
             TxtBx_Numero.Text = .Numero
@@ -293,22 +276,13 @@ Public Class Frm__Cadastro__UnidadesSenac
 
             .CodigoUnidade = MskdTxtBx_CodigoUnidade.Text.Trim
             .NomeUnidade = TxtBx_NomeUnidade.Text.Trim
-            .IdEndereco = If(EnderecoAtual IsNot Nothing, EnderecoAtual.IdEndereco, 0)
-
-        End With
-
-        If EnderecoAtual Is Nothing Then
-            EnderecoAtual = New Endereco
-        End If
-
-        With EnderecoAtual
-
-            .CEP = MskdTxtBx_CEP.Text.Trim
+            .CEP = MskdTxtBx_CEP.Text.Trim.Replace("-", "").Replace(".", "")
             .Logradouro = TxtBx_Logradouro.Text.Trim
             .Numero = TxtBx_Numero.Text.Trim
             .Bairro = TxtBx_Bairro.Text.Trim
             .Cidade = TxtBx_Cidade.Text.Trim
             .Estado = TxtBx_Estado.Text.Trim
+            .Status = StatusCadastro.ATIVO
 
         End With
 
@@ -345,15 +319,6 @@ Public Class Frm__Cadastro__UnidadesSenac
 
         SalvarDadosUnidadeSenac()
 
-        Dim resultadoEndereco = Endereco__Adicionar(EnderecoAtual)
-
-        If resultadoEndereco.Item1 = False Then
-
-            ExibirMensagem__Erro(resultadoEndereco.Item2)
-            Return
-
-        End If
-
         Dim resultadoUnidadeSenac = UnidadeSenac__Adicionar(UnidadeSenacAtual)
 
         If resultadoUnidadeSenac.Item1 Then
@@ -375,16 +340,16 @@ Public Class Frm__Cadastro__UnidadesSenac
 
         SalvarDadosUnidadeSenac()
 
-        Dim resultado = UnidadeSenac__Atualizar(UnidadeSenacAtual)
+        Dim resultadoUnidadeSenac = UnidadeSenac__Atualizar(UnidadeSenacAtual)
 
-        If resultado.Item1 Then
+        If resultadoUnidadeSenac.Item1 Then
 
-            ExibirMensagem__Sucesso(resultado.Item2)
+            ExibirMensagem__Sucesso(resultadoUnidadeSenac.Item2)
             DesativarModoCadastro()
 
         Else
 
-            ExibirMensagem__Erro(resultado.Item2)
+            ExibirMensagem__Erro(resultadoUnidadeSenac.Item2)
 
         End If
 

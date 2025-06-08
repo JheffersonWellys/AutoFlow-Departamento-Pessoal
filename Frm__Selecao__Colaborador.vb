@@ -89,6 +89,8 @@ Public Class Frm__Selecao__Colaborador
 
     Private Sub TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_SubMenuPrincipal_SelecionarColaborador.Click
 
+        Selecionar_ColaboradorMarcado()
+
     End Sub
 
     Private Sub TlStrpMnItm_SubMenuPrincipal_LimparFiltro_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Click

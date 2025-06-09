@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Frm__Selecao__ClinicaAutorizada
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Frm__Selecao__ClinicaAutorizada
     'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
     'Pode ser modificado usando o Windows Form Designer.  
     'Não o modifique usando o editor de códigos.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -29,6 +29,10 @@ Partial Class Frm__Selecao__ClinicaAutorizada
         Me.TbCntrl_Lista_ClinicasAutorizadas = New System.Windows.Forms.TabControl()
         Me.TbPg_Lista_ClinicasAutorizadas = New System.Windows.Forms.TabPage()
         Me.DtGrdVw_Lista_ClinicasAutorizadas = New System.Windows.Forms.DataGridView()
+        Me.CntxtMnStrp_SubMenuPrincipal = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TlStrpSprtr_SubMenuPrincipal = New System.Windows.Forms.ToolStripSeparator()
+        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro = New System.Windows.Forms.ToolStripMenuItem()
         Me.Pnl_Filtro = New System.Windows.Forms.Panel()
         Me.GrpBx_FiltrosDePesquisa = New System.Windows.Forms.GroupBox()
         Me.TxtBx_TermoDePesquisa = New System.Windows.Forms.TextBox()
@@ -39,22 +43,15 @@ Partial Class Frm__Selecao__ClinicaAutorizada
         Me.MnStrp_MenuPrincipal = New System.Windows.Forms.MenuStrip()
         Me.TlStrpMnItm_MenuDeAcoes = New System.Windows.Forms.ToolStripMenuItem()
         Me.TlStrpMnItm_Acoes_LimparFiltro = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CntxtMnStrp_SubMenuPrincipal = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TlStrpSprtr_SubMenuPrincipal = New System.Windows.Forms.ToolStripSeparator()
-        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Pnl_DadosLista_ClinicasAutorizadas.SuspendLayout()
         Me.TbCntrl_Lista_ClinicasAutorizadas.SuspendLayout()
         Me.TbPg_Lista_ClinicasAutorizadas.SuspendLayout()
         CType(Me.DtGrdVw_Lista_ClinicasAutorizadas, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.CntxtMnStrp_SubMenuPrincipal.SuspendLayout()
         Me.Pnl_Filtro.SuspendLayout()
         Me.GrpBx_FiltrosDePesquisa.SuspendLayout()
         Me.Pnl_BotoesDeAcao.SuspendLayout()
         Me.MnStrp_MenuPrincipal.SuspendLayout()
-        Me.CntxtMnStrp_SubMenuPrincipal.SuspendLayout()
         Me.SuspendLayout()
         '
         'Pnl_DadosLista_ClinicasAutorizadas
@@ -98,7 +95,6 @@ Partial Class Frm__Selecao__ClinicaAutorizada
         Me.DtGrdVw_Lista_ClinicasAutorizadas.BackgroundColor = System.Drawing.Color.White
         Me.DtGrdVw_Lista_ClinicasAutorizadas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DtGrdVw_Lista_ClinicasAutorizadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DtGrdVw_Lista_ClinicasAutorizadas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3})
         Me.DtGrdVw_Lista_ClinicasAutorizadas.ContextMenuStrip = Me.CntxtMnStrp_SubMenuPrincipal
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
@@ -118,6 +114,33 @@ Partial Class Frm__Selecao__ClinicaAutorizada
         Me.DtGrdVw_Lista_ClinicasAutorizadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DtGrdVw_Lista_ClinicasAutorizadas.Size = New System.Drawing.Size(911, 245)
         Me.DtGrdVw_Lista_ClinicasAutorizadas.TabIndex = 0
+        '
+        'CntxtMnStrp_SubMenuPrincipal
+        '
+        Me.CntxtMnStrp_SubMenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada, Me.TlStrpSprtr_SubMenuPrincipal, Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro})
+        Me.CntxtMnStrp_SubMenuPrincipal.Name = "CntxtMnStrp_SubMenuPrincipal"
+        Me.CntxtMnStrp_SubMenuPrincipal.Size = New System.Drawing.Size(234, 66)
+        '
+        'TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada
+        '
+        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Selecionar
+        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.Name = "TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada"
+        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.Size = New System.Drawing.Size(233, 28)
+        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.Text = "Selecionar Clínica Autorizada"
+        '
+        'TlStrpSprtr_SubMenuPrincipal
+        '
+        Me.TlStrpSprtr_SubMenuPrincipal.Name = "TlStrpSprtr_SubMenuPrincipal"
+        Me.TlStrpSprtr_SubMenuPrincipal.Size = New System.Drawing.Size(230, 6)
+        '
+        'TlStrpMnItm_SubMenuPrincipal_LimparFiltro
+        '
+        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Limpar
+        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Name = "TlStrpMnItm_SubMenuPrincipal_LimparFiltro"
+        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Size = New System.Drawing.Size(233, 28)
+        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Text = "Limpar Filtros"
         '
         'Pnl_Filtro
         '
@@ -216,56 +239,8 @@ Partial Class Frm__Selecao__ClinicaAutorizada
         Me.TlStrpMnItm_Acoes_LimparFiltro.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Limpar
         Me.TlStrpMnItm_Acoes_LimparFiltro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_LimparFiltro.Name = "TlStrpMnItm_Acoes_LimparFiltro"
-        Me.TlStrpMnItm_Acoes_LimparFiltro.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_LimparFiltro.Size = New System.Drawing.Size(152, 28)
         Me.TlStrpMnItm_Acoes_LimparFiltro.Text = "Limpar Filtros"
-        '
-        'CntxtMnStrp_SubMenuPrincipal
-        '
-        Me.CntxtMnStrp_SubMenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada, Me.TlStrpSprtr_SubMenuPrincipal, Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro})
-        Me.CntxtMnStrp_SubMenuPrincipal.Name = "CntxtMnStrp_SubMenuPrincipal"
-        Me.CntxtMnStrp_SubMenuPrincipal.Size = New System.Drawing.Size(234, 66)
-        '
-        'TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada
-        '
-        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Selecionar
-        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.Name = "TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada"
-        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.Size = New System.Drawing.Size(233, 28)
-        Me.TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada.Text = "Selecionar Clínica Autorizada"
-        '
-        'TlStrpSprtr_SubMenuPrincipal
-        '
-        Me.TlStrpSprtr_SubMenuPrincipal.Name = "TlStrpSprtr_SubMenuPrincipal"
-        Me.TlStrpSprtr_SubMenuPrincipal.Size = New System.Drawing.Size(230, 6)
-        '
-        'TlStrpMnItm_SubMenuPrincipal_LimparFiltro
-        '
-        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Limpar
-        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Name = "TlStrpMnItm_SubMenuPrincipal_LimparFiltro"
-        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Size = New System.Drawing.Size(233, 28)
-        Me.TlStrpMnItm_SubMenuPrincipal_LimparFiltro.Text = "Limpar Filtros"
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Nome Clinica"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 410
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Cidade"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 240
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Estado"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 235
         '
         'Frm__Selecao__ClinicaAutorizada
         '
@@ -283,18 +258,18 @@ Partial Class Frm__Selecao__ClinicaAutorizada
         Me.MinimizeBox = False
         Me.Name = "Frm__Selecao__ClinicaAutorizada"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AutoFlow | Selecionar Unidade Senac"
+        Me.Text = "AutoFlow | Selecionar Clinica Autorizada"
         Me.Pnl_DadosLista_ClinicasAutorizadas.ResumeLayout(False)
         Me.TbCntrl_Lista_ClinicasAutorizadas.ResumeLayout(False)
         Me.TbPg_Lista_ClinicasAutorizadas.ResumeLayout(False)
         CType(Me.DtGrdVw_Lista_ClinicasAutorizadas, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.CntxtMnStrp_SubMenuPrincipal.ResumeLayout(False)
         Me.Pnl_Filtro.ResumeLayout(False)
         Me.GrpBx_FiltrosDePesquisa.ResumeLayout(False)
         Me.GrpBx_FiltrosDePesquisa.PerformLayout()
         Me.Pnl_BotoesDeAcao.ResumeLayout(False)
         Me.MnStrp_MenuPrincipal.ResumeLayout(False)
         Me.MnStrp_MenuPrincipal.PerformLayout()
-        Me.CntxtMnStrp_SubMenuPrincipal.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -318,7 +293,4 @@ Partial Class Frm__Selecao__ClinicaAutorizada
     Friend WithEvents TlStrpMnItm_SubMenuPrincipal_SelecionarClinicaAutorizada As ToolStripMenuItem
     Friend WithEvents TlStrpSprtr_SubMenuPrincipal As ToolStripSeparator
     Friend WithEvents TlStrpMnItm_SubMenuPrincipal_LimparFiltro As ToolStripMenuItem
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
 End Class

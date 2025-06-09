@@ -161,7 +161,7 @@ Public Class Frm__Cadastro__UnidadesSenac
 
     Private Sub TlStrpMnItm_Acoes_Editar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Editar.Click
 
-        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
+        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadeSenac()
         RecuperarDadosUnidadeSenac()
         AtivarModoCadastro(1)
 
@@ -169,7 +169,7 @@ Public Class Frm__Cadastro__UnidadesSenac
 
     Private Sub TlStrpMnItm_Acoes_Remover_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Remover.Click
 
-        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
+        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadeSenac()
         RecuperarDadosUnidadeSenac()
         AtivarModoCadastro(2)
 
@@ -177,7 +177,7 @@ Public Class Frm__Cadastro__UnidadesSenac
 
     Private Sub TlStrpMnItm_Acoes_Visualizar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Visualizar.Click
 
-        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadesSenac()
+        UnidadeSenacAtual = IniciarFormulario_Selecao_UnidadeSenac()
         RecuperarDadosUnidadeSenac()
         AtivarModoCadastro(3)
 

@@ -207,7 +207,7 @@ Module Md__Sistema__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DE INICIALIZAÇÃO FORMULARIOS DE SELEÇÃO"
 
-    Public Function IniciarFormulario_Selecao_Colaboradores(Optional TipoContrato As TipoContrato = TipoContrato.TODOS, Optional ModalidadeContrato As ModalidadeContrato = ModalidadeContrato.TODOS) As Colaborador
+    Public Function IniciarFormulario_Selecao_Colaborador(Optional TipoContrato As TipoContrato = TipoContrato.TODOS, Optional ModalidadeContrato As ModalidadeContrato = ModalidadeContrato.TODOS) As Colaborador
 
         Dim Frm_Selecao__Colaborador As New Frm__Selecao__Colaborador With {
             .ModoSelecao = New FiltroContrato(TipoContrato, ModalidadeContrato)
@@ -227,13 +227,29 @@ Module Md__Sistema__Funcoes__Auxiliares
 
     End Function
 
-    Public Function IniciarFormulario_Selecao_UnidadesSenac() As UnidadeSenac
+    Public Function IniciarFormulario_Selecao_UnidadeSenac() As UnidadeSenac
 
         Dim resultado As DialogResult = Frm__Selecao__UnidadeSenac.ShowDialog()
 
         If resultado = DialogResult.OK AndAlso Frm__Selecao__UnidadeSenac.UnidadeSenacSelecionada IsNot Nothing Then
 
             Return Frm__Selecao__UnidadeSenac.UnidadeSenacSelecionada
+
+        Else
+
+            Return Nothing
+
+        End If
+
+    End Function
+
+    Public Function IniciarFormulario_Selecao_ClinicaAutorizada() As ClinicaAutorizada
+
+        Dim resultado As DialogResult = Frm__Selecao__ClinicaAutorizada.ShowDialog()
+
+        If resultado = DialogResult.OK AndAlso Frm__Selecao__ClinicaAutorizada.ClinicaAutorizadaSelecionada IsNot Nothing Then
+
+            Return Frm__Selecao__ClinicaAutorizada.ClinicaAutorizadaSelecionada
 
         Else
 

@@ -429,6 +429,18 @@ Module Md__SQLite__Funcoes__Principais
                     WHERE status = 1;
                 ")
 
+                comandos.AppendLine("
+                    CREATE VIEW IF NOT EXISTS vw_clinicas_autorizadas_ativas AS
+                    SELECT 
+                        id_clinica_autorizada,
+                        nome_clinica,
+                        cidade,
+                        estado,
+                        uid_usuario_logado
+                    FROM clinica_autorizada
+                    WHERE status = 1;
+                ")
+
                 Using cmd As New SQLiteCommand(comandos.ToString(), conn)
 
                     cmd.ExecuteNonQuery()

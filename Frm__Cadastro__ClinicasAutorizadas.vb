@@ -167,25 +167,25 @@ Public Class Frm__Cadastro__ClinicasAutorizadas
 
     Private Sub TlStrpMnItm_Acoes_Editar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Editar.Click
 
-        'ClinicaAutorizadaAtual = IniciarFormulario_Selecao_ClinicasAutorizadas()
-        'RecuperarDadosClinicaAutorizada()
-        'AtivarModoCadastro(1)
+        ClinicaAutorizadaAtual = IniciarFormulario_Selecao_ClinicaAutorizada()
+        RecuperarDadosClinicaAutorizada()
+        AtivarModoCadastro(1)
 
     End Sub
 
     Private Sub TlStrpMnItm_Acoes_Remover_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Remover.Click
 
-        'ClinicaAutorizadaAtual = IniciarFormulario_Selecao_ClinicasAutorizadas()
-        'RecuperarDadosClinicaAutorizada()
-        'AtivarModoCadastro(2)
+        ClinicaAutorizadaAtual = IniciarFormulario_Selecao_ClinicaAutorizada()
+        RecuperarDadosClinicaAutorizada()
+        AtivarModoCadastro(2)
 
     End Sub
 
     Private Sub TlStrpMnItm_Acoes_Visualizar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Visualizar.Click
 
-        'ClinicaAutorizadaAtual = IniciarFormulario_Selecao_ClinicasAutorizadas()
-        'RecuperarDadosClinicaAutorizada()
-        'AtivarModoCadastro(3)
+        ClinicaAutorizadaAtual = IniciarFormulario_Selecao_ClinicaAutorizada()
+        RecuperarDadosClinicaAutorizada()
+        AtivarModoCadastro(3)
 
     End Sub
 

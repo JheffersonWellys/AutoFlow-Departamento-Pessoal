@@ -1320,6 +1320,36 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DA TABELA | CLÍNICA AUTORIZADA"
 
+    Public Function Listar_ClinicasAutorizadasAtivas() As DataTable
+
+        Dim tabela As New DataTable()
+
+        Try
+            Using conexao As New SQLiteConnection(CadeiaDeConexao)
+                conexao.Open()
+
+                Dim sql As New Text.StringBuilder("
+                    SELECT * FROM vw_clinicas_autorizadas_ativas 
+                    WHERE uid_usuario_logado = @uid
+                ")
+
+                Using comando As New SQLiteCommand(sql.ToString(), conexao)
+                    comando.Parameters.AddWithValue("@uid", LerTokenDescriptografado())
+
+                    Using adaptador As New SQLiteDataAdapter(comando)
+                        adaptador.Fill(tabela)
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Erro ao listar clínicas autorizadas ativas:" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        Return tabela
+
+    End Function
+
 #End Region
 
 #Region "FUNÇÕES DA TABELA | COLABORADOR"
@@ -1445,6 +1475,50 @@ Module Md__SQLite__Funcoes__Auxiliares
 #End Region
 
 #Region "FUNÇÕES DA TABELA | CLÍNICA AUTORIZADA"
+
+    Public Function ClinicaAutorizada__ObterPorId(id As Integer) As ClinicaAutorizada
+
+        Dim clinica As ClinicaAutorizada = Nothing
+
+        Dim sql As String = "SELECT * FROM clinica_autorizada WHERE id_clinica_autorizada = @id LIMIT 1;"
+
+        Using conexao As New SQLiteConnection(CadeiaDeConexao)
+            conexao.Open()
+
+            Using cmd As New SQLiteCommand(sql, conexao)
+
+                cmd.Parameters.AddWithValue("@id", id)
+
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+
+                    If reader.Read() Then
+                        clinica = New ClinicaAutorizada() With {
+                        .IdClinicaAutorizada = Convert.ToInt32(reader("id_clinica_autorizada")),
+                        .NomeClinica = reader("nome_clinica").ToString(),
+                        .EmailAtendimento = reader("email_atendimento").ToString(),
+                        .NomeAtendente = reader("nome_atendente").ToString(),
+                        .Telefone = reader("telefone").ToString(),
+                        .Fixo = If(IsDBNull(reader("fixo")), "", reader("fixo").ToString()),
+                        .Logradouro = reader("logradouro").ToString(),
+                        .Numero = reader("numero").ToString(),
+                        .Bairro = reader("bairro").ToString(),
+                        .Cidade = reader("cidade").ToString(),
+                        .Estado = reader("estado").ToString(),
+                        .CEP = reader("cep").ToString(),
+                        .UidUsuarioLogado = reader("uid_usuario_logado").ToString(),
+                        .Status = Convert.ToInt32(reader("status"))
+                    }
+                    End If
+
+                End Using
+
+            End Using
+
+        End Using
+
+        Return clinica
+
+    End Function
 
     Public Function ClinicasAutorizadas__ObterQuantidadeDeAtivas() As Integer
 
@@ -1603,7 +1677,6 @@ Module Md__SQLite__Funcoes__Auxiliares
         Return unidade
 
     End Function
-
 
     Public Function UnidadeSenac__ObterQuantidadeDeAtivas() As Integer
 

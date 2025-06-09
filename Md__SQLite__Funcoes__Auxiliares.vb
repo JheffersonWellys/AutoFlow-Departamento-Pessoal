@@ -1446,6 +1446,37 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DA TABELA | CLÍNICA AUTORIZADA"
 
+    Public Function ClinicasAutorizadas__ObterQuantidadeDeAtivas() As Integer
+
+        Try
+            Dim dt As New DataTable()
+
+            Dim sql As String = "SELECT * FROM clinica_autorizada WHERE status = 1;"
+
+            Using conexao As New SQLiteConnection(CadeiaDeConexao)
+                conexao.Open()
+
+                Using cmd As New SQLiteCommand(sql, conexao)
+                    Using da As New SQLiteDataAdapter(cmd)
+                        da.Fill(dt)
+                    End Using
+                End Using
+            End Using
+
+            If dt IsNot Nothing Then
+                Return dt.Rows.Count
+            Else
+                Return 0
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Erro ao verificar clínicas autorizadas ativas: " & ex.Message,
+                        "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return 0
+        End Try
+
+    End Function
+
 #End Region
 
 #Region "FUNÇÕES DA TABELA | COLABORADOR"

@@ -96,6 +96,8 @@
 
     Private Sub TlStrpMnItm_Cadastros_Entidades_ClinicasAutorizadas_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Cadastros_Entidades_ClinicasAutorizadas.Click
 
+        IniciarFormulario_Cadastro_ClinicasAutorizadas()
+
     End Sub
 
     Private Sub TlStrpMnItm_Cadastros_Entidades_AgenciasCaixa_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Cadastros_Entidades_AgenciasCaixa.Click
@@ -137,6 +139,13 @@
 
         Dim Frm_Cadastro_UnidadesSenac As New Frm__Cadastro__UnidadesSenac
         Frm_Cadastro_UnidadesSenac.ShowDialog()
+
+    End Sub
+
+    Private Sub IniciarFormulario_Cadastro_ClinicasAutorizadas()
+
+        Dim Frm_Cadastro_ClinicasAutorizadas As New Frm__Cadastro__ClinicasAutorizadas
+        Frm_Cadastro_ClinicasAutorizadas.ShowDialog()
 
     End Sub
 

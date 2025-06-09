@@ -80,6 +80,7 @@ Public Class Frm__Cadastro__UnidadesSenac
         MskdTxtBx_CEP.Enabled = Status
         TxtBx_Numero.Enabled = Status
         Bttn_PesquisarCEP.Enabled = Status
+        Bttn_PesquisarCEP.Visible = Status
 
     End Sub
 
@@ -400,6 +401,5 @@ Public Class Frm__Cadastro__UnidadesSenac
     End Sub
 
 #End Region
-
 
 End Class

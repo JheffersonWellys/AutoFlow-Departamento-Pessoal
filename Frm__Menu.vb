@@ -102,6 +102,8 @@
 
     Private Sub TlStrpMnItm_Cadastros_Entidades_AgenciasCaixa_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Cadastros_Entidades_AgenciasCaixa.Click
 
+        IniciarFormulario_Cadastro_AgenciasCaixa()
+
     End Sub
 
     Private Sub TlStrpMnItm_Cadastros_Documentos_Admissionais_TermoEFormularios_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Cadastros_Documentos_Admissionais_TermoEFormularios.Click
@@ -146,6 +148,13 @@
 
         Dim Frm_Cadastro_ClinicasAutorizadas As New Frm__Cadastro__ClinicasAutorizadas
         Frm_Cadastro_ClinicasAutorizadas.ShowDialog()
+
+    End Sub
+
+    Private Sub IniciarFormulario_Cadastro_AgenciasCaixa()
+
+        Dim Frm_Cadastro_AgenciasCaixa As New Frm__Cadastro__AgenciasCaixa
+        Frm_Cadastro_AgenciasCaixa.ShowDialog()
 
     End Sub
 

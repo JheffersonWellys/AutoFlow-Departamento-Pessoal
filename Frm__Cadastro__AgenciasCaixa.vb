@@ -1,0 +1,3 @@
+﻿Public Class Frm__Cadastro__AgenciasCaixa
+
+End Class

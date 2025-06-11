@@ -37,6 +37,10 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.Pnl_Dados = New System.Windows.Forms.Panel()
         Me.TbCntrl_Dados = New System.Windows.Forms.TabControl()
         Me.TbPg_InformacoesCorporativas = New System.Windows.Forms.TabPage()
+        Me.Lbl_NomeUnidade = New System.Windows.Forms.Label()
+        Me.TxtBx_NomeUnidade = New System.Windows.Forms.TextBox()
+        Me.MskdTxtBx_CodigoUnidade = New System.Windows.Forms.MaskedTextBox()
+        Me.Lbl_CodigoUnidade = New System.Windows.Forms.Label()
         Me.TbPg_InformacoesDeLocalizacao = New System.Windows.Forms.TabPage()
         Me.TxtBx_Estado = New System.Windows.Forms.TextBox()
         Me.Lbl_Estado = New System.Windows.Forms.Label()
@@ -57,10 +61,6 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.Bttn_Atualizar = New System.Windows.Forms.Button()
         Me.Bttn_Adicionar = New System.Windows.Forms.Button()
         Me.Bttn_Cancelar = New System.Windows.Forms.Button()
-        Me.Lbl_NomeUnidade = New System.Windows.Forms.Label()
-        Me.TxtBx_NomeUnidade = New System.Windows.Forms.TextBox()
-        Me.MskdTxtBx_CodigoUnidade = New System.Windows.Forms.MaskedTextBox()
-        Me.Lbl_CodigoUnidade = New System.Windows.Forms.Label()
         Me.MnStrp_MenuPrincipal.SuspendLayout()
         Me.Pnl_Informacoes.SuspendLayout()
         Me.SttsStrp_InformacoesSobreATabela.SuspendLayout()
@@ -199,6 +199,42 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.TbPg_InformacoesCorporativas.TabIndex = 3
         Me.TbPg_InformacoesCorporativas.Text = "Informações Corporativas"
         '
+        'Lbl_NomeUnidade
+        '
+        Me.Lbl_NomeUnidade.AutoSize = True
+        Me.Lbl_NomeUnidade.Location = New System.Drawing.Point(134, 10)
+        Me.Lbl_NomeUnidade.Name = "Lbl_NomeUnidade"
+        Me.Lbl_NomeUnidade.Size = New System.Drawing.Size(78, 13)
+        Me.Lbl_NomeUnidade.TabIndex = 12
+        Me.Lbl_NomeUnidade.Text = "Nome Unidade"
+        '
+        'TxtBx_NomeUnidade
+        '
+        Me.TxtBx_NomeUnidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtBx_NomeUnidade.Location = New System.Drawing.Point(137, 26)
+        Me.TxtBx_NomeUnidade.Name = "TxtBx_NomeUnidade"
+        Me.TxtBx_NomeUnidade.Size = New System.Drawing.Size(497, 20)
+        Me.TxtBx_NomeUnidade.TabIndex = 13
+        Me.TxtBx_NomeUnidade.Tag = "Nome Unidade"
+        '
+        'MskdTxtBx_CodigoUnidade
+        '
+        Me.MskdTxtBx_CodigoUnidade.Location = New System.Drawing.Point(11, 26)
+        Me.MskdTxtBx_CodigoUnidade.Mask = "0,000"
+        Me.MskdTxtBx_CodigoUnidade.Name = "MskdTxtBx_CodigoUnidade"
+        Me.MskdTxtBx_CodigoUnidade.Size = New System.Drawing.Size(120, 20)
+        Me.MskdTxtBx_CodigoUnidade.TabIndex = 11
+        Me.MskdTxtBx_CodigoUnidade.Tag = "Código Unidade"
+        '
+        'Lbl_CodigoUnidade
+        '
+        Me.Lbl_CodigoUnidade.AutoSize = True
+        Me.Lbl_CodigoUnidade.Location = New System.Drawing.Point(8, 10)
+        Me.Lbl_CodigoUnidade.Name = "Lbl_CodigoUnidade"
+        Me.Lbl_CodigoUnidade.Size = New System.Drawing.Size(83, 13)
+        Me.Lbl_CodigoUnidade.TabIndex = 10
+        Me.Lbl_CodigoUnidade.Text = "Código Unidade"
+        '
         'TbPg_InformacoesDeLocalizacao
         '
         Me.TbPg_InformacoesDeLocalizacao.BackColor = System.Drawing.Color.White
@@ -224,6 +260,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         '
         'TxtBx_Estado
         '
+        Me.TxtBx_Estado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Estado.Enabled = False
         Me.TxtBx_Estado.Location = New System.Drawing.Point(389, 104)
         Me.TxtBx_Estado.Name = "TxtBx_Estado"
@@ -241,6 +278,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         '
         'TxtBx_Cidade
         '
+        Me.TxtBx_Cidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Cidade.Enabled = False
         Me.TxtBx_Cidade.Location = New System.Drawing.Point(11, 104)
         Me.TxtBx_Cidade.Name = "TxtBx_Cidade"
@@ -258,6 +296,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         '
         'TxtBx_Numero
         '
+        Me.TxtBx_Numero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Numero.Location = New System.Drawing.Point(263, 65)
         Me.TxtBx_Numero.Name = "TxtBx_Numero"
         Me.TxtBx_Numero.Size = New System.Drawing.Size(120, 20)
@@ -274,6 +313,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         '
         'TxtBx_Bairro
         '
+        Me.TxtBx_Bairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Bairro.Enabled = False
         Me.TxtBx_Bairro.Location = New System.Drawing.Point(389, 65)
         Me.TxtBx_Bairro.Name = "TxtBx_Bairro"
@@ -291,6 +331,7 @@ Partial Class Frm__Cadastro__UnidadesSenac
         '
         'TxtBx_Logradouro
         '
+        Me.TxtBx_Logradouro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Logradouro.Enabled = False
         Me.TxtBx_Logradouro.Location = New System.Drawing.Point(11, 65)
         Me.TxtBx_Logradouro.Name = "TxtBx_Logradouro"
@@ -397,42 +438,6 @@ Partial Class Frm__Cadastro__UnidadesSenac
         Me.Bttn_Cancelar.TabIndex = 4
         Me.Bttn_Cancelar.Text = "Cancelar"
         Me.Bttn_Cancelar.UseVisualStyleBackColor = True
-        '
-        'Lbl_NomeUnidade
-        '
-        Me.Lbl_NomeUnidade.AutoSize = True
-        Me.Lbl_NomeUnidade.Location = New System.Drawing.Point(134, 10)
-        Me.Lbl_NomeUnidade.Name = "Lbl_NomeUnidade"
-        Me.Lbl_NomeUnidade.Size = New System.Drawing.Size(78, 13)
-        Me.Lbl_NomeUnidade.TabIndex = 12
-        Me.Lbl_NomeUnidade.Text = "Nome Unidade"
-        '
-        'TxtBx_NomeUnidade
-        '
-        Me.TxtBx_NomeUnidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtBx_NomeUnidade.Location = New System.Drawing.Point(137, 26)
-        Me.TxtBx_NomeUnidade.Name = "TxtBx_NomeUnidade"
-        Me.TxtBx_NomeUnidade.Size = New System.Drawing.Size(497, 20)
-        Me.TxtBx_NomeUnidade.TabIndex = 13
-        Me.TxtBx_NomeUnidade.Tag = "Nome Unidade"
-        '
-        'MskdTxtBx_CodigoUnidade
-        '
-        Me.MskdTxtBx_CodigoUnidade.Location = New System.Drawing.Point(11, 26)
-        Me.MskdTxtBx_CodigoUnidade.Mask = "0,000"
-        Me.MskdTxtBx_CodigoUnidade.Name = "MskdTxtBx_CodigoUnidade"
-        Me.MskdTxtBx_CodigoUnidade.Size = New System.Drawing.Size(120, 20)
-        Me.MskdTxtBx_CodigoUnidade.TabIndex = 11
-        Me.MskdTxtBx_CodigoUnidade.Tag = "Código Unidade"
-        '
-        'Lbl_CodigoUnidade
-        '
-        Me.Lbl_CodigoUnidade.AutoSize = True
-        Me.Lbl_CodigoUnidade.Location = New System.Drawing.Point(8, 10)
-        Me.Lbl_CodigoUnidade.Name = "Lbl_CodigoUnidade"
-        Me.Lbl_CodigoUnidade.Size = New System.Drawing.Size(83, 13)
-        Me.Lbl_CodigoUnidade.TabIndex = 10
-        Me.Lbl_CodigoUnidade.Text = "Código Unidade"
         '
         'Frm__Cadastro__UnidadesSenac
         '

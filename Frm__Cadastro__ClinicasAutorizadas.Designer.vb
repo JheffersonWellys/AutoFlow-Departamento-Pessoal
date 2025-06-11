@@ -249,6 +249,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         '
         'TxtBx_EmailAtendimento
         '
+        Me.TxtBx_EmailAtendimento.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         Me.TxtBx_EmailAtendimento.Location = New System.Drawing.Point(13, 65)
         Me.TxtBx_EmailAtendimento.Name = "TxtBx_EmailAtendimento"
         Me.TxtBx_EmailAtendimento.Size = New System.Drawing.Size(370, 20)
@@ -266,6 +267,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         '
         'TxtBx_NomeAtendente
         '
+        Me.TxtBx_NomeAtendente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_NomeAtendente.Location = New System.Drawing.Point(389, 26)
         Me.TxtBx_NomeAtendente.Name = "TxtBx_NomeAtendente"
         Me.TxtBx_NomeAtendente.Size = New System.Drawing.Size(246, 20)
@@ -283,6 +285,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         '
         'TxtBx_NomeClinica
         '
+        Me.TxtBx_NomeClinica.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_NomeClinica.Location = New System.Drawing.Point(11, 26)
         Me.TxtBx_NomeClinica.Name = "TxtBx_NomeClinica"
         Me.TxtBx_NomeClinica.Size = New System.Drawing.Size(372, 20)
@@ -323,6 +326,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         '
         'TxtBx_Estado
         '
+        Me.TxtBx_Estado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Estado.Enabled = False
         Me.TxtBx_Estado.Location = New System.Drawing.Point(389, 104)
         Me.TxtBx_Estado.Name = "TxtBx_Estado"
@@ -340,6 +344,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         '
         'TxtBx_Cidade
         '
+        Me.TxtBx_Cidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Cidade.Enabled = False
         Me.TxtBx_Cidade.Location = New System.Drawing.Point(11, 104)
         Me.TxtBx_Cidade.Name = "TxtBx_Cidade"
@@ -357,6 +362,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         '
         'TxtBx_Numero
         '
+        Me.TxtBx_Numero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Numero.Location = New System.Drawing.Point(263, 65)
         Me.TxtBx_Numero.Name = "TxtBx_Numero"
         Me.TxtBx_Numero.Size = New System.Drawing.Size(120, 20)
@@ -374,6 +380,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         '
         'TxtBx_Bairro
         '
+        Me.TxtBx_Bairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Bairro.Enabled = False
         Me.TxtBx_Bairro.Location = New System.Drawing.Point(389, 65)
         Me.TxtBx_Bairro.Name = "TxtBx_Bairro"
@@ -391,6 +398,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         '
         'TxtBx_Logradouro
         '
+        Me.TxtBx_Logradouro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtBx_Logradouro.Enabled = False
         Me.TxtBx_Logradouro.Location = New System.Drawing.Point(11, 65)
         Me.TxtBx_Logradouro.Name = "TxtBx_Logradouro"

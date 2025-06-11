@@ -185,7 +185,7 @@ Public Class Frm__Cadastro__Colaboradores
 
     Private Sub TlStrpMnItm_Acoes_Editar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Editar.Click
 
-        ColaboradorAtual = IniciarFormulario_Selecao_Colaboradores()
+        ColaboradorAtual = IniciarFormulario_Selecao_Colaborador()
 
         If ColaboradorAtual IsNot Nothing Then
             RecuperarDadosColaborador()
@@ -196,7 +196,7 @@ Public Class Frm__Cadastro__Colaboradores
 
     Private Sub TlStrpMnItm_Acoes_Remover_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Remover.Click
 
-        ColaboradorAtual = IniciarFormulario_Selecao_Colaboradores()
+        ColaboradorAtual = IniciarFormulario_Selecao_Colaborador()
         If ColaboradorAtual IsNot Nothing Then
             RecuperarDadosColaborador()
             AtivarModoCadastro(2)
@@ -206,7 +206,7 @@ Public Class Frm__Cadastro__Colaboradores
 
     Private Sub TlStrpMnItm_Acoes_Visualizar_Click(sender As Object, e As EventArgs) Handles TlStrpMnItm_Acoes_Visualizar.Click
 
-        ColaboradorAtual = IniciarFormulario_Selecao_Colaboradores()
+        ColaboradorAtual = IniciarFormulario_Selecao_Colaborador()
         If ColaboradorAtual IsNot Nothing Then
             RecuperarDadosColaborador()
             AtivarModoCadastro(3)

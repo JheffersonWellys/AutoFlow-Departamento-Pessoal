@@ -26,6 +26,7 @@ Partial Class Frm__Cadastro__AgenciasCaixa
         Me.Pnl_Dados = New System.Windows.Forms.Panel()
         Me.TbCntrl_Dados = New System.Windows.Forms.TabControl()
         Me.TbPg_InformacoesCorporativas = New System.Windows.Forms.TabPage()
+        Me.MskdTxtBx_CodigoAgencia = New System.Windows.Forms.MaskedTextBox()
         Me.Lbl_CodigoAgencia = New System.Windows.Forms.Label()
         Me.TbPg_InformacoesDeLocalizacao = New System.Windows.Forms.TabPage()
         Me.TxtBx_Estado = New System.Windows.Forms.TextBox()
@@ -58,7 +59,6 @@ Partial Class Frm__Cadastro__AgenciasCaixa
         Me.TlStrpMnItm_Acoes_Remover = New System.Windows.Forms.ToolStripMenuItem()
         Me.TlStrpSprtr_Acoes_1 = New System.Windows.Forms.ToolStripSeparator()
         Me.TlStrpMnItm_Acoes_Visualizar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MskdTxtBx_CodigoAgencia = New System.Windows.Forms.MaskedTextBox()
         Me.Pnl_Dados.SuspendLayout()
         Me.TbCntrl_Dados.SuspendLayout()
         Me.TbPg_InformacoesCorporativas.SuspendLayout()
@@ -104,6 +104,15 @@ Partial Class Frm__Cadastro__AgenciasCaixa
         Me.TbPg_InformacoesCorporativas.Size = New System.Drawing.Size(648, 138)
         Me.TbPg_InformacoesCorporativas.TabIndex = 3
         Me.TbPg_InformacoesCorporativas.Text = "Informações Corporativas"
+        '
+        'MskdTxtBx_CodigoAgencia
+        '
+        Me.MskdTxtBx_CodigoAgencia.Location = New System.Drawing.Point(11, 26)
+        Me.MskdTxtBx_CodigoAgencia.Mask = "0000"
+        Me.MskdTxtBx_CodigoAgencia.Name = "MskdTxtBx_CodigoAgencia"
+        Me.MskdTxtBx_CodigoAgencia.Size = New System.Drawing.Size(120, 20)
+        Me.MskdTxtBx_CodigoAgencia.TabIndex = 2
+        Me.MskdTxtBx_CodigoAgencia.Tag = "Código da Agência"
         '
         'Lbl_CodigoAgencia
         '
@@ -240,7 +249,7 @@ Partial Class Frm__Cadastro__AgenciasCaixa
         'MskdTxtBx_CEP
         '
         Me.MskdTxtBx_CEP.Location = New System.Drawing.Point(11, 26)
-        Me.MskdTxtBx_CEP.Mask = "00000,000"
+        Me.MskdTxtBx_CEP.Mask = "00000-000"
         Me.MskdTxtBx_CEP.Name = "MskdTxtBx_CEP"
         Me.MskdTxtBx_CEP.Size = New System.Drawing.Size(120, 20)
         Me.MskdTxtBx_CEP.TabIndex = 1
@@ -377,7 +386,7 @@ Partial Class Frm__Cadastro__AgenciasCaixa
         Me.TlStrpMnItm_Acoes_Adicionar.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Adicionar
         Me.TlStrpMnItm_Acoes_Adicionar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_Adicionar.Name = "TlStrpMnItm_Acoes_Adicionar"
-        Me.TlStrpMnItm_Acoes_Adicionar.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_Adicionar.Size = New System.Drawing.Size(131, 28)
         Me.TlStrpMnItm_Acoes_Adicionar.Text = "Adicionar"
         '
         'TlStrpMnItm_Acoes_Editar
@@ -385,7 +394,7 @@ Partial Class Frm__Cadastro__AgenciasCaixa
         Me.TlStrpMnItm_Acoes_Editar.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Editar
         Me.TlStrpMnItm_Acoes_Editar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_Editar.Name = "TlStrpMnItm_Acoes_Editar"
-        Me.TlStrpMnItm_Acoes_Editar.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_Editar.Size = New System.Drawing.Size(131, 28)
         Me.TlStrpMnItm_Acoes_Editar.Text = "Editar"
         '
         'TlStrpMnItm_Acoes_Remover
@@ -393,30 +402,21 @@ Partial Class Frm__Cadastro__AgenciasCaixa
         Me.TlStrpMnItm_Acoes_Remover.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Remover
         Me.TlStrpMnItm_Acoes_Remover.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_Remover.Name = "TlStrpMnItm_Acoes_Remover"
-        Me.TlStrpMnItm_Acoes_Remover.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_Remover.Size = New System.Drawing.Size(131, 28)
         Me.TlStrpMnItm_Acoes_Remover.Text = "Remover"
         '
         'TlStrpSprtr_Acoes_1
         '
         Me.TlStrpSprtr_Acoes_1.Name = "TlStrpSprtr_Acoes_1"
-        Me.TlStrpSprtr_Acoes_1.Size = New System.Drawing.Size(183, 6)
+        Me.TlStrpSprtr_Acoes_1.Size = New System.Drawing.Size(128, 6)
         '
         'TlStrpMnItm_Acoes_Visualizar
         '
         Me.TlStrpMnItm_Acoes_Visualizar.Image = Global.AutoFlow___Departamento_Pessoal__DP_.My.Resources.Resources.icn_Visualizar
         Me.TlStrpMnItm_Acoes_Visualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TlStrpMnItm_Acoes_Visualizar.Name = "TlStrpMnItm_Acoes_Visualizar"
-        Me.TlStrpMnItm_Acoes_Visualizar.Size = New System.Drawing.Size(186, 28)
+        Me.TlStrpMnItm_Acoes_Visualizar.Size = New System.Drawing.Size(131, 28)
         Me.TlStrpMnItm_Acoes_Visualizar.Text = "Visualizar"
-        '
-        'MskdTxtBx_CodigoAgencia
-        '
-        Me.MskdTxtBx_CodigoAgencia.Location = New System.Drawing.Point(11, 26)
-        Me.MskdTxtBx_CodigoAgencia.Mask = "0000"
-        Me.MskdTxtBx_CodigoAgencia.Name = "MskdTxtBx_CodigoAgencia"
-        Me.MskdTxtBx_CodigoAgencia.Size = New System.Drawing.Size(120, 20)
-        Me.MskdTxtBx_CodigoAgencia.TabIndex = 2
-        Me.MskdTxtBx_CodigoAgencia.Tag = "Código da Agência"
         '
         'Frm__Cadastro__AgenciasCaixa
         '

@@ -427,7 +427,7 @@ Partial Class Frm__Cadastro__ClinicasAutorizadas
         'MskdTxtBx_CEP
         '
         Me.MskdTxtBx_CEP.Location = New System.Drawing.Point(11, 26)
-        Me.MskdTxtBx_CEP.Mask = "00000,000"
+        Me.MskdTxtBx_CEP.Mask = "00000-000"
         Me.MskdTxtBx_CEP.Name = "MskdTxtBx_CEP"
         Me.MskdTxtBx_CEP.Size = New System.Drawing.Size(120, 20)
         Me.MskdTxtBx_CEP.TabIndex = 1

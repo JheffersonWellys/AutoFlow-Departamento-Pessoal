@@ -1304,34 +1304,33 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DA TABELA | AGÊNCIA CAIXA"
 
-    Public Function AgenciasCaixa__ObterQuantidadeDeAtivas() As Integer
+    Public Function Listar_AgenciasCaixaAtivas() As DataTable
+
+        Dim tabela As New DataTable()
 
         Try
-            Dim dt As New DataTable()
-
-            Dim sql As String = "SELECT * FROM agencia_caixa WHERE status = 1;"
-
             Using conexao As New SQLiteConnection(CadeiaDeConexao)
                 conexao.Open()
 
-                Using cmd As New SQLiteCommand(sql, conexao)
-                    Using da As New SQLiteDataAdapter(cmd)
-                        da.Fill(dt)
+                Dim sql As New Text.StringBuilder("
+                    SELECT * FROM vw_agencias_caixa_ativas 
+                    WHERE uid_usuario_logado = @uid 
+                ")
+
+                Using comando As New SQLiteCommand(sql.ToString(), conexao)
+                    comando.Parameters.AddWithValue("@uid", LerTokenDescriptografado())
+
+                    Using adaptador As New SQLiteDataAdapter(comando)
+                        adaptador.Fill(tabela)
                     End Using
                 End Using
             End Using
 
-            If dt IsNot Nothing Then
-                Return dt.Rows.Count
-            Else
-                Return 0
-            End If
-
         Catch ex As Exception
-            MessageBox.Show("Erro ao verificar agências CAIXA ativas: " & ex.Message,
-                        "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return 0
+            MessageBox.Show("Erro ao listar agencias Caixa ativas:" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
+        Return tabela
 
     End Function
 
@@ -1491,6 +1490,76 @@ Module Md__SQLite__Funcoes__Auxiliares
 
 #Region "FUNÇÕES DA TABELA | AGÊNCIA CAIXA"
 
+    Public Function AgenciaCaixa__ObterPorId(id As Integer) As AgenciaCaixa
+
+        Dim agencia As AgenciaCaixa = Nothing
+
+        Dim sql As String = "SELECT * FROM agencia_caixa WHERE id_agencia_caixa = @id LIMIT 1;"
+
+        Using conexao As New SQLiteConnection(CadeiaDeConexao)
+            conexao.Open()
+
+            Using cmd As New SQLiteCommand(sql, conexao)
+
+                cmd.Parameters.AddWithValue("@id", id)
+
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+
+                    If reader.Read() Then
+                        agencia = New AgenciaCaixa() With {
+                        .IdAgenciaCaixa = Convert.ToInt32(reader("id_agencia_caixa")),
+                        .CodigoAgencia = reader("codigo_agencia").ToString(),
+                        .Logradouro = reader("logradouro").ToString(),
+                        .Numero = reader("numero").ToString(),
+                        .Bairro = reader("bairro").ToString(),
+                        .Cidade = reader("cidade").ToString(),
+                        .Estado = reader("estado").ToString(),
+                        .CEP = reader("cep").ToString(),
+                        .UidUsuarioLogado = reader("uid_usuario_logado").ToString(),
+                        .Status = Convert.ToInt32(reader("status"))
+                    }
+                    End If
+
+                End Using
+
+            End Using
+
+        End Using
+
+        Return agencia
+
+    End Function
+
+    Public Function AgenciasCaixa__ObterQuantidadeDeAtivas() As Integer
+
+        Try
+            Dim dt As New DataTable()
+
+            Dim sql As String = "SELECT * FROM agencia_caixa WHERE status = 1;"
+
+            Using conexao As New SQLiteConnection(CadeiaDeConexao)
+                conexao.Open()
+
+                Using cmd As New SQLiteCommand(sql, conexao)
+                    Using da As New SQLiteDataAdapter(cmd)
+                        da.Fill(dt)
+                    End Using
+                End Using
+            End Using
+
+            If dt IsNot Nothing Then
+                Return dt.Rows.Count
+            Else
+                Return 0
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Erro ao verificar agências CAIXA ativas: " & ex.Message,
+                        "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return 0
+        End Try
+
+    End Function
 
 #End Region
 

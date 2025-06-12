@@ -167,6 +167,12 @@
     <Compile Include="Frm__Menu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Frm__Selecao__AgenciaCaixa.Designer.vb">
+      <DependentUpon>Frm__Selecao__AgenciaCaixa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm__Selecao__AgenciaCaixa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Frm__Selecao__ClinicaAutorizada.Designer.vb">
       <DependentUpon>Frm__Selecao__ClinicaAutorizada.vb</DependentUpon>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm__Menu.resx">
       <DependentUpon>Frm__Menu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm__Selecao__AgenciaCaixa.resx">
+      <DependentUpon>Frm__Selecao__AgenciaCaixa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm__Selecao__ClinicaAutorizada.resx">
       <DependentUpon>Frm__Selecao__ClinicaAutorizada.vb</DependentUpon>

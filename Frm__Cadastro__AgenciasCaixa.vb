@@ -253,6 +253,7 @@ Public Class Frm__Cadastro__AgenciasCaixa
         With AgenciaCaixaAtual
 
             MskdTxtBx_CodigoAgencia.Text = .CodigoAgencia
+            MskdTxtBx_CEP.Text = .CEP
             TxtBx_Logradouro.Text = .Logradouro
             TxtBx_Numero.Text = .Numero
             TxtBx_Bairro.Text = .Bairro

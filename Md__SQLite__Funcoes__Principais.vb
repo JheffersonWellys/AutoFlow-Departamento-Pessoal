@@ -441,6 +441,19 @@ Module Md__SQLite__Funcoes__Principais
                     WHERE status = 1;
                 ")
 
+                comandos.AppendLine("
+                    CREATE VIEW IF NOT EXISTS vw_agencias_caixa_ativas AS
+                    SELECT 
+                        id_agencia_caixa,
+                        codigo_agencia,
+                        cidade,
+                        estado,
+                        cep,
+                        uid_usuario_logado
+                    FROM agencia_caixa
+                    WHERE status = 1;
+                ")
+
                 Using cmd As New SQLiteCommand(comandos.ToString(), conn)
 
                     cmd.ExecuteNonQuery()
